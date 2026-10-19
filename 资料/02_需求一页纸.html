@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>灯影 · 需求一页纸</title>
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 297mm; height: 210mm; overflow: hidden;
+    background: #F6F1E7; color: #241C16;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    font-size: 8pt; line-height: 1.5;
+    padding: 8mm 11mm 5mm;
+    display: flex; flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", STSong, SimSun, serif; }
+
+  header { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 2.4mm; border-bottom: 1.2px solid #241C16; }
+  .brand { display: flex; align-items: center; gap: 3mm; }
+  .seal { width: 10.5mm; height: 10.5mm; background: #B4352B; color: #FBEFDD; display: grid; place-items: center; font-size: 14pt; border-radius: 1px; }
+  h1 { margin: 0; font-size: 16.5pt; letter-spacing: .16em; font-weight: 600; line-height: 1.1; }
+  .tagline { font-size: 7pt; letter-spacing: .18em; color: #6B5A4B; margin-top: 1mm; }
+  .docmeta { text-align: right; font-size: 6.6pt; line-height: 1.9; color: #6B5A4B; letter-spacing: .03em; }
+  .docmeta b { color: #B4352B; font-weight: 600; }
+
+  main { flex: 1; display: grid; grid-template-columns: 1fr 1.16fr 1fr; gap: 6mm; padding-top: 3.4mm; min-height: 0; }
+  .col { display: flex; flex-direction: column; justify-content: flex-start; gap: 4.6mm; min-height: 0; }
+
+  h2 { margin: 0 0 1.4mm; font-size: 7.3pt; letter-spacing: .18em; color: #B4352B; font-weight: 600; display: flex; align-items: center; gap: 2mm; }
+  h2::after { content: ""; flex: 1; height: 1px; background: rgba(36,28,22,.18); }
+
+  .lead { font-size: 9.4pt; line-height: 1.6; }
+  .lead b { color: #B4352B; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 7.1pt; line-height: 1.45; table-layout: fixed; }
+  th { text-align: left; font-weight: 600; color: #6B5A4B; border-bottom: 1px solid rgba(36,28,22,.28); padding: .7mm .7mm; font-size: 6.5pt; letter-spacing: .04em; }
+  td { border-bottom: 1px solid rgba(36,28,22,.1); padding: .8mm .7mm; vertical-align: top; }
+  td.n { color: #B4352B; font-weight: 600; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  .step { display: flex; gap: 2mm; align-items: flex-start; padding: .5mm 0; }
+  .step .no { flex: none; width: 4.6mm; height: 4.6mm; border-radius: 50%; background: #241C16; color: #F6F1E7; display: grid; place-items: center; font-size: 6pt; }
+  .step .txt { font-size: 7.3pt; color: #3D3128; line-height: 1.45; }
+  .step .txt b { font-size: 7.9pt; color: #241C16; }
+
+  ul.check { margin: 0; padding: 0; list-style: none; }
+  ul.check li { font-size: 7.2pt; line-height: 1.5; padding-left: 4mm; position: relative; margin-bottom: .5mm; }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: .85mm; width: 2mm; height: 2mm; border: .8px solid #B4352B; }
+
+  .mood { display: block; font-size: 6.2pt; color: #B4352B; letter-spacing: .1em; margin-top: .3mm; }
+  .p0 { display: grid; grid-template-columns: 1fr 1fr; gap: .3mm 3.5mm; }
+  .p0 div { font-size: 7pt; line-height: 1.55; padding-left: 3.4mm; position: relative; color: #3A2E25; }
+  .p0 div::before { content: "·"; position: absolute; left: .6mm; color: #B4352B; font-weight: 700; }
+  .p0 div b { color: #241C16; }
+
+  .kv { display: grid; grid-template-columns: 13.5mm 1fr; gap: .4mm 2mm; font-size: 7pt; line-height: 1.45; }
+  .kv dt { color: #6B5A4B; }
+  .kv dd { margin: 0; color: #2E241C; }
+
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; }
+  .metric { border: 1px solid rgba(36,28,22,.2); border-radius: 1.5mm; padding: 1.7mm 1.2mm; text-align: center; background: rgba(255,255,255,.45); }
+  .metric b { display: block; font-family: Georgia, serif; font-size: 11pt; color: #B4352B; line-height: 1.1; }
+  .metric span { font-size: 6.2pt; color: #6B5A4B; letter-spacing: .02em; }
+
+  .why { margin: 0; padding: 0; list-style: none; }
+  .why li { font-size: 7.1pt; line-height: 1.5; padding-left: 4mm; position: relative; margin-bottom: .8mm; color: #3A2E25; }
+  .why li::before { content: ""; position: absolute; left: .4mm; top: 1.6mm; width: 2.4mm; height: 1px; background: #B4352B; }
+  .why b { color: #241C16; }
+
+  .note { font-size: 6.4pt; color: #6B5A4B; line-height: 1.5; border-top: 1px dashed rgba(36,28,22,.2); padding-top: 1.4mm; }
+  .note b { color: #B4352B; }
+
+  footer { margin-top: 2mm; padding-top: 1.4mm; border-top: 1.2px solid #241C16; display: flex; justify-content: space-between; font-size: 6pt; color: #6B5A4B; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="seal serif">灯</div>
+    <div>
+      <h1 class="serif">灯影 · 需求一页纸</h1>
+      <div class="tagline">一盏灯照见千年 · 中国皮影戏数字展馆 · 非遗主题 · 零杯 2026</div>
+    </div>
+  </div>
+  <div class="docmeta">
+    版本 v1.0 ｜ 负责人 夏思远（成员 A）<br>
+    日期 2026-10-19 ｜ 状态 <b>待三人确认</b> ｜ 5 页 · 4 人
+  </div>
+</header>
+
+<main>
+  <!-- ========== 第一栏 ========== -->
+  <section class="col">
+    <div>
+      <h2>一句话需求</h2>
+      <p class="lead">做一个 <b>5 页纯原生静态网站</b>，用「点灯—弄影—看戏—见人—续灯」的动线，让 18–35 岁用户 <b>3 分钟内</b>看懂中国皮影戏，并至少动手玩一次、愿意转发一次。</p>
+    </div>
+
+    <div>
+      <h2>目标用户</h2>
+      <table>
+        <colgroup><col style="width:17mm"><col><col style="width:30mm"></colgroup>
+        <tr><th>用户</th><th>他们的问题</th><th>我们给的答案</th></tr>
+        <tr><td>路人 18–25</td><td>这是什么？值得看吗</td><td>首屏一盏会亮的灯箱</td></tr>
+        <tr><td>家长 30–40</td><td>有能动手的东西吗</td><td>3 关拖拽，1 分钟通关</td></tr>
+        <tr><td>同行 25–35</td><td>做得用心吗</td><td>七道工序的刀口细节</td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h2>核心交互主线</h2>
+      <div class="step"><div class="no">1</div><div class="txt"><b>点灯</b>　暗场只留一盏未点的灯，点击后全场亮起，皮影从幕布后浮出。</div></div>
+      <div class="step"><div class="no">2</div><div class="txt"><b>溯影</b>　滚动时间轴；点开「镂刻」，看一张牛皮要挨三千刀。</div></div>
+      <div class="step"><div class="no">3</div><div class="txt"><b>弄影</b>　三关拖拽：亮相 → 开弓 → 跨马 + 拉幕。</div></div>
+      <div class="step"><div class="no">4</div><div class="txt"><b>看戏</b>　通关解锁剧场，字幕逐句浮现，幕布随剧情推拉。</div></div>
+      <div class="step"><div class="no">5</div><div class="txt"><b>见人 · 续灯</b>　见到刻皮影的手，最后点亮自己的一盏灯。</div></div>
+    </div>
+
+    <div>
+      <h2>成功标准</h2>
+      <div class="metrics">
+        <div class="metric"><b>3s</b><span>看懂是什么</span></div>
+        <div class="metric"><b>30s</b><span>上手玩一次</span></div>
+        <div class="metric"><b>3min</b><span>记住一个细节</span></div>
+        <div class="metric"><b>1</b><span>愿意转发一次</span></div>
+      </div>
+    </div>
+
+    <div>
+      <h2>为什么是皮影（差异化）</h2>
+      <ul class="why">
+        <li><b>光影即设计系统</b>　一套亮度 / 色温 / 遮挡参数管住 5 页，不靠堆贴图。</li>
+        <li><b>交互即解释</b>　拖一次关节，胜过一段"皮影由关节缀结而成"的说明。</li>
+        <li><b>故事即结构</b>　五幕推进靠剧情，不靠"下一页"按钮。</li>
+      </ul>
+    </div>
+
+    <div class="note"><b>无死路原则：</b>主线 5 步不得出现"二次点击才能继续 / 加载等待 / 空状态"，任何一步卡住都算 P0 缺陷。</div>
+  </section>
+
+  <!-- ========== 第二栏 ========== -->
+  <section class="col">
+    <div>
+      <h2>页面架构（5 页）</h2>
+      <table>
+        <colgroup><col style="width:17mm"><col style="width:10mm"><col><col style="width:26mm"></colgroup>
+        <tr><th>页面 / 情绪</th><th>文件</th><th>这一幕解决什么</th><th>关键交互</th></tr>
+        <tr><td><b>壹 掌灯</b><span class="mood">好奇</span></td><td>index</td><td>氛围与入口：灯箱首屏 · 三入口 · 一句主张</td><td>点灯 · 光晕跟随</td></tr>
+        <tr><td><b>贰 溯影</b><span class="mood">懂了</span></td><td>origin</td><td>知识框架：时间轴 6 节点 · 五流派 · 七道工序</td><td>滚动点亮 · 刀口放大</td></tr>
+        <tr><td><b>叁 弄影</b><span class="mood">玩过</span></td><td>play</td><td>核心体验：弄影台 3 关 · 剧场 3 剧目 · 灯与幕</td><td>拖关节 · 吸附 · 拉幕</td></tr>
+        <tr><td><b>肆 见人</b><span class="mood">敬重</span></td><td>people</td><td>情感连接：传承人 2 位 · 工具墙 · 口述引语</td><td>翻转卡 · 悬停解说</td></tr>
+        <tr><td><b>伍 续灯</b><span class="mood">想参与</span></td><td>future</td><td>当下与行动：当代 3 例 · 纹样 8 枚 · DIY</td><td>换装 · 导出 PNG</td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h2>跳转规则</h2>
+      <div class="kv">
+        <dt>常驻</dt><dd>全局导航 5 项（≤720px 折叠汉堡），当前页高亮</dd>
+        <dt>主推进</dt><dd>页尾「下一幕 →」承担 80% 跨页流转</dd>
+        <dt>解锁</dt><dd>弄影台通关 →「谢幕 · 去看他们的手」→ 见人</dd>
+        <dt>闭环</dt><dd>页脚「回到第一幕」，任意页可回首页</dd>
+        <dt>记忆</dt><dd>点亮 / 通关状态入 localStorage，回首页按状态渲染</dd>
+      </div>
+    </div>
+
+    <div>
+      <h2>非功能要求</h2>
+      <div class="kv">
+        <dt>环境</dt><dd>Chrome 129 为主；Edge / Firefox / Safari 近两版兼容</dd>
+        <dt>控制台</dt><dd>零报错、零警告、零 404、零第三方域名请求</dd>
+        <dt>依赖</dt><dd>零第三方库、零外链字体图片、零 CDN，断网可用</dd>
+        <dt>响应式</dt><dd>1920 / 1440 / 1024 / 768 / 390 五档，无横向滚动</dd>
+        <dt>性能</dt><dd>首屏 ≤ 800KB；单页 SVG ≤ 150KB；LCP &lt; 2.5s</dd>
+        <dt>无障碍</dt><dd>键盘可达、focus 可见、对比度 ≥ 4.5:1</dd>
+      </div>
+    </div>
+
+    <div>
+      <h2>技术约束（D 必读）</h2>
+      <div class="kv">
+        <dt>单页预算</dt><dd>HTML ≤ 120KB ｜ CSS ≤ 90KB ｜ JS ≤ 80KB</dd>
+        <dt>运行方式</dt><dd>双击可跑，无构建、无 fetch、无 ES Module 跨文件 import</dd>
+        <dt>状态</dt><dd>一律 data-* + class，不写内联 style（DIY 预览除外）</dd>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 第三栏 ========== -->
+  <section class="col">
+    <div>
+      <h2>P0 功能清单（缺一不算完成）</h2>
+      <div class="p0">
+        <div><b>F01</b> 5 页结构 + 导航</div>
+        <div><b>F02</b> 灯箱首屏点亮</div>
+        <div><b>F03</b> 三入口卡</div>
+        <div><b>F04</b> 时间轴 6 节点</div>
+        <div><b>F05</b> 五大流派切换</div>
+        <div><b>F06</b> 七道工序放大</div>
+        <div><b>F07</b> 弄影台三关</div>
+        <div><b>F08</b> 亮度滑杆 + 拉幕</div>
+        <div><b>F09</b> 剧场三剧目</div>
+        <div><b>F10</b> 传承人翻转卡</div>
+        <div><b>底线</b> 页尾「下一幕」闭环</div>
+        <div><b>底线</b> 五档视口无横向滚动</div>
+        <div><b>底线</b> 控制台零红字零 404</div>
+        <div><b>底线</b> 键盘可走通主线</div>
+      </div>
+      <div class="note" style="border-top:none; padding-top:1.2mm">P1：工具墙 · 纹样库 · DIY · 音效　　P2 不做：后端 / 账号 / 3D</div>
+    </div>
+
+    <div>
+      <h2>验收标准 DoD</h2>
+      <ul class="check">
+        <li>5 页互跳无死链，返回不丢位置</li>
+        <li>主线 5 步可完成，三关可通关可重置</li>
+        <li>Chrome 129 控制台零红字、零 404</li>
+        <li>五档视口截图无横向滚动、无遮挡</li>
+        <li>断网下单文件版可完整浏览</li>
+        <li>键盘可走完全站主流程</li>
+        <li>README / 素材说明 / 版权齐全</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>风险与预案</h2>
+      <div class="kv">
+        <dt>SVG 画不完</dt><dd>关节骨架 + 剪影轮廓，一个模板换纹样复用</dd>
+        <dt>史实写错</dt><dd>只写可核查事实，C 逐条给来源，拿不准写"相传"</dd>
+        <dt>低端机掉帧</dt><dd>只用 transform / opacity，不做大面积实时模糊</dd>
+      </div>
+    </div>
+
+    <div>
+      <h2>分工与里程碑</h2>
+      <table>
+        <colgroup><col style="width:9mm"><col><col style="width:11mm"></colgroup>
+        <tr><th>时间</th><th>交付</th><th>责任</th></tr>
+        <tr><td>D-7</td><td>需求 · 架构 · 选题定稿</td><td class="n">A</td></tr>
+        <tr><td>D-6</td><td>视觉规范 + 5 页关键屏</td><td class="n">B</td></tr>
+        <tr><td>D-5</td><td>首页 + 框架落地</td><td class="n">D</td></tr>
+        <tr><td>D-4</td><td>弄影台三关</td><td class="n">D</td></tr>
+        <tr><td>D-3</td><td>剧场 / 见人 / 续灯</td><td class="n">D</td></tr>
+        <tr><td>D-2</td><td>全站文案与素材定稿</td><td class="n">C</td></tr>
+        <tr><td>D-1</td><td>联调 · 打包 · 双版本验证</td><td class="n">A+D</td></tr>
+        <tr><td>D0</td><td>邮件提交（留缓冲）</td><td class="n">A</td></tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>灯影 · 需求一页纸 v1.0 ｜ 详细规格见《03 信息架构与交互主线》｜ 打包与自查见《04 提交规范与验收清单》</span>
+  <span>零杯 2026 · 非遗 · 夏思远 / 李健豪 / 廖哲煜 / 闫煦</span>
+</footer>
+
+</body>
+</html>

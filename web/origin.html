@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16110D">
+<meta name="description" content="皮影戏从哪里来：六个时间节点、五大流派、七道工序。灯影 · 中国皮影戏数字展馆。">
+<title>贰 · 溯影 ｜ 灯影</title>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-lit="1">
+
+<a class="skip-link" href="#main">跳到正文</a>
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="灯影 · 返回首页">
+      <span class="brand__seal" aria-hidden="true">灯</span>
+      <span>
+        <span class="brand__name">灯影</span>
+        <span class="brand__sub">LAMP &amp; SHADOW</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开导航菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__links" id="navLinks">
+      <a href="index.html">掌灯</a>
+      <a href="origin.html" aria-current="page">溯影</a>
+      <a href="play.html">弄影</a>
+      <a href="people.html">见人</a>
+      <a href="future.html">续灯</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="main">
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <div class="masthead__glyph" aria-hidden="true">溯影<span>第二幕</span></div>
+      <div class="reveal">
+        <p class="eyebrow">源流 · 流派 · 工序</p>
+        <h1>灯从哪来，<br>影往哪去</h1>
+        <p class="lead">
+          它不是一个突然出现的民间玩艺。从汉武帝帐中的一段传说，到宋代瓦舍里的满堂喝彩，
+          再到今天被写进名录——皮影戏走了两千年，靠的是一盏灯、一张皮、一双手。
+        </p>
+        <div class="masthead__meta">
+          <span><b>6</b> 个时间节点</span>
+          <span><b>5</b> 大流派</span>
+          <span><b>7</b> 道工序</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 时间轴 -->
+  <section class="section section--tight" aria-labelledby="tlTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">源流</p>
+          <h2 id="tlTitle">六个节点</h2>
+        </div>
+        <p class="block-head__note">滚动到节点，灯就会亮起；点开可以多看两句。</p>
+      </div>
+
+      <div class="timeline-wrap">
+        <div class="timeline" id="timeline">
+          <span class="timeline__progress" id="tlProgress" aria-hidden="true"></span>
+
+          <article class="tl-item">
+            <p class="tl-item__era">汉 · 公元前 2 世纪</p>
+            <h3 class="tl-item__title">影戏之始（相传）</h3>
+            <p class="tl-item__text">汉武帝思念李夫人，方士设帷帐、燃灯烛，让身影映在帐上。这是关于影戏最早的想象——先有影，后有戏。</p>
+            <button class="tl-item__more" type="button" data-more="据《汉书·外戚传》记载，方士以“设帐张灯”的方式重现夫人形貌。后世多把这一幕视作皮影的雏形，但它仍是传说，不是信史。">展开</button>
+          </article>
+
+          <article class="tl-item">
+            <p class="tl-item__era">宋 · 11–13 世纪</p>
+            <h3 class="tl-item__title">瓦舍勾栏里的满堂彩</h3>
+            <p class="tl-item__text">汴京的瓦舍里有专门的“影戏”艺人，话本、鼓词与影偶合流。影戏第一次成为市井里买票就能看的娱乐。</p>
+            <button class="tl-item__more" type="button" data-more="孟元老《东京梦华录》记下了汴京瓦舍的繁盛，影戏是其中一门。宋代影戏已能演长篇故事，影人用纸或皮制，染色后透光。">展开</button>
+          </article>
+
+          <article class="tl-item">
+            <p class="tl-item__era">元 · 13 世纪</p>
+            <h3 class="tl-item__title">随军西传</h3>
+            <p class="tl-item__text">蒙古军队把它带到中亚，又传入波斯、埃及。欧洲人后来称它为“中国影戏”，一路走到今天的光影艺术。</p>
+            <button class="tl-item__more" type="button" data-more="随军班社把影戏带出中原。波斯、阿拉伯文献中都有类似影戏的记载，这条路径比很多人以为的更早。">展开</button>
+          </article>
+
+          <article class="tl-item">
+            <p class="tl-item__era">明清 · 14–19 世纪</p>
+            <h3 class="tl-item__title">流派成型</h3>
+            <p class="tl-item__text">各地用皮不同、唱腔不同、影人大小不同：陕西用牛皮，唐山用驴皮，四川的影人高大，山东的班子人少而精。</p>
+            <button class="tl-item__more" type="button" data-more="流派差异不只是“风格”，而是材料、刀法、唱腔、班社结构的一整套地方知识。看一个流派，等于看一个地方怎么生活。">展开</button>
+          </article>
+
+          <article class="tl-item">
+            <p class="tl-item__era">近代 · 20 世纪</p>
+            <h3 class="tl-item__title">退到庙会，也没有断</h3>
+            <p class="tl-item__text">电影、电视兴起，影戏从城市退到乡间庙会。班社少了，但刻皮影的刀没有停，徒弟还是一刀一刀跟着师父学。</p>
+            <button class="tl-item__more" type="button" data-more="很多县里的班子在最难的时候靠红白事、庙会维持。也正是在这段时间，皮影从“娱乐”变成了需要被保护的“手艺”。">展开</button>
+          </article>
+
+          <article class="tl-item">
+            <p class="tl-item__era">2011</p>
+            <h3 class="tl-item__title">写进名录之后</h3>
+            <p class="tl-item__text">“中国皮影戏”列入联合国教科文组织人类非物质文化遗产代表作名录。它被世界看见了，但被看见不等于被需要。</p>
+            <button class="tl-item__more" type="button" data-more="列入名录是保护工作的开始，不是终点。真正决定它能不能活下去的，是还有没有人愿意看、愿意学、愿意买票。">展开</button>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 流派 -->
+  <section class="section schools-block" aria-labelledby="schoolTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">流派</p>
+          <h2 id="schoolTitle">五个地方，五种脾气</h2>
+        </div>
+        <p class="block-head__note">点地名切换。看的不只是影人，是一个地方怎么生活。</p>
+      </div>
+
+      <div class="schools" role="tablist" aria-label="皮影流派">
+        <button class="school" role="tab" aria-selected="true" data-school="shaanxi">陕西 · 华县</button>
+        <button class="school" role="tab" aria-selected="false" data-school="tangshan">唐山 · 乐亭</button>
+        <button class="school" role="tab" aria-selected="false" data-school="sichuan">四川 · 成都</button>
+        <button class="school" role="tab" aria-selected="false" data-school="shandong">山东 · 泰山</button>
+        <button class="school" role="tab" aria-selected="false" data-school="zhejiang">浙江 · 海宁</button>
+      </div>
+
+      <div class="school-panel" id="schoolPanel" role="tabpanel" aria-live="polite">
+        <div class="school-panel__art" aria-hidden="true">
+          <svg viewBox="0 0 240 180" fill="none" stroke="var(--lamp)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <use href="#pat-cloud" id="schoolArt" x="0" y="0" width="240" height="180"></use>
+          </svg>
+        </div>
+        <div>
+          <p class="school-panel__name" id="schoolName">陕西 · 华县</p>
+          <p class="school-panel__desc" id="schoolDesc">
+            关中人叫它“牛皮影”。影人用黄牛皮，刻得细密，一个人物要几千刀。唱腔是碗碗腔、老腔，声腔一起，满场的烟都静下来。
+          </p>
+          <div class="school-panel__tags" id="schoolTags">
+            <span class="chip">黄牛皮</span><span class="chip">碗碗腔</span><span class="chip">刻工细密</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工序（唯一亮场） -->
+  <section class="paper-block crafts-block" aria-labelledby="craftTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">工序</p>
+          <h2 id="craftTitle">一张牛皮，七道关</h2>
+        </div>
+        <p class="block-head__note">点开任意一道，看它到底在做什么。</p>
+      </div>
+
+      <div class="crafts">
+        <button class="craft" data-craft="0"><span class="craft__idx">一</span><span class="craft__name">选皮</span><span class="craft__line">挑一张好牛皮</span></button>
+        <button class="craft" data-craft="1"><span class="craft__idx">二</span><span class="craft__name">制皮</span><span class="craft__line">泡、刮、绷、晾</span></button>
+        <button class="craft" data-craft="2"><span class="craft__idx">三</span><span class="craft__name">画稿</span><span class="craft__line">把样子过到皮上</span></button>
+        <button class="craft" data-craft="3"><span class="craft__idx">四</span><span class="craft__name">镂刻</span><span class="craft__line">推皮走刀，几千刀</span></button>
+        <button class="craft" data-craft="4"><span class="craft__idx">五</span><span class="craft__name">敷彩</span><span class="craft__line">矿物颜料加皮胶</span></button>
+        <button class="craft" data-craft="5"><span class="craft__idx">六</span><span class="craft__name">发汗熨平</span><span class="craft__line">受热，定色定形</span></button>
+        <button class="craft" data-craft="6"><span class="craft__idx">七</span><span class="craft__name">缀结</span><span class="craft__line">装关节，能动了</span></button>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-scene" href="play.html">
+    <div class="wrap next-scene__inner">
+      <span class="next-scene__label">下一幕</span>
+      <span class="next-scene__name">弄影 <span class="next-scene__arrow" aria-hidden="true">→</span></span>
+      <span class="next-scene__desc">看懂了，就该你上手了。三关，一分钟。</span>
+    </div>
+  </a>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__title">灯影</p>
+          <p class="footer__line">一盏灯照见千年<br>中国皮影戏数字展馆</p>
+        </div>
+        <div class="footer__col">
+          <h4>五幕</h4>
+          <a href="index.html">壹 · 掌灯</a>
+          <a href="origin.html">贰 · 溯影</a>
+          <a href="play.html">叁 · 弄影</a>
+          <a href="people.html">肆 · 见人</a>
+          <a href="future.html">伍 · 续灯</a>
+        </div>
+        <div class="footer__col">
+          <h4>说明</h4>
+          <a href="future.html">纹样与 DIY</a>
+          <span class="footer__line">零杯 2026 · 非遗主题</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 灯影团队 · 夏思远 / 李健豪 / 廖哲煜 / 闫煦</span>
+        <span>本站图文素材均为学习创作，如有版权问题请联系删除</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- 工序弹层 -->
+<div class="modal" id="craftModal" role="dialog" aria-modal="true" aria-labelledby="craftModalTitle" data-open="false">
+  <div class="modal__box">
+    <p class="modal__idx" id="craftModalIdx">工序 一 / 七</p>
+    <h3 class="modal__title" id="craftModalTitle">选皮</h3>
+    <p class="modal__text" id="craftModalText"></p>
+    <button class="btn modal__close" type="button" id="craftModalClose">合上</button>
+  </div>
+</div>
+
+<!-- 纹样符号 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="pat-cloud">
+      <path d="M40 120c0-16 12-26 26-26 4-14 16-22 30-22 16 0 28 10 30 24 14 2 22 12 22 24"/>
+      <path d="M180 120c0-16 12-26 26-26 4-14 16-22 30-22"/>
+      <path d="M60 148c14-10 30-10 44 0s30 10 44 0 30-10 44 0 30 10 44 0" opacity=".55"/>
+      <circle cx="66" cy="94" r="3"/><circle cx="128" cy="70" r="3"/><circle cx="196" cy="72" r="3"/>
+    </g>
+    <g id="pat-water">
+      <path d="M20 70c20-16 40-16 60 0s40 16 60 0 40-16 60 0 40 16 60 0"/>
+      <path d="M20 100c20-16 40-16 60 0s40 16 60 0 40-16 60 0 40 16 60 0" opacity=".7"/>
+      <path d="M20 130c20-16 40-16 60 0s40 16 60 0 40-16 60 0 40 16 60 0" opacity=".45"/>
+    </g>
+    <g id="pat-dragon">
+      <path d="M120 90c0-26 20-46 44-46s44 20 44 46-18 46-42 46c-18 0-32-12-32-28 0-14 10-24 24-24 10 0 18 8 18 18"/>
+      <path d="M120 90c0 26-18 46-42 46S34 116 34 92c0-16 10-28 24-32" opacity=".6"/>
+      <circle cx="188" cy="72" r="3"/><circle cx="120" cy="90" r="3"/>
+    </g>
+    <g id="pat-flower">
+      <path d="M120 40v100M70 90h100"/>
+      <circle cx="120" cy="66" r="16"/><circle cx="144" cy="90" r="16"/>
+      <circle cx="120" cy="114" r="16"/><circle cx="96" cy="90" r="16"/>
+      <path d="M60 140c30-10 90-10 120 0" opacity=".5"/>
+    </g>
+    <g id="pat-key">
+      <path d="M60 60h60v60H60z"/>
+      <path d="M84 84h24v24H84z"/>
+      <path d="M120 60h60v60h-60z" opacity=".7"/>
+      <path d="M144 84h24v24h-24z" opacity=".7"/>
+      <path d="M20 120h80M160 120h60" opacity=".5"/>
+    </g>
+  </defs>
+</svg>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

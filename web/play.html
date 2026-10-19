@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16110D">
+<meta name="description" content="弄影台：拖动皮影关节，摆出亮相、开弓、跨马；通关后走进影窗剧场。灯影 · 中国皮影戏数字展馆。">
+<title>叁 · 弄影 ｜ 灯影</title>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-lit="1">
+
+<a class="skip-link" href="#stage">跳到弄影台</a>
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="灯影 · 返回首页">
+      <span class="brand__seal" aria-hidden="true">灯</span>
+      <span>
+        <span class="brand__name">灯影</span>
+        <span class="brand__sub">LAMP &amp; SHADOW</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开导航菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__links" id="navLinks">
+      <a href="index.html">掌灯</a>
+      <a href="origin.html">溯影</a>
+      <a href="play.html" aria-current="page">弄影</a>
+      <a href="people.html">见人</a>
+      <a href="future.html">续灯</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <div class="masthead__glyph" aria-hidden="true">弄影<span>第三幕</span></div>
+      <div>
+        <p class="eyebrow">上手 · 三关</p>
+        <h1>灯亮了，<br>该你伸手</h1>
+        <p class="lead">
+          皮影的每一处关节都缀着线，三根竹签就能让它活。先别急着看说明——
+          把它的右臂抬起来，你就懂了。
+        </p>
+        <div class="masthead__meta">
+          <span><b>3</b> 关</span>
+          <span>约 <b>1</b> 分钟</span>
+          <span>可键盘操作</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--tight" id="stage" aria-labelledby="stageTitle">
+    <div class="wrap">
+      <h2 id="stageTitle" class="sr-only" style="position:absolute;left:-9999px">弄影台</h2>
+
+      <div class="play-layout">
+        <div class="stage-wrap">
+          <div class="stage" id="stageEl" data-level="0">
+            <div class="stage__bar">
+              <span>弄影台 · <b id="levelName">第一关 · 亮相</b></span>
+              <span id="tipText">拖动发光的关节</span>
+            </div>
+
+            <div class="stage__viewport" id="viewport">
+              <div class="stage__screen" aria-hidden="true"></div>
+
+              <svg class="stage__puppet" id="puppet" viewBox="0 0 420 560" role="group" aria-label="可拖动的皮影人物">
+                <defs>
+                  <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#F6D49A"/>
+                    <stop offset=".55" stop-color="#E8B45A"/>
+                    <stop offset="1" stop-color="#B8722C"/>
+                  </linearGradient>
+                  <linearGradient id="leatherDark" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#D9A253"/>
+                    <stop offset="1" stop-color="#8C4C1E"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- 左腿 -->
+                <g class="joint" data-joint="legL" data-pivot="196,344" transform="rotate(0 196 344)" aria-disabled="true" tabindex="-1" role="button" aria-label="左腿关节">
+                  <path d="M184 342 L208 342 L204 462 L190 462 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M188 458 L206 458 L210 484 L180 484 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M186 424 L204 424" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
+                  <circle class="joint__ring" cx="196" cy="478" r="14"/>
+                  <circle class="joint__handle--hit" cx="196" cy="478" r="34"/>
+                  <circle class="joint__handle" cx="196" cy="478" r="7"/>
+                </g>
+
+                <!-- 右腿 -->
+                <g class="joint" data-joint="legR" data-pivot="224,344" transform="rotate(0 224 344)" aria-disabled="true" tabindex="-1" role="button" aria-label="右腿关节">
+                  <path d="M212 342 L236 342 L232 462 L218 462 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M218 458 L236 458 L240 484 L210 484 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M216 424 L232 424" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
+                  <circle class="joint__ring" cx="226" cy="478" r="14"/>
+                  <circle class="joint__handle--hit" cx="226" cy="478" r="34"/>
+                  <circle class="joint__handle" cx="226" cy="478" r="7"/>
+                </g>
+
+                <!-- 左臂 -->
+                <g class="puppet__torso">
+                  <path d="M210 172c-30 0-52 10-56 28l-8 100c-2 16 2 30 12 40h104c10-10 14-24 12-40l-8-100c-4-18-26-28-56-28z"
+                        fill="#1E1008" stroke="rgba(242,200,121,.34)" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M194 178 L210 212 L226 178" fill="none" stroke="rgba(242,200,121,.34)" stroke-width="1.6"/>
+                  <path d="M152 266 H268" stroke="rgba(242,200,121,.34)" stroke-width="2"/>
+                  <circle cx="210" cy="266" r="6" fill="none" stroke="rgba(64,30,12,.6)" stroke-width="1.4"/>
+                  <path d="M158 338 H262" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
+                  <path d="M186 300 v28 M234 300 v28" stroke="rgba(242,200,121,.18)" stroke-width="1.2"/>
+                </g>
+
+                <!-- 头 -->
+
+                <g class="joint" data-joint="armL" data-pivot="162,200" transform="rotate(0 162 200)" aria-disabled="true" tabindex="-1" role="button" aria-label="左臂关节">
+                  <path d="M150 196 L172 202 L164 286 L146 282 Z" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M148 272 L166 278" stroke="rgba(242,200,121,.28)" stroke-width="1.4"/>
+                  <circle cx="154" cy="292" r="9" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.4"/>
+                  <circle class="joint__ring" cx="154" cy="292" r="14"/>
+                  <circle class="joint__handle--hit" cx="154" cy="292" r="34"/>
+                  <circle class="joint__handle" cx="154" cy="292" r="7"/>
+                </g>
+
+                <!-- 右臂 -->
+                <g class="joint" data-joint="armR" data-pivot="258,200" transform="rotate(0 258 200)" aria-disabled="true" tabindex="-1" role="button" aria-label="右臂关节">
+                  <path d="M248 202 L270 196 L274 282 L256 286 Z" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M254 278 L272 272" stroke="rgba(242,200,121,.28)" stroke-width="1.4"/>
+                  <circle cx="266" cy="292" r="9" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.4"/>
+                  <circle class="joint__ring" cx="266" cy="292" r="14"/>
+                  <circle class="joint__handle--hit" cx="266" cy="292" r="34"/>
+                  <circle class="joint__handle" cx="266" cy="292" r="7"/>
+                </g>
+
+                <!-- 身 -->
+
+                <g class="puppet__head">
+                  <path d="M210 56c22 0 40 18 40 40 0 14-6 26-15 33v18c0 10-8 18-18 18h-14c-10 0-18-8-18-18v-18c-9-7-15-19-15-33 0-22 18-40 40-40z"
+                        fill="#1E1008" stroke="rgba(242,200,121,.36)" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M172 82c8-16 22-26 38-26s30 10 38 26" fill="none" stroke="#B4352B" stroke-width="3.2" stroke-linecap="round"/>
+                  <path d="M190 102h14M216 102h14" stroke="#F2C879" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
+                  <path d="M210 106v8" stroke="rgba(242,200,121,.28)" stroke-width="1.4" stroke-linecap="round"/>
+                  <path d="M202 130h16" stroke="rgba(242,200,121,.34)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M166 132c-6 6-8 14-6 22M254 132c6 6 8 14 6 22" fill="none" stroke="rgba(242,200,121,.22)" stroke-width="1.3"/>
+                </g>
+              </svg>
+
+              <div class="stage__curtain stage__curtain--left" aria-hidden="true"></div>
+              <div class="stage__curtain stage__curtain--right" aria-hidden="true"></div>
+              <button class="stage__grip stage__grip--l" id="gripL" type="button" aria-label="拖动拉开幕布">幕</button>
+              <button class="stage__grip stage__grip--r" id="gripR" type="button" aria-label="拖动拉开幕布">幕</button>
+
+              <div class="stage__stamp" id="stamp" aria-hidden="true">成</div>
+              <div class="stage__hint" id="stageHint">第一关 · 把右臂抬到 <b>60°</b></div>
+            </div>
+
+            <div class="stage__foot">
+              <div class="stage__dots" id="dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+              <div class="stage__controls">
+                <button class="btn btn--ghost" id="resetBtn" type="button">重置</button>
+                <button class="btn" id="hintBtn" type="button">提示</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="play-side">
+          <div>
+            <p class="eyebrow">三关</p>
+            <div class="step-list" id="stepList" style="margin-top:16px">
+              <div class="step-item" data-step="0">
+                <span class="step-item__no">1</span>
+                <span><span class="step-item__t">亮相</span><span class="step-item__d">把右臂抬到 60°，皮影要“亮个相”。</span></span>
+              </div>
+              <div class="step-item" data-step="1">
+                <span class="step-item__no">2</span>
+                <span><span class="step-item__t">开弓</span><span class="step-item__d">右臂保持，左臂向后拉开 30°。</span></span>
+              </div>
+              <div class="step-item" data-step="2">
+                <span class="step-item__no">3</span>
+                <span><span class="step-item__t">跨马</span><span class="step-item__d">抬起右腿，再把幕布拉到九成。</span></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="locked-note" id="lockNote">
+            <b>提示</b>：关节进入目标角度 8° 以内会自动吸附，出现金色光环就说明到位了。
+            键盘也可以用：<b>Tab</b> 选中关节，<b>← →</b> 微调，<b>Enter</b> 确认。
+          </p>
+
+          <a class="btn btn--solid" id="toTheater" href="#theater" aria-disabled="true">去剧场（先通关）</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 剧场 -->
+  <section class="section theater" aria-labelledby="theaterTitle">
+    <div class="wrap" id="theater">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">影窗剧场</p>
+          <h2 id="theaterTitle">三出戏，各看四句</h2>
+        </div>
+        <p class="block-head__note">通关前只能看第一句。通关后三出戏全开，灯也能自己调。</p>
+      </div>
+
+      <div class="theater__grid">
+        <div class="screen">
+          <div class="screen__scene" id="scene" data-scene="0">
+            <svg viewBox="0 0 800 450" role="img" aria-label="影窗中的戏台画面">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#F7DCAE"/>
+                  <stop offset="1" stop-color="#B06A2A"/>
+                </linearGradient>
+              </defs>
+              <rect width="800" height="450" fill="url(#sky)"/>
+              <circle cx="600" cy="110" r="64" fill="#FFF3DC" opacity=".35"/>
+              <circle cx="600" cy="110" r="36" fill="#FFFBF0" opacity=".9"/>
+              <path d="M0 320 L150 232 L268 318 L392 240 L520 326 L640 268 L800 340 V450 H0 Z" fill="#3A2010"/>
+              <path d="M0 372 L120 330 L240 376 L380 328 L520 382 L660 340 L800 386 V450 H0 Z" fill="#241408"/>
+              <g opacity=".9" transform="translate(120 120) scale(.9)">
+                <path d="M40 150c0-22 16-34 34-34h34c18 0 34 12 34 34v26H40z" fill="#2A1B10"/>
+                <path d="M78 116V88l32-14 32 14v28" fill="none" stroke="#3A2416" stroke-width="3"/>
+              </g>
+              <g fill="#0D0906" opacity=".85">
+                <ellipse cx="330" cy="392" rx="40" ry="6"/>
+                <ellipse cx="470" cy="392" rx="40" ry="6"/>
+              </g>
+              <g id="scenePuppetA" fill="#1E1008" opacity=".95">
+                <path d="M330 250c14 0 24 10 24 24s-10 26-24 26-24-12-24-26 10-24 24-24z"/>
+                <path d="M306 302h48l8 96h-64z"/>
+              </g>
+              <g id="scenePuppetB" fill="#1E1008" opacity=".85">
+                <path d="M470 268c12 0 21 9 21 21s-9 23-21 23-21-11-21-23 9-21 21-21z"/>
+                <path d="M451 314h38l6 84h-50z"/>
+              </g>
+            </svg>
+          </div>
+          <div class="screen__vignette" aria-hidden="true"></div>
+          <div class="screen__subtitles" aria-live="polite">
+            <p id="subtitle">按下“播放”，听第一句。</p>
+          </div>
+        </div>
+
+        <div class="theater__side">
+          <div class="playlist" id="playlist" role="list">
+            <button class="play" type="button" data-play="0" aria-current="true" role="listitem">
+              <span class="play__no">壹</span>
+              <span class="play__name">三打白骨精</span>
+              <span class="play__meta">四句</span>
+            </button>
+            <button class="play" type="button" data-play="1" aria-current="false" role="listitem">
+              <span class="play__no">贰</span>
+              <span class="play__name">劈山救母</span>
+              <span class="play__meta">四句</span>
+            </button>
+            <button class="play" type="button" data-play="2" aria-current="false" role="listitem">
+              <span class="play__no">叁</span>
+              <span class="play__name">白蛇传 · 断桥</span>
+              <span class="play__meta">四句</span>
+            </button>
+          </div>
+
+          <div class="controls-row">
+            <button class="btn btn--solid" id="playBtn" type="button">播放</button>
+            <button class="btn btn--ghost" id="prevBtn" type="button">上一句</button>
+            <button class="btn btn--ghost" id="nextBtn" type="button">下一句</button>
+          </div>
+
+          <div class="slider-row">
+            <label for="brightness">灯</label>
+            <input class="slider" id="brightness" type="range" min="30" max="100" value="100" step="1">
+            <span id="brightnessVal">100%</span>
+          </div>
+
+          <p class="locked-note" id="theaterLock">剧场还锁着：先在弄影台通关，再回来看整出戏。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-scene" href="people.html">
+    <div class="wrap next-scene__inner">
+      <span class="next-scene__label">下一幕</span>
+      <span class="next-scene__name">见人 <span class="next-scene__arrow" aria-hidden="true">→</span></span>
+      <span class="next-scene__desc">戏是人演的，影是人刻的。</span>
+    </div>
+  </a>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__title">灯影</p>
+          <p class="footer__line">一盏灯照见千年<br>中国皮影戏数字展馆</p>
+        </div>
+        <div class="footer__col">
+          <h4>五幕</h4>
+          <a href="index.html">壹 · 掌灯</a>
+          <a href="origin.html">贰 · 溯影</a>
+          <a href="play.html">叁 · 弄影</a>
+          <a href="people.html">肆 · 见人</a>
+          <a href="future.html">伍 · 续灯</a>
+        </div>
+        <div class="footer__col">
+          <h4>说明</h4>
+          <a href="future.html">纹样与 DIY</a>
+          <span class="footer__line">零杯 2026 · 非遗主题</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 灯影团队 · 夏思远 / 李健豪 / 廖哲煜 / 闫煦</span>
+        <span>本站图文素材均为学习创作，如有版权问题请联系删除</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/stage.js"></script>
+<script src="assets/js/theater.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+{
+  "generatedAt": "2026-10-19T06:57:26.721Z",
+  "site": "C:\\Shaun\\Competitions\\26ZeroCup\\web",
+  "pages": [
+    {
+      "file": "index.html",
+      "title": "灯影 · 一盏灯照见千年 ｜ 中国皮影戏数字展馆",
+      "h1": "一盏灯照见千年",
+      "scrollW": 933,
+      "clientW": 933,
+      "imgs": 0,
+      "brokenImgs": 0,
+      "links": [
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "origin.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "future.html"
+      ],
+      "errors": []
+    },
+    {
+      "file": "origin.html",
+      "title": "贰 · 溯影 ｜ 灯影",
+      "h1": "灯从哪来，影往哪去",
+      "scrollW": 933,
+      "clientW": 933,
+      "imgs": 0,
+      "brokenImgs": 0,
+      "links": [
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "play.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "future.html"
+      ],
+      "errors": []
+    },
+    {
+      "file": "play.html",
+      "title": "叁 · 弄影 ｜ 灯影",
+      "h1": "灯亮了，该你伸手",
+      "scrollW": 933,
+      "clientW": 933,
+      "imgs": 0,
+      "brokenImgs": 0,
+      "links": [
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "people.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "future.html"
+      ],
+      "errors": []
+    },
+    {
+      "file": "people.html",
+      "title": "肆 · 见人 ｜ 灯影",
+      "h1": "戏是人演的，影是人刻的",
+      "scrollW": 933,
+      "clientW": 933,
+      "imgs": 0,
+      "brokenImgs": 0,
+      "links": [
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "future.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "future.html"
+      ],
+      "errors": []
+    },
+    {
+      "file": "future.html",
+      "title": "伍 · 续灯 ｜ 灯影",
+      "h1": "灯不该只亮在博物馆里",
+      "scrollW": 933,
+      "clientW": 933,
+      "imgs": 0,
+      "brokenImgs": 0,
+      "links": [
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html",
+        "index.html",
+        "index.html",
+        "origin.html",
+        "play.html",
+        "people.html",
+        "future.html"
+      ],
+      "errors": []
+    }
+  ],
+  "stage": {
+    "steps": [
+      {
+        "step": "initial",
+        "level": "第一关 · 亮相",
+        "armR": "rotate(0.0 258 200)",
+        "armL": "rotate(0.0 162 200)",
+        "legR": "rotate(0.0 224 344)",
+        "snapped": 0,
+        "dotsOn": 1,
+        "theater": "true",
+        "passed": null
+      },
+      {
+        "step": "level1-armR--150",
+        "level": "第二关 · 开弓",
+        "armR": "rotate(-145.0 258 200)",
+        "armL": "rotate(0.0 162 200)",
+        "legR": "rotate(0.0 224 344)",
+        "snapped": 1,
+        "dotsOn": 2,
+        "theater": "true",
+        "passed": null
+      },
+      {
+        "step": "level2-armL-120",
+        "level": "第三关 · 跨马",
+        "armR": "rotate(-145.0 258 200)",
+        "armL": "rotate(115.0 162 200)",
+        "legR": "rotate(0.0 224 344)",
+        "snapped": 2,
+        "dotsOn": 3,
+        "theater": "true",
+        "passed": null
+      },
+      {
+        "step": "level3-legR--50",
+        "level": "第三关 · 跨马",
+        "armR": "rotate(-145.0 258 200)",
+        "armL": "rotate(115.0 162 200)",
+        "legR": "rotate(-50.0 224 344)",
+        "snapped": 2,
+        "dotsOn": 3,
+        "theater": "true",
+        "passed": null
+      },
+      {
+        "step": "level3-curtain",
+        "level": "第三关 · 跨马",
+        "armR": "rotate(-145.0 258 200)",
+        "armL": "rotate(115.0 162 200)",
+        "legR": "rotate(-50.0 224 344)",
+        "snapped": 2,
+        "dotsOn": 3,
+        "theater": "false",
+        "passed": "1"
+      }
+    ],
+    "passed": true,
+    "theaterUnlocked": true
+  },
+  "errors": []
+}

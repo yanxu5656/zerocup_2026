@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16110D">
+<meta name="description" content="续灯：纹样库、DIY 皮影生成与导出、点一盏自己的灯。灯影 · 中国皮影戏数字展馆。">
+<title>伍 · 续灯 ｜ 灯影</title>
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body data-lit="1">
+
+<a class="skip-link" href="#main">跳到正文</a>
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="灯影 · 返回首页">
+      <span class="brand__seal" aria-hidden="true">灯</span>
+      <span>
+        <span class="brand__name">灯影</span>
+        <span class="brand__sub">LAMP &amp; SHADOW</span>
+      </span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开导航菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__links" id="navLinks">
+      <a href="index.html">掌灯</a>
+      <a href="origin.html">溯影</a>
+      <a href="play.html">弄影</a>
+      <a href="people.html">见人</a>
+      <a href="future.html" aria-current="page">续灯</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="main">
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <div class="masthead__glyph" aria-hidden="true">续灯<span>第五幕</span></div>
+      <div class="reveal">
+        <p class="eyebrow">当代 · 纹样 · 带走</p>
+        <h1>灯不该只亮<br>在博物馆里</h1>
+        <p class="lead">
+          皮影的纹样早就离开了幕布：它上过衣服、进过动画、被画在墙上。
+          这一幕不讲保护，讲"还在发生"——你可以下载一枚纹样，也可以拼一只自己的皮影，带走。
+        </p>
+        <div class="masthead__meta">
+          <span><b>3</b> 个当代表达</span>
+          <span><b>8</b> 枚纹样</span>
+          <span>可导出手作</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--tight" aria-labelledby="casesTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">当代表达</p>
+          <h2 id="casesTitle">它已经跑到别处去了</h2>
+        </div>
+        <p class="block-head__note">不是"被保护"，是"被使用"。这三种用法都在真实发生。</p>
+      </div>
+
+      <div class="cases">
+        <article class="case reveal">
+          <div class="case__art" aria-hidden="true">
+            <svg viewBox="0 0 280 175" width="100%" height="100%" fill="none" stroke="#E8B45A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M140 34c26 0 44 18 44 42 0 18-8 30-18 36v14h-52v-14c-10-6-18-18-18-36 0-24 18-42 44-42z" opacity=".9"/>
+              <path d="M100 146c0-14 8-24 20-28M180 146c0-14-8-24-20-28" opacity=".6"/>
+              <path d="M118 52c8-8 14-10 22-10s14 2 22 10" stroke="#B4352B" stroke-width="2.4"/>
+              <circle cx="128" cy="70" r="2.6" fill="#E8B45A" stroke="none"/>
+              <circle cx="152" cy="70" r="2.6" fill="#E8B45A" stroke="none"/>
+            </svg>
+          </div>
+          <div class="case__body">
+            <h3 class="case__title">时装</h3>
+            <p class="case__text">影人的镂空结构被拿去做面料切割，走动时透出的光，像一块会呼吸的幕布。</p>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case__art" aria-hidden="true">
+            <svg viewBox="0 0 280 175" width="100%" height="100%" fill="none" stroke="#E8B45A" stroke-width="1.2" stroke-linecap="round">
+              <rect x="42" y="46" width="196" height="94" rx="4" opacity=".55"/>
+              <path d="M96 122c14-34 26-52 44-52s30 18 44 52" stroke="#B4352B" stroke-width="2"/>
+              <path d="M70 100h20M190 100h20" opacity=".5"/>
+              <circle cx="140" cy="84" r="10"/>
+            </svg>
+          </div>
+          <div class="case__body">
+            <h3 class="case__title">动画</h3>
+            <p class="case__text">关节、铰链、薄片分层——动画里的"偶"，很多动作逻辑就是从皮影的签子上学的。</p>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case__art" aria-hidden="true">
+            <svg viewBox="0 0 280 175" width="100%" height="100%" fill="none" stroke="#E8B45A" stroke-width="1.2" stroke-linecap="round">
+              <path d="M40 130h200" opacity=".5"/>
+              <path d="M90 130V70h100v60" />
+              <path d="M110 70V46h60v24" opacity=".7"/>
+              <circle cx="140" cy="100" r="16" stroke="#B4352B" stroke-width="2"/>
+              <path d="M124 100h32M140 84v32" opacity=".4"/>
+            </svg>
+          </div>
+          <div class="case__body">
+            <h3 class="case__title">公共艺术</h3>
+            <p class="case__text">灯箱被放大到一间屋子那么大，人走进幕布后面，影子替他们演。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="patTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">纹样库</p>
+          <h2 id="patTitle">八枚纹样，可以带走</h2>
+        </div>
+        <p class="block-head__note">点任意一枚，下载为 SVG。没有版权限制，随便用。</p>
+      </div>
+
+      <div class="patterns" id="patterns">
+        <button class="pattern" type="button" data-name="云纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="round">
+            <path d="M22 74c0-9 7-15 15-15 2-9 10-15 19-15 11 0 19 7 21 16 8 1 13 7 13 14"/>
+            <path d="M16 92c8-6 17-6 25 0s17 6 25 0 17-6 25 0" opacity=".7"/>
+            <circle cx="37" cy="59" r="2" fill="#E8B45A"/>
+          </svg>
+          <span class="pattern__name">云纹</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="水纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="round">
+            <path d="M12 44c12-10 24-10 36 0s24 10 36 0 24-10 24 0"/>
+            <path d="M12 64c12-10 24-10 36 0s24 10 36 0 24-10 24 0" opacity=".75"/>
+            <path d="M12 84c12-10 24-10 36 0s24 10 36 0 24-10 24 0" opacity=".5"/>
+          </svg>
+          <span class="pattern__name">水纹</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="龙纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="round">
+            <path d="M60 60c0-13 10-23 22-23s22 10 22 23-9 23-21 23c-9 0-16-6-16-14 0-7 5-12 12-12 5 0 9 4 9 9"/>
+            <path d="M60 60c0 13-9 23-21 23S17 73 17 60c0-8 5-14 12-16" opacity=".65"/>
+            <circle cx="93" cy="50" r="2" fill="#E8B45A"/>
+          </svg>
+          <span class="pattern__name">龙纹</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="回纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="square">
+            <path d="M24 24h72v72H24z"/>
+            <path d="M40 40h40v40H40z" opacity=".75"/>
+            <path d="M56 56h8v8h-8z" opacity=".55"/>
+            <path d="M12 60h12M96 60h12" opacity=".45"/>
+          </svg>
+          <span class="pattern__name">回纹</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="缠枝">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="round">
+            <path d="M60 14v92"/>
+            <path d="M60 40c-14-8-24-4-28 6 10 4 20 2 28-6z"/>
+            <path d="M60 66c14-8 24-4 28 6-10 4-20 2-28-6z"/>
+            <circle cx="60" cy="30" r="7"/>
+            <path d="M60 96c-8 0-14 4-16 10 10 2 16-2 16-10z" opacity=".6"/>
+          </svg>
+          <span class="pattern__name">缠枝</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="万字纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="3" stroke-linecap="square">
+            <path d="M24 60h72M60 24v72"/>
+            <path d="M24 36h24v24M96 84H72V60"/>
+          </svg>
+          <span class="pattern__name">万字纹</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="雪花锦">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linecap="round">
+            <path d="M60 14v92M20 37l80 46M100 37L20 83"/>
+            <circle cx="60" cy="60" r="14"/>
+            <circle cx="60" cy="60" r="3" fill="#E8B45A"/>
+          </svg>
+          <span class="pattern__name">雪花锦</span>
+        </button>
+
+        <button class="pattern" type="button" data-name="龟背纹">
+          <svg viewBox="0 0 120 120" fill="none" stroke="#E8B45A" stroke-width="2" stroke-linejoin="round">
+            <path d="M60 18 96 39v42L60 102 24 81V39z"/>
+            <path d="M60 44 78 54v22L60 86 42 76V54z" opacity=".7"/>
+            <path d="M60 18v26M96 39 78 54M24 81l18-5" opacity=".35"/>
+          </svg>
+          <span class="pattern__name">龟背纹</span>
+        </button>
+      </div>
+      <p class="tiny muted" style="margin-top:16px">下载的是矢量 SVG，可直接放进设计稿或打印。</p>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="diyTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">DIY</p>
+          <h2 id="diyTitle">拼一只你的皮影</h2>
+        </div>
+        <p class="block-head__note">换头、换纹、换色，然后导出一张 PNG。</p>
+      </div>
+
+      <div class="diy">
+        <div class="diy__preview">
+          <svg id="diySvg" viewBox="0 0 300 380" role="img" aria-label="DIY 皮影预览">
+            <defs>
+              <radialGradient id="diyGlow" cx="50%" cy="45%" r="55%">
+                <stop offset="0" stop-color="#F2C879" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#F2C879" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="300" height="380" fill="#14100C"/>
+            <circle cx="150" cy="170" r="130" fill="url(#diyGlow)"/>
+
+            <g id="diyPuppet" stroke="#3A1B0C" stroke-width="1.6" stroke-linejoin="round">
+              <!-- 腿 -->
+              <path d="M136 258 L148 258 L146 340 L136 350 L128 340 Z" class="diy-fill"/>
+              <path d="M152 258 L164 258 L172 340 L164 350 L154 340 Z" class="diy-fill"/>
+              <!-- 身 -->
+              <path d="M124 150 C 128 196 130 230 134 260 L166 260 C 170 230 172 196 176 150 Z" class="diy-fill"/>
+              <!-- 手 -->
+              <path d="M118 148 L132 148 L130 228 L122 236 L114 228 Z" class="diy-fill"/>
+              <path d="M168 148 L182 148 L186 228 L178 236 L170 228 Z" class="diy-fill"/>
+              <!-- 头（由 JS 换） -->
+              <path id="diyHead" d="M150 40c20 0 34 15 34 35 0 15-6 25-15 30v16h-38v-16c-9-5-15-15-15-30 0-20 14-35 34-35z" class="diy-fill"/>
+              <!-- 纹样层 -->
+              <g id="diyPatternLayer" fill="none" stroke="#3A1B0C" stroke-width="1.2" opacity=".75">
+                <g data-pat="0">
+                  <path d="M150 60v200"/>
+                  <circle cx="150" cy="112" r="10"/><circle cx="150" cy="196" r="8"/>
+                </g>
+                <g data-pat="1" hidden>
+                  <path d="M120 96c8-8 16-8 24 0s16 8 24 0 16-8 24 0"/>
+                  <path d="M120 210c8-8 16-8 24 0s16 8 24 0 16-8 24 0"/>
+                </g>
+                <g data-pat="2" hidden>
+                  <path d="M150 84l14 14-14 14-14-14z"/>
+                  <path d="M150 180l18 18-18 18-18-18z"/>
+                  <path d="M126 250h48" opacity=".7"/>
+                </g>
+                <g data-pat="3" hidden>
+                  <path d="M136 168c15-6 28-6 43 0M136 184c15-6 28-6 43 0M136 200c15-6 28-6 43 0"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div>
+          <div class="diy__group">
+            <p class="diy__label">头型</p>
+            <div class="choices" id="headChoices">
+              <button class="choice" type="button" data-head="0" aria-pressed="true">武将</button>
+              <button class="choice" type="button" data-head="1" aria-pressed="false">旦角</button>
+              <button class="choice" type="button" data-head="2" aria-pressed="false">净角</button>
+            </div>
+          </div>
+
+          <div class="diy__group">
+            <p class="diy__label">纹样</p>
+            <div class="choices" id="patChoices">
+              <button class="choice" type="button" data-pat="0" aria-pressed="true">云水</button>
+              <button class="choice" type="button" data-pat="1" aria-pressed="false">缠枝</button>
+              <button class="choice" type="button" data-pat="2" aria-pressed="false">回纹</button>
+              <button class="choice" type="button" data-pat="3" aria-pressed="false">水波</button>
+            </div>
+          </div>
+
+          <div class="diy__group">
+            <p class="diy__label">皮色</p>
+            <div class="swatches" id="colorChoices">
+              <button class="swatch" type="button" data-color="#E8B45A" aria-pressed="true" aria-label="灯黄" style="color:#E8B45A"></button>
+              <button class="swatch" type="button" data-color="#C97B32" aria-pressed="false" aria-label="赭石" style="color:#C97B32"></button>
+              <button class="swatch" type="button" data-color="#B4352B" aria-pressed="false" aria-label="朱砂" style="color:#B4352B"></button>
+              <button class="swatch" type="button" data-color="#2E6B4F" aria-pressed="false" aria-label="青绿" style="color:#2E6B4F"></button>
+              <button class="swatch" type="button" data-color="#F3EADC" aria-pressed="false" aria-label="纸白" style="color:#F3EADC"></button>
+            </div>
+          </div>
+
+          <div class="controls-row" style="margin-top:8px">
+            <button class="btn btn--solid" type="button" id="exportBtn">导出 PNG</button>
+            <button class="btn btn--ghost" type="button" id="resetDiy">还原</button>
+          </div>
+          <p class="tiny muted" style="margin-top:12px" id="exportHint">导出为 600 × 760 的 PNG，可直接保存或发朋友圈。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="wishTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div class="block-head__text">
+          <p class="eyebrow">寄语</p>
+          <h2 id="wishTitle">给自己点一盏灯</h2>
+        </div>
+        <p class="block-head__note">写一句话，留在这一页。只存在你的浏览器里，不上传。</p>
+      </div>
+
+      <div class="wishes">
+        <form class="wish-form" id="wishForm">
+          <label for="wishInput" class="sr-only" style="position:absolute;left:-9999px">写一句寄语</label>
+          <input class="wish-input" id="wishInput" type="text" maxlength="40" placeholder="比如：希望这盏灯别灭。">
+          <button class="btn btn--solid" type="submit">点上</button>
+        </form>
+        <div class="wish-list" id="wishList"></div>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-scene" href="index.html">
+    <div class="wrap next-scene__inner">
+      <span class="next-scene__label">回到</span>
+      <span class="next-scene__name">第一幕 <span class="next-scene__arrow" aria-hidden="true">↺</span></span>
+      <span class="next-scene__desc">灯还亮着。你可以把这一遍再看一次。</span>
+    </div>
+  </a>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__title">灯影</p>
+          <p class="footer__line">一盏灯照见千年<br>中国皮影戏数字展馆</p>
+        </div>
+        <div class="footer__col">
+          <h4>五幕</h4>
+          <a href="index.html">壹 · 掌灯</a>
+          <a href="origin.html">贰 · 溯影</a>
+          <a href="play.html">叁 · 弄影</a>
+          <a href="people.html">肆 · 见人</a>
+          <a href="future.html">伍 · 续灯</a>
+        </div>
+        <div class="footer__col">
+          <h4>说明</h4>
+          <span class="footer__line">纹样均可自由取用<br>零杯 2026 · 非遗主题</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 灯影团队 · 夏思远 / 李健豪 / 廖哲煜 / 闫煦</span>
+        <span>本站图文素材均为学习创作，如有版权问题请联系删除</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/diy.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>灯影 · 站点架构图</title>
+<style>
+  @page { size: 1600px 780px; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1600px; height: 780px; overflow: hidden;
+    background:
+      radial-gradient(720px 420px at 50% 18%, rgba(232,180,90,.20), rgba(232,180,90,0) 70%),
+      radial-gradient(1100px 700px at 50% 108%, rgba(232,180,90,.07), rgba(232,180,90,0) 70%),
+      #16110D;
+    color: #F3EADC;
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 46px 68px 36px;
+    display: flex; flex-direction: column;
+  }
+  .serif { font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", STSong, SimSun, serif; }
+
+  header { display: flex; align-items: flex-end; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 20px; }
+  .seal {
+    width: 58px; height: 58px; display: grid; place-items: center;
+    background: #B4352B; color: #FBEFDD; font-size: 30px; line-height: 1;
+    border-radius: 4px 2px 4px 2px; position: relative; flex: none;
+  }
+  .seal::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(251,239,221,.55); border-radius: 1px; }
+  h1 { margin: 0; font-size: 40px; letter-spacing: .18em; font-weight: 600; }
+  .sub { margin-top: 10px; font-size: 13px; letter-spacing: .26em; color: rgba(243,234,220,.56); }
+  .meta { text-align: right; font-size: 12px; line-height: 2; color: rgba(243,234,220,.5); letter-spacing: .1em; }
+  .meta b { color: #E8B45A; font-weight: 500; }
+
+  .rule { height: 1px; margin: 26px 0 30px; background: linear-gradient(90deg, rgba(232,180,90,.55), rgba(232,180,90,.06)); }
+
+  .flow { flex: 1; display: flex; align-items: stretch; gap: 0; }
+  .card {
+    flex: 1 1 0; min-width: 0;
+    border: 1px solid rgba(232,180,90,.16);
+    background: linear-gradient(180deg, rgba(36,28,22,.92), rgba(22,17,13,.92));
+    border-radius: 10px; padding: 26px 24px 20px;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .card.hot { border-color: rgba(232,180,90,.46); box-shadow: 0 0 0 1px rgba(232,180,90,.10), 0 18px 46px -22px rgba(232,180,90,.55); }
+  .card.hot::before { content: "核心"; position: absolute; top: 0; right: 22px; transform: translateY(-50%); background: #E8B45A; color: #16110D; font-size: 10px; letter-spacing: .16em; padding: 3px 9px; border-radius: 999px; }
+  .num { font-size: 26px; color: rgba(232,180,90,.72); letter-spacing: .1em; line-height: 1; }
+  .name { margin-top: 16px; font-size: 27px; letter-spacing: .16em; font-weight: 600; }
+  .file { margin-top: 7px; font-family: Georgia, serif; font-size: 11px; letter-spacing: .06em; color: rgba(243,234,220,.42); }
+  .role { margin-top: 18px; font-size: 12px; letter-spacing: .16em; color: #E8B45A; padding-bottom: 14px; border-bottom: 1px dashed rgba(232,180,90,.18); }
+  ul { list-style: none; margin: 16px 0 0; padding: 0; }
+  li { font-size: 12.5px; line-height: 2.05; color: rgba(243,234,220,.78); padding-left: 14px; position: relative; }
+  li::before { content: ""; position: absolute; left: 0; top: 12px; width: 4px; height: 4px; border-radius: 50%; background: rgba(232,180,90,.55); }
+  .keys { margin-top: auto; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .keys span { font-size: 10px; letter-spacing: .02em; color: rgba(232,180,90,.86); border: 1px solid rgba(232,180,90,.24); border-radius: 999px; padding: 3px 8px; line-height: 1.5; white-space: nowrap; }
+  .keys em { flex-basis: 100%; font-style: normal; font-size: 10px; letter-spacing: .2em; color: rgba(243,234,220,.32); margin-bottom: 2px; }
+  .mood { padding-top: 14px; font-size: 11px; letter-spacing: .18em; color: rgba(243,234,220,.42); }
+  .mood b { color: rgba(232,180,90,.9); font-weight: 500; }
+
+  .arrow { flex: none; width: 44px; display: grid; place-items: center; color: rgba(232,180,90,.34); font-size: 20px; }
+
+  .line { margin-top: 30px; display: flex; align-items: center; gap: 18px; border: 1px solid rgba(232,180,90,.14); border-radius: 10px; padding: 16px 26px; background: rgba(232,180,90,.035); }
+  .line .lab { flex: none; font-size: 12px; letter-spacing: .2em; color: #E8B45A; writing-mode: horizontal-tb; }
+  .steps { display: flex; align-items: center; gap: 14px; flex: 1; }
+  .step { font-size: 14px; letter-spacing: .12em; color: rgba(243,234,220,.86); }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(232,180,90,.6); }
+  .line .note { flex: none; font-size: 11px; letter-spacing: .1em; color: rgba(243,234,220,.36); }
+
+  footer { margin-top: 18px; display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: .14em; color: rgba(243,234,220,.3); }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="seal serif">灯</div>
+      <div>
+        <h1 class="serif">灯 影</h1>
+        <div class="sub">一盏灯照见千年 · 中国皮影戏数字展馆 · 站点架构</div>
+      </div>
+    </div>
+    <div class="meta">
+      五幕结构 ｜ 4 条跳转规则 ｜ 1 条主线<br>
+      纯原生 · 零依赖 · 离线可运行 ｜ <b>v1.0 · 2026-10-19</b>
+    </div>
+  </header>
+
+  <div class="rule"></div>
+
+  <div class="flow">
+    <div class="card">
+      <div class="num serif">壹</div>
+      
+      <div class="name serif">掌灯</div>
+      <div class="file">index.html</div>
+      <div class="role">建立氛围与入口</div>
+      <ul>
+        <li>灯箱首屏 · 未点亮态</li>
+        <li>三入口卡：溯影 / 弄影 / 见人</li>
+        <li>一句主张 + 80 字导语</li>
+      </ul>
+      <div class="keys"><em>微交互</em><span>点灯</span><span>光晕跟随</span><span>卡片抬升</span></div>
+      <div class="mood">离开时 · <b>好奇</b></div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card">
+      <div class="num serif">贰</div>
+      
+      <div class="name serif">溯影</div>
+      <div class="file">origin.html</div>
+      <div class="role">建立知识框架</div>
+      <ul>
+        <li>源流时间轴 · 6 节点</li>
+        <li>五大流派 · 一图切换</li>
+        <li>七道工序 · 刀口可放大</li>
+      </ul>
+      <div class="keys"><em>微交互</em><span>滚动点亮</span><span>流派切换</span><span>刀口放大</span></div>
+      <div class="mood">离开时 · <b>懂了</b></div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card hot">
+      <div class="num serif">叁</div>
+      
+      <div class="name serif">弄影</div>
+      <div class="file">play.html</div>
+      <div class="role">核心体验 · 全站重心</div>
+      <ul>
+        <li>弄影台 · 三关拖拽合成姿势</li>
+        <li>影窗剧场 · 三剧目 + 字幕</li>
+        <li>灯与幕 · 亮度滑杆 / 拉幕</li>
+      </ul>
+      <div class="keys"><em>微交互</em><span>拖关节</span><span>±8° 吸附</span><span>拉幕回弹</span></div>
+      <div class="mood">离开时 · <b>玩过</b></div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card">
+      <div class="num serif">肆</div>
+      
+      <div class="name serif">见人</div>
+      <div class="file">people.html</div>
+      <div class="role">建立情感连接</div>
+      <ul>
+        <li>传承人档案 · 2 位 + 翻转</li>
+        <li>工具墙 · 刻刀 / 牛皮 / 颜料</li>
+        <li>口述引语 · 竖排浮现</li>
+      </ul>
+      <div class="keys"><em>微交互</em><span>翻转卡</span><span>悬停解说</span><span>引语浮现</span></div>
+      <div class="mood">离开时 · <b>敬重</b></div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="card">
+      <div class="num serif">伍</div>
+      
+      <div class="name serif">续灯</div>
+      <div class="file">future.html</div>
+      <div class="role">落到当下与行动</div>
+      <ul>
+        <li>当代表达 · 3 个案例</li>
+        <li>纹样库 · 8 枚可下载</li>
+        <li>DIY 皮影 · 换装导出 PNG</li>
+      </ul>
+      <div class="keys"><em>微交互</em><span>换装预览</span><span>纹样放大</span><span>导出 PNG</span></div>
+      <div class="mood">离开时 · <b>想参与</b></div>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lab">主线</div>
+    <div class="steps">
+      <span class="step">点亮一盏灯</span><span class="dot"></span>
+      <span class="step">摆一个姿势</span><span class="dot"></span>
+      <span class="step">看一场戏</span><span class="dot"></span>
+      <span class="step">见一双刻皮影的手</span><span class="dot"></span>
+      <span class="step">带走自己的那盏灯</span>
+    </div>
+    <div class="note">全程 3 分钟 · 无死路 · 无加载等待</div>
+  </div>
+
+  <footer>
+    <span>跳转规则：全局导航常驻 5 项 ｜ 页尾「下一幕」主推进 ｜ 弄影台通关解锁剧场并跳「见人」 ｜ 页脚「回到第一幕」闭环</span>
+    <span>零杯 2026 · 非遗 · 灯影团队</span>
+  </footer>
+</body>
+</html>
