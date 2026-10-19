@@ -48,7 +48,7 @@ if ($outDir.TrimEnd('\') -eq $root.TrimEnd('\') -or $outDir.StartsWith($root.Tri
     throw "输出目录不能位于源码目录内：$outDir。请用 -Out 指定外部目录（例如 ..\dist）"
 }
 
-$excludeDirs = @('资料', 'TEST', 'tools', 'dist', 'node_modules', '.git', '.workbuddy', '.vscode', 'web')
+$excludeDirs = @('资料', 'TEST', 'tools', 'dist', 'node_modules', '.git', '.workbuddy', '.vscode', 'web', '_acl-recovery', '_tmp')
 $safeName = if ($Team) { $Team } else { '作品' }
 $singleName = "${Name}_单文件版"
 $projName   = "${Name}_工程版"

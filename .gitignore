@@ -5,6 +5,9 @@ dist/
 # 临时目录
 _tmp/
 
+# DSH 沙箱改权限的备份与回滚记录（本机专用，不入库）
+_acl-recovery/
+
 # 系统文件
 .DS_Store
 Thumbs.db
