@@ -7,7 +7,8 @@ import path from "node:path";
 import fs from "node:fs";
 import os from "node:os";
 
-const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+const EDGE = process.env.LAMP_BROWSER
+  || "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PORT = 9555 + Math.floor(Math.random() * 200);
 const site = path.resolve(process.argv[2] || "web");
 const outDir = path.resolve("preview");
@@ -23,7 +24,8 @@ const VIEWPORTS = [
   { name: "mobile", width: 390, height: 844, mobile: true, scale: 1, save: true },
   { name: "wide", width: 1920, height: 1080, mobile: false, scale: 1, save: false },
   { name: "tablet", width: 1024, height: 768, mobile: false, scale: 1, save: false },
-  { name: "small", width: 768, height: 1024, mobile: false, scale: 1, save: false }
+  { name: "small", width: 768, height: 1024, mobile: false, scale: 1, save: false },
+  { name: "spec720", width: 720, height: 1280, mobile: false, scale: 1, save: false }
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

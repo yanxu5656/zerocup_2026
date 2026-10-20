@@ -4,6 +4,7 @@ dist/
 
 # 临时目录
 _tmp/
+.tmp/
 
 # DSH 沙箱改权限的备份与回滚记录（本机专用，不入库）
 _acl-recovery/
@@ -15,3 +16,6 @@ desktop.ini
 
 # 本地参考资料（其他模型的同题 demo，不参与提交）
 TEST/
+
+# 助手工作目录（本地记忆与缓存，不入库）
+.workbuddy/

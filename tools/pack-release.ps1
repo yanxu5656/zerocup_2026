@@ -11,7 +11,7 @@
 .PARAMETER Out
     输出目录，默认 dist
 .PARAMETER Team
-    zip 文件名前缀，默认「零杯2026_非遗灯影_夏思远_李健豪_廖哲煜_闫煦」
+    zip 文件名前缀，默认「零杯壹组-灯下黑-闫煦」（= 组别-队名-队长）
 .EXAMPLE
     pwsh -NoProfile -File tools\pack-release.ps1 -Source web
 .EXAMPLE
@@ -21,7 +21,7 @@
 param(
     [string]$Source = 'web',
     [string]$Out    = 'dist',
-    [string]$Team   = '零杯2026_非遗灯影_夏思远_李健豪_廖哲煜_闫煦',
+    [string]$Team   = '零杯壹组-灯下黑-闫煦',
     [string]$Name   = '灯影'
 )
 
@@ -184,6 +184,17 @@ Copy-Item -Path (Join-Path $root '*') -Destination $projDir -Recurse -Force
 Get-ChildItem -LiteralPath $projDir -Directory -Force |
     Where-Object { $excludeDirs -contains $_.Name } |
     ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
+
+# 完整版本要求"作品 + README"：源码在 web/ 时，README 在上一级
+$readmeAtRoot   = Join-Path $root 'README.md'
+$readmeAtParent = Join-Path (Split-Path -Parent $root) 'README.md'
+if (-not (Test-Path -LiteralPath (Join-Path $projDir 'README.md'))) {
+    if (Test-Path -LiteralPath $readmeAtParent) {
+        Copy-Item -LiteralPath $readmeAtParent -Destination $projDir -Force
+    } elseif (Test-Path -LiteralPath $readmeAtRoot) {
+        Copy-Item -LiteralPath $readmeAtRoot -Destination $projDir -Force
+    }
+}
 
 # ---------- 2. 单文件版 ----------
 $singleDir = Join-Path $outDir $singleName

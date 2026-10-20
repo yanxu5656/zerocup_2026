@@ -55,7 +55,6 @@ body {
   line-height: 1.85;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 /* 灯箱底色：中心一团暖光，边缘沉入黑 */
@@ -272,6 +271,13 @@ h3 { font-size: clamp(19px, 1.7vw, 24px); line-height: 1.45; letter-spacing: .08
 }
 .footer__title { font-family: var(--serif); font-size: 18px; letter-spacing: .18em; }
 .footer__line { font-size: 13px; color: var(--paper-faint); line-height: 2; }
+/* 界面规格声明：比赛要求"作品中须附带说明"，故比其余页脚文字略亮 */
+.footer__spec {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: rgba(243, 234, 220, .62);
+}
 .footer__col h4 {
   font-size: 11px;
   letter-spacing: .24em;

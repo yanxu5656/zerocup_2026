@@ -12,7 +12,8 @@ import path from "node:path";
 import fs from "node:fs";
 import os from "node:os";
 
-const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+const EDGE = process.env.LAMP_BROWSER
+  || "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PORT = 9333 + Math.floor(Math.random() * 200);
 const site = path.resolve(process.argv[2] || "web");
 const PAGES = ["index.html", "origin.html", "play.html", "people.html", "future.html"];
@@ -95,6 +96,10 @@ try {
   await cdp.send("Runtime.enable");
   await cdp.send("Log.enable");
   await cdp.send("Network.enable");
+  /* 固定视口，避免不同机器默认窗口大小不同导致 scrollW 不可比 */
+  await cdp.send("Emulation.setDeviceMetricsOverride", {
+    width: 1440, height: 900, deviceScaleFactor: 1, mobile: false
+  });
 
   for (const file of PAGES) {
     cdp.events.length = 0;

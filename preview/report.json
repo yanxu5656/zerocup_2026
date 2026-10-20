@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-19T06:57:26.721Z",
-  "site": "C:\\Shaun\\Competitions\\26ZeroCup\\web",
+  "generatedAt": "2026-10-20T11:24:08.264Z",
+  "site": "D:\\cs\\PROJECT\\LingBei\\zerocup_2026\\web",
   "pages": [
     {
       "file": "index.html",
       "title": "灯影 · 一盏灯照见千年 ｜ 中国皮影戏数字展馆",
       "h1": "一盏灯照见千年",
-      "scrollW": 933,
-      "clientW": 933,
+      "scrollW": 1423,
+      "clientW": 1423,
       "imgs": 0,
       "brokenImgs": 0,
       "links": [
@@ -34,8 +34,8 @@
       "file": "origin.html",
       "title": "贰 · 溯影 ｜ 灯影",
       "h1": "灯从哪来，影往哪去",
-      "scrollW": 933,
-      "clientW": 933,
+      "scrollW": 1423,
+      "clientW": 1423,
       "imgs": 0,
       "brokenImgs": 0,
       "links": [
@@ -59,8 +59,8 @@
       "file": "play.html",
       "title": "叁 · 弄影 ｜ 灯影",
       "h1": "灯亮了，该你伸手",
-      "scrollW": 933,
-      "clientW": 933,
+      "scrollW": 1423,
+      "clientW": 1423,
       "imgs": 0,
       "brokenImgs": 0,
       "links": [
@@ -84,8 +84,8 @@
       "file": "people.html",
       "title": "肆 · 见人 ｜ 灯影",
       "h1": "戏是人演的，影是人刻的",
-      "scrollW": 933,
-      "clientW": 933,
+      "scrollW": 1423,
+      "clientW": 1423,
       "imgs": 0,
       "brokenImgs": 0,
       "links": [
@@ -109,8 +109,8 @@
       "file": "future.html",
       "title": "伍 · 续灯 ｜ 灯影",
       "h1": "灯不该只亮在博物馆里",
-      "scrollW": 933,
-      "clientW": 933,
+      "scrollW": 1423,
+      "clientW": 1423,
       "imgs": 0,
       "brokenImgs": 0,
       "links": [
