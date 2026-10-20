@@ -232,7 +232,7 @@ body[data-lit="1"] .hero__scroll { display: none; }
 .board__row:last-child { border-bottom: 0; }
 .board__no { font-family: var(--num); color: var(--paper-faint); }
 .board__name { color: var(--paper-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.board__rank { font-family: var(--serif); color: var(--cinnabar); }
+.board__rank { font-family: var(--serif); color: var(--cinnabar-lit); }
 .board__score { font-family: var(--num); color: var(--lamp); font-variant-numeric: tabular-nums; }
 .board__empty { margin-top: 10px; font-size: 12px; line-height: 1.85; color: var(--paper-faint); }
 .locked-note.is-poke { animation: poke .5s var(--ease); }

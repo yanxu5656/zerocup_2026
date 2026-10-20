@@ -11,13 +11,14 @@
   --curtain: #1A140E;      /* 卡片 / 幕布 */
   --paper: #F4EDE0;        /* 宣纸白 */
   --paper-dim: #C3B6A3;
-  --paper-faint: rgba(244, 237, 224, .40);
+  --paper-faint: rgba(244, 237, 224, .52);   /* 对比度 4.9:1（正文级） */
 
   --lamp: #C9A227;         /* 旧金：压住饱和度，避免"塑料黄" */
   --lamp-soft: #E0C27A;
   --lamp-hot: #F4E2B2;
   --ochre: #B06A32;
   --cinnabar: #A8342A;
+  --cinnabar-lit: #C85C48; /* 朱在暗底上的文字版本，4.8:1 */
   --jade: #2E5B47;
 
   /* ---------- 线：三种语义 ---------- */
