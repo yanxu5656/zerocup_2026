@@ -185,6 +185,17 @@ Get-ChildItem -LiteralPath $projDir -Directory -Force |
     Where-Object { $excludeDirs -contains $_.Name } |
     ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
 
+# 可选的本地服务（成绩榜）也一并打进去，否则加分项无法现场演示
+$srcParent = Split-Path -Parent $root
+foreach ($extra in @('server', 'start.bat')) {
+    $extraPath = Join-Path $srcParent $extra
+    if (Test-Path -LiteralPath $extraPath) {
+        Copy-Item -LiteralPath $extraPath -Destination $projDir -Recurse -Force
+    }
+}
+$projData = Join-Path $projDir 'server\data'
+if (Test-Path -LiteralPath $projData) { Remove-Item -LiteralPath $projData -Recurse -Force }
+
 # 完整版本要求"作品 + README"：源码在 web/ 时，README 在上一级
 $readmeAtRoot   = Join-Path $root 'README.md'
 $readmeAtParent = Join-Path (Split-Path -Parent $root) 'README.md'

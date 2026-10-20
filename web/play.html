@@ -212,6 +212,15 @@
             键盘也可以用：<b>Tab</b> 选中关节，<b>← →</b> 微调，<b>Enter</b> 确认。
           </p>
 
+          <div class="board" id="board" hidden>
+            <div class="board__head">
+              <span>今日榜单</span>
+              <span class="board__mode" id="boardMode">本地</span>
+            </div>
+            <ol class="board__list" id="boardList"></ol>
+            <p class="board__empty" id="boardEmpty">还没有成绩。演一场，把名字留下来。</p>
+          </div>
+
           <a class="btn btn--solid" id="toTheater" href="#theater" aria-disabled="true">去剧场（先通关）</a>
         </aside>
       </div>
@@ -380,6 +389,7 @@
   </footer>
 </main>
 
+<script src="assets/js/api.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/stage.js"></script>
 <script src="assets/js/theater.js"></script>

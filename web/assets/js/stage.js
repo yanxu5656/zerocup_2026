@@ -31,6 +31,10 @@
   var finalRank = document.getElementById("finalRank");
   var finalNote = document.getElementById("finalNote");
   var finalBranch = document.getElementById("finalBranch");
+  var board = document.getElementById("board");
+  var boardList = document.getElementById("boardList");
+  var boardEmpty = document.getElementById("boardEmpty");
+  var boardMode = document.getElementById("boardMode");
 
   var SNAP = 8;            /* 吸附阈值（度） */
   var CURTAIN_TARGET = 88; /* 第三关：幕布拉开到 88% */
@@ -122,6 +126,61 @@
   }
 
   function currentLevel() { return LEVELS[state.level]; }
+
+  function playerName() {
+    try { return localStorage.getItem("lampName") || "灯下客"; } catch (e) { return "灯下客"; }
+  }
+
+  function boardRow(i, it) {
+    var li = document.createElement("li");
+    li.className = "board__row";
+    var no = document.createElement("span");
+    no.className = "board__no";
+    no.textContent = String(i + 1);
+    var name = document.createElement("span");
+    name.className = "board__name";
+    name.textContent = it.name || "灯下客";
+    var rank = document.createElement("span");
+    rank.className = "board__rank";
+    rank.textContent = it.rank || "";
+    var score = document.createElement("span");
+    score.className = "board__score";
+    score.textContent = String(it.score == null ? "" : it.score);
+    li.appendChild(no);
+    li.appendChild(name);
+    li.appendChild(rank);
+    li.appendChild(score);
+    return li;
+  }
+
+  function paintBoard(items, mode) {
+    if (!board || !boardList) return;
+    board.hidden = false;
+    boardList.innerHTML = "";
+    (items || []).slice(0, 6).forEach(function (it, i) {
+      boardList.appendChild(boardRow(i, it));
+    });
+    if (boardEmpty) boardEmpty.hidden = !!(items && items.length);
+    if (boardMode) boardMode.textContent = mode === "cloud" ? "云端" : "本地";
+  }
+
+  function refreshBoard() {
+    if (!window.LampAPI) return;
+    if (window.LampAPI.mode !== "cloud") {
+      var local = [];
+      try {
+        var saved = JSON.parse(localStorage.getItem("playResult") || "null");
+        if (saved) local = [{ name: playerName(), rank: saved.rank, score: saved.score }];
+      } catch (e) { /* 忽略 */ }
+      /* 本地模式且没成绩时，不摆一个空榜单占位置 */
+      if (local.length) { paintBoard(local, "local"); }
+      else if (board) { board.hidden = true; }
+      return;
+    }
+    window.LampAPI.leaderboard().then(function (data) {
+      paintBoard(data && data.items ? data.items : [], "cloud");
+    });
+  }
 
   /* ---------- 鼓点与判定 ---------- */
   var beatStart = 0, beatTimer = null, beatCount = 0, audioCtx = null;
@@ -323,6 +382,18 @@
       localStorage.setItem("playPassed", "1");
       localStorage.setItem("playResult", JSON.stringify({ rank: rank, score: state.score, perfect: perfect, good: good, miss: miss }));
     } catch (e) { /* 忽略 */ }
+
+    if (window.LampAPI && window.LampAPI.mode === "cloud") {
+      window.LampAPI.submit({
+        name: playerName(),
+        rank: rank,
+        score: state.score,
+        perfect: perfect,
+        good: good,
+        miss: miss,
+        ending: ""
+      }).then(function () { refreshBoard(); });
+    }
     if (window.LampTheater && window.LampTheater.unlock) window.LampTheater.unlock();
   }
 
@@ -573,6 +644,10 @@
   /* ---------- 初始化 ---------- */
   ["armL", "armR", "legL", "legR"].forEach(function (n) { setRot(n, 0); });
   syncJoints();
+
+  if (window.LampAPI) {
+    window.LampAPI.onReady(function () { refreshBoard(); });
+  }
 
   try {
     if (localStorage.getItem("playPassed") === "1") {

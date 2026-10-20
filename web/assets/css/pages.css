@@ -206,6 +206,35 @@ body[data-lit="1"] .hero__scroll { display: none; }
   line-height: 1.9;
 }
 .locked-note b { color: var(--lamp); font-weight: 500; }
+
+/* ---------- 榜单 ---------- */
+.board { padding-top: 16px; border-top: 1px solid var(--hair); }
+.board[hidden] { display: none; }
+.board__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--fs-micro);
+  letter-spacing: .24em;
+  color: var(--paper-faint);
+}
+.board__mode { color: var(--lamp); letter-spacing: .16em; }
+.board__list { margin-top: 10px; display: flex; flex-direction: column; }
+.board__row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 3px 7px 0;
+  border-bottom: 1px dashed rgba(244, 237, 224, .08);
+  font-size: 12.5px;
+}
+.board__row:last-child { border-bottom: 0; }
+.board__no { font-family: var(--num); color: var(--paper-faint); }
+.board__name { color: var(--paper-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.board__rank { font-family: var(--serif); color: var(--cinnabar); }
+.board__score { font-family: var(--num); color: var(--lamp); font-variant-numeric: tabular-nums; }
+.board__empty { margin-top: 10px; font-size: 12px; line-height: 1.85; color: var(--paper-faint); }
 .locked-note.is-poke { animation: poke .5s var(--ease); }
 @keyframes poke {
   0%, 100% { transform: translateX(0); border-color: var(--line); }
