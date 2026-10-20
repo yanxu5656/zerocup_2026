@@ -221,6 +221,7 @@ node tools/anonymize.mjs web dist/匿名版
 | 2026-10-20 | M2+：关节松手惯性（速度衰减 + 近目标吸附）；剧场改为剧目级锁（第一出试看）；首页入口角标显示评级 |
 | 2026-10-20 | BE：双模数据层 `api.js` + 零依赖 Node 服务（`server/app.mjs`）+ 成绩榜（`/api/score`、`/api/leaderboard`），`start.bat` 一键启动，无服务时静默降级 |
 | 2026-10-20 | FE-05：版式变奏——溯影改年表（年份左栏 + 栏间轴线），续灯 DIY 预览吸顶，五页骨架不再雷同 |
+| 2026-10-20 | FE-06：逐项入场动效（`[data-stagger]`，70ms 步长）；用 animation 而非 transition 以免覆盖组件 hover；`html.js` / `?static=1` / reduced-motion 三处开关 |
 
 ---
 
