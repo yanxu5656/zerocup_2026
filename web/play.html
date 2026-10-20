@@ -78,7 +78,7 @@
                 <defs>
                   <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0" stop-color="#F6D49A"/>
-                    <stop offset=".55" stop-color="#E8B45A"/>
+                    <stop offset=".55" stop-color="#C9A227"/>
                     <stop offset="1" stop-color="#B8722C"/>
                   </linearGradient>
                 </defs>
@@ -213,34 +213,71 @@
         <div class="screen">
           <div class="screen__scene" id="scene" data-scene="0">
             <svg viewBox="0 0 800 450" role="img" aria-label="影窗中的戏台画面">
-              <defs>
-                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#F7DCAE"/>
-                  <stop offset="1" stop-color="#B06A2A"/>
-                </linearGradient>
-              </defs>
-              <rect width="800" height="450" fill="url(#sky)"/>
-              <circle cx="600" cy="110" r="64" fill="#FFF3DC" opacity=".35"/>
-              <circle cx="600" cy="110" r="36" fill="#FFFBF0" opacity=".9"/>
-              <path d="M0 320 L150 232 L268 318 L392 240 L520 326 L640 268 L800 340 V450 H0 Z" fill="#3A2010"/>
-              <path d="M0 372 L120 330 L240 376 L380 328 L520 382 L660 340 L800 386 V450 H0 Z" fill="#241408"/>
-              <g opacity=".9" transform="translate(120 120) scale(.9)">
-                <path d="M40 150c0-22 16-34 34-34h34c18 0 34 12 34 34v26H40z" fill="#2A1B10"/>
-                <path d="M78 116V88l32-14 32 14v28" fill="none" stroke="#3A2416" stroke-width="3"/>
-              </g>
-              <g fill="#0D0906" opacity=".85">
-                <ellipse cx="330" cy="392" rx="40" ry="6"/>
-                <ellipse cx="470" cy="392" rx="40" ry="6"/>
-              </g>
-              <g id="scenePuppetA" fill="#1E1008" opacity=".95">
-                <path d="M330 250c14 0 24 10 24 24s-10 26-24 26-24-12-24-26 10-24 24-24z"/>
-                <path d="M306 302h48l8 96h-64z"/>
-              </g>
-              <g id="scenePuppetB" fill="#1E1008" opacity=".85">
-                <path d="M470 268c12 0 21 9 21 21s-9 23-21 23-21-11-21-23 9-21 21-21z"/>
-                <path d="M451 314h38l6 84h-50z"/>
-              </g>
-            </svg>
+                <defs>
+                  <radialGradient id="sky" cx=".5" cy=".34" r=".78">
+                    <stop offset="0" stop-color="#FCE9C8"/>
+                    <stop offset=".4" stop-color="#F0C98A"/>
+                    <stop offset=".76" stop-color="#B0723B"/>
+                    <stop offset="1" stop-color="#552C14"/>
+                  </radialGradient>
+                  <linearGradient id="beam" x1="0" y1="0" x2=".55" y2="1">
+                    <stop offset="0" stop-color="#FFF6DE" stop-opacity=".55"/>
+                    <stop offset="1" stop-color="#FFF6DE" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+
+                <rect width="800" height="450" fill="url(#sky)"/>
+                <path d="M-30 -20 L330 450 H108 Z" fill="url(#beam)" opacity=".5"/>
+
+                <circle cx="618" cy="102" r="56" fill="#FFF6E4" opacity=".26"/>
+                <circle cx="618" cy="102" r="33" fill="#FFFBF0" opacity=".9"/>
+
+                <g fill="none" stroke="#8C4A1E" stroke-opacity=".30" stroke-width="3" stroke-linecap="round">
+                  <path d="M118 146c16-15 42-13 54 2 9-11 30-13 42-2 11 11 7 28-8 32H130c-15-4-21-21-12-32z"/>
+                  <path d="M556 196c13-11 32-9 41 2 8-9 23-10 31-1 8 8 5 21-6 24h-54c-11-3-16-16-12-25z"/>
+                </g>
+
+                <path d="M0 302 L122 228 L216 294 L320 216 L422 298 L522 238 L622 302 L722 246 L800 298 V450 H0 Z" fill="#4A2A14" opacity=".5"/>
+                <path d="M0 346 L142 290 L264 350 L394 294 L518 354 L642 302 L800 358 V450 H0 Z" fill="#2C1709" opacity=".92"/>
+                <path d="M0 394 H800 V450 H0 Z" fill="#180C05"/>
+
+                <g stroke="#0E0704" stroke-width="5" stroke-linecap="round" opacity=".92">
+                  <path d="M0 394 H800"/>
+                  <path d="M44 394 V436 M204 394 V436 M364 394 V436 M524 394 V436 M684 394 V436"/>
+                </g>
+
+                <g id="scenePuppetA" fill="#120A05">
+                  <path d="M330 222 l5-20 9 9 9-18 9 18 9-9 5 20z"/>
+                  <circle cx="330" cy="236" r="20"/>
+                  <path d="M312 262 h36 l12 66 -6 30 h-48l-6-30z"/>
+                  <path d="M312 266 l-30 58 9 7 27-50z"/>
+                  <path d="M348 266 l34 50 -9 9 -31-48z"/>
+                  <path d="M302 358 h20 l-2 30 h-16z"/>
+                  <path d="M338 358 h20 l-2 30 h-16z"/>
+                </g>
+
+                <g id="scenePuppetB" fill="#180E07" opacity=".9">
+                  <path d="M470 238 l4-16 7 7 7-14 7 14 7-7 4 16z"/>
+                  <circle cx="470" cy="248" r="16"/>
+                  <path d="M456 270 h28 l10 56 -5 24 h-38l-5-24z"/>
+                  <path d="M456 274 l-24 46 7 6 22-40z"/>
+                  <path d="M484 274 l26 40 -7 7 -24-38z"/>
+                  <path d="M448 350 h16 l-2 26 h-12z"/>
+                  <path d="M476 350 h16 l-2 26 h-12z"/>
+                </g>
+
+                <g class="scene-accent" data-for="1">
+                  <path d="M418 316 L398 214 L432 258 L424 316 Z" fill="#C0392B" opacity=".38"/>
+                  <path d="M418 316 L398 214 L432 258 L424 316 Z" fill="none" stroke="#C9A227" stroke-opacity=".45" stroke-width="2"/>
+                  <path d="M560 330 l26 -22 18 22 -14 -6 -8 16 -6 -12z" fill="#2C1709"/>
+                </g>
+
+                <g class="scene-accent" data-for="2">
+                  <path d="M470 392 C470 322 610 322 610 392" fill="none" stroke="#180C05" stroke-width="10"/>
+                  <path d="M470 392 C470 322 610 322 610 392" fill="none" stroke="#C9A227" stroke-opacity=".22" stroke-width="2"/>
+                  <path d="M440 412 H640 M470 424 H610" stroke="#C9A227" stroke-opacity=".18" stroke-width="2"/>
+                </g>
+              </svg>
           </div>
           <div class="screen__vignette" aria-hidden="true"></div>
           <div class="screen__subtitles" aria-live="polite">
