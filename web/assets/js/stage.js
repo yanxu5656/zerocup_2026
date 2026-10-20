@@ -249,7 +249,7 @@
     });
     var rank = "丙";
     if (perfect >= 3) rank = "甲";
-    else if (perfect + good >= 2 && miss <= 1) rank = "乙";
+    else if (miss === 0) rank = "乙";
     var label = { "甲": "满堂彩", "乙": "叫好", "丙": "还行" }[rank];
 
     lockNote.innerHTML = "<b>通关 · " + rank + " 等</b>：" + label + "。" +
@@ -269,6 +269,41 @@
   }
 
   /* ---------- 拖拽关节 ---------- */
+  var spinRaf = 0;
+  function cancelSpin() {
+    if (spinRaf) { cancelAnimationFrame(spinRaf); spinRaf = 0; }
+  }
+
+  /* 松手后带一点惯性：越接近目标，阻尼越强，最终自己停住 */
+  function spinOut(name, el, velocity) {
+    var v = velocity;
+    var last = performance.now();
+    cancelSpin();
+    function step(now) {
+      spinRaf = 0;
+      if (state.busy) return;
+      var dt = Math.min(40, now - last);
+      last = now;
+      var cur = state.rot[name] || 0;
+      cur += v * dt;
+      v *= Math.pow(0.9, dt / 16);
+      if (Math.abs(v) < 0.006) return;
+
+      var target = currentLevel().targets[name];
+      if (typeof target === "number" && Math.abs(cur - target) <= SNAP) {
+        setRot(name, target);
+        el.classList.add("is-snapped");
+        spring(el);
+        checkWin();
+        return;
+      }
+      cur = Math.max(-175, Math.min(175, cur));
+      setRot(name, cur);
+      spinRaf = requestAnimationFrame(step);
+    }
+    spinRaf = requestAnimationFrame(step);
+  }
+
   joints.forEach(function (el) {
     var name = el.dataset.joint;
     var pivot = pivotOf(el);
@@ -280,12 +315,16 @@
       if (!p) return;
       e.preventDefault();
       startBeat();
+      cancelSpin();
       el.classList.add("is-active");
       el.setPointerCapture(e.pointerId);
       drag = {
         id: e.pointerId,
         startAngle: Math.atan2(p.y - pivot.y, p.x - pivot.x) * 180 / Math.PI,
-        startRot: state.rot[name] || 0
+        startRot: state.rot[name] || 0,
+        prevRaw: state.rot[name] || 0,
+        prevT: performance.now(),
+        vel: 0
       };
     });
 
@@ -319,13 +358,24 @@
         el.classList.remove("is-snapped");
         setRot(name, raw);
       }
+
+      /* 记录角速度，松手时用它做惯性 */
+      var now = performance.now();
+      if (now - drag.prevT > 4) {
+        drag.vel = (raw - drag.prevRaw) / (now - drag.prevT);
+        drag.prevRaw = raw;
+        drag.prevT = now;
+      }
     });
 
     function end(e) {
       if (!drag || e.pointerId !== drag.id) return;
+      var v = Math.max(-0.5, Math.min(0.5, drag.vel || 0));
+      var snapped = el.classList.contains("is-snapped");
       drag = null;
       el.classList.remove("is-active");
       checkWin();
+      if (!state.busy && !snapped && Math.abs(v) > 0.012) spinOut(name, el, v);
     }
     el.addEventListener("pointerup", end);
     el.addEventListener("pointercancel", end);

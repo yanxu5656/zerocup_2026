@@ -38,11 +38,17 @@
     }
   }
 
-  /* 首页入口卡的"已通关"角标 */
+  /* 首页入口卡的"已通关"角标：有评级就显示评级 */
   var badge = document.getElementById("playBadge");
   var entryPlay = document.getElementById("entryPlay");
   try {
     if (badge && entryPlay && localStorage.getItem("playPassed") === "1") {
+      var rank = "";
+      try {
+        var saved = JSON.parse(localStorage.getItem("playResult") || "null");
+        if (saved && saved.rank) rank = saved.rank;
+      } catch (e2) { /* 旧数据没有评级 */ }
+      badge.textContent = rank ? rank + " 等 · 已通关" : "已通关";
       badge.hidden = false;
       badge.parentElement.classList.add("is-passed");
     }

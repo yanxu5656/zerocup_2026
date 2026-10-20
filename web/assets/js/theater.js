@@ -126,7 +126,11 @@
 
   function unlock() {
     state.unlocked = true;
-    plays.forEach(function (b) { b.removeAttribute("disabled"); b.setAttribute("aria-disabled", "false"); });
+    plays.forEach(function (b) {
+      b.removeAttribute("disabled");
+      b.setAttribute("aria-disabled", "false");
+      b.classList.remove("is-locked");
+    });
     if (lockEl) { lockEl.innerHTML = "<b>已解锁</b>：三出戏都能放了。灯也可以调暗，字幕会自己提亮。"; }
   }
 
@@ -143,11 +147,6 @@
   }
   if (nextBtn) {
     nextBtn.addEventListener("click", function () {
-      if (!state.unlocked && state.play === 0 && state.line >= 0 && state.line === 0) {
-        /* 未通关时只允许看第一句 */
-        if (lockEl) lockEl.innerHTML = "<b>剧场还锁着</b>：先在弄影台通关，这里才会放开三出戏。";
-        return;
-      }
       advance(false);
     });
   }
@@ -155,7 +154,11 @@
   plays.forEach(function (btn, i) {
     btn.addEventListener("click", function () {
       if (!state.unlocked && i > 0) {
-        if (lockEl) lockEl.innerHTML = "<b>剧场还锁着</b>：先去弄影台通关。";
+        /* 锁住的不是整座剧场，而是后两出：第一出永远能看 */
+        if (lockEl) lockEl.innerHTML = "<b>这出还没开</b>：通关弄影台后，三出戏一起放开。第一出可以先看。";
+        lockEl.classList.remove("is-poke");
+        void lockEl.offsetWidth;
+        lockEl.classList.add("is-poke");
         return;
       }
       state.play = i;
@@ -179,9 +182,13 @@
   if (state.unlocked) unlock();
   else {
     plays.forEach(function (b, i) {
-      if (i > 0) { b.setAttribute("disabled", "disabled"); b.setAttribute("aria-disabled", "true"); }
+      if (i > 0) {
+        /* 用 aria-disabled 而不是 disabled：disabled 会吞掉点击，用户以为页面坏了 */
+        b.setAttribute("aria-disabled", "true");
+        b.classList.add("is-locked");
+      }
     });
-    if (lockEl) lockEl.innerHTML = "<b>剧场还锁着</b>：先在弄影台通关，再回来看整出戏。";
+    if (lockEl) lockEl.innerHTML = "<b>试看中</b>：《三打白骨精》整出可以先看；通关弄影台后，另外两出一起放开。";
   }
 
   render(false);

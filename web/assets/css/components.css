@@ -687,6 +687,9 @@
 }
 .play:hover { border-color: var(--line-strong); }
 .play[aria-current="true"] { border-color: var(--lamp); background: rgba(201, 162, 39, .1); }
+.play.is-locked { opacity: .48; cursor: not-allowed; }
+.play.is-locked:hover { opacity: .68; border-color: var(--cinnabar); }
+.play.is-locked .play__meta::after { content: " · 未解锁"; color: var(--cinnabar); }
 .play__no { font-family: var(--num); font-size: 12px; color: var(--lamp); }
 .play__name { font-size: 14px; letter-spacing: .08em; }
 .play__meta { margin-left: auto; font-size: 11px; color: var(--paper-faint); letter-spacing: .1em; }

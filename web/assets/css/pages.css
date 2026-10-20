@@ -206,6 +206,13 @@ body[data-lit="1"] .hero__scroll { display: none; }
   line-height: 1.9;
 }
 .locked-note b { color: var(--lamp); font-weight: 500; }
+.locked-note.is-poke { animation: poke .5s var(--ease); }
+@keyframes poke {
+  0%, 100% { transform: translateX(0); border-color: var(--line); }
+  25% { transform: translateX(-4px); border-color: var(--cinnabar); }
+  55% { transform: translateX(4px); border-color: var(--cinnabar); }
+  80% { transform: translateX(-2px); }
+}
 
 /* ---------- 见人 ---------- */
 .quotes-wall { display: grid; gap: clamp(18px, 2.4vw, 30px); margin-top: clamp(40px, 5vw, 70px); }
