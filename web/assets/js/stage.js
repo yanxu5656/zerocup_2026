@@ -21,6 +21,8 @@
   var hintBtn = document.getElementById("hintBtn");
   var grips = [document.getElementById("gripL"), document.getElementById("gripR")];
   var joints = Array.prototype.slice.call(svg.querySelectorAll(".joint"));
+  var stickArmL = document.getElementById("stickArmL");
+  var stickArmR = document.getElementById("stickArmR");
 
   var SNAP = 8;            /* 吸附阈值（度） */
   var CURTAIN_TARGET = 88; /* 第三关：幕布拉开到 88% */
@@ -64,6 +66,24 @@
     var p = pivotOf(el);
     el.setAttribute("transform", "rotate(" + deg.toFixed(1) + " " + p.x + " " + p.y + ")");
     el.setAttribute("aria-label", el.getAttribute("aria-label").split("，")[0] + "，当前 " + Math.round(deg) + " 度");
+    syncSticks();
+  }
+
+  /* 竹签跟着手走：签头随手心转，签尾固定在台口握杆上 */
+  function rotPoint(px, py, cx, cy, deg) {
+    var r = deg * Math.PI / 180, c = Math.cos(r), s = Math.sin(r);
+    var dx = px - cx, dy = py - cy;
+    return { x: cx + dx * c - dy * s, y: cy + dx * s + dy * c };
+  }
+
+  function syncSticks() {
+    if (!stickArmL || !stickArmR) return;
+    var l = rotPoint(163, 314, 164, 192, state.rot.armL || 0);
+    var r = rotPoint(257, 314, 256, 192, state.rot.armR || 0);
+    stickArmL.setAttribute("x1", l.x.toFixed(1));
+    stickArmL.setAttribute("y1", l.y.toFixed(1));
+    stickArmR.setAttribute("x1", r.x.toFixed(1));
+    stickArmR.setAttribute("y1", r.y.toFixed(1));
   }
 
   function svgPoint(evt) {

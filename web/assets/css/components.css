@@ -277,6 +277,42 @@
   filter: drop-shadow(0 18px 34px rgba(20, 10, 4, .45));
   touch-action: none;
 }
+
+/* 皮影本体：半透明皮革色 + 金线描边；脸部用 evenodd 挖出眼与口，光从孔里透过去 */
+.puppet__body,
+.puppet__limb,
+.puppet__face,
+.puppet__neck {
+  fill: rgba(108, 42, 15, .88);
+  stroke: rgba(242, 200, 121, .52);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.puppet__face { fill: rgba(94, 34, 12, .92); stroke: rgba(242, 200, 121, .58); }
+.puppet__crown { fill: url(#leather); stroke: #7E4218; stroke-width: 1.2; stroke-linejoin: round; }
+.puppet__hand { fill: rgba(108, 42, 15, .9); stroke: rgba(242, 200, 121, .6); stroke-width: 1.5; }
+.puppet__bead { fill: var(--lamp); }
+.puppet__tassel { fill: none; stroke: var(--cinnabar); stroke-width: 2.6; stroke-linecap: round; }
+.puppet__brow { fill: none; stroke: var(--cinnabar); stroke-width: 2.8; stroke-linecap: round; }
+.puppet__nose,
+.puppet__ear,
+.puppet__trim,
+.puppet__scale {
+  fill: none;
+  stroke: rgba(242, 200, 121, .44);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.puppet__mirror { fill: rgba(180, 53, 43, .55); stroke: rgba(242, 200, 121, .72); stroke-width: 1.8; }
+.puppet__belt { fill: rgba(180, 53, 43, .88); }
+
+/* 三根操纵签：一根颈签固定，两根手签随手走 */
+.puppet__sticks line { stroke: rgba(232, 180, 90, .26); stroke-width: 1.4; stroke-linecap: round; }
+.puppet__sticks circle { fill: rgba(232, 180, 90, .5); }
+.puppet__rail { fill: none; stroke: rgba(232, 180, 90, .32); stroke-width: 3; stroke-linecap: round; }
+
+/* 传承人肖像沿用灯光色 */
+.master__portrait svg { color: var(--lamp); }
 .stage__curtain {
   position: absolute;
   top: 0;
@@ -632,6 +668,11 @@
   position: relative;
 }
 .swatch[aria-pressed="true"] { border-color: var(--paper); box-shadow: 0 0 0 3px rgba(232, 180, 90, .3); }
+.sw--lamp { color: var(--lamp); }
+.sw--ochre { color: var(--ochre); }
+.sw--cinnabar { color: var(--cinnabar); }
+.sw--jade { color: var(--jade); }
+.sw--paper { color: var(--paper); }
 .choices { display: flex; gap: 8px; flex-wrap: wrap; }
 .choice {
   padding: 8px 14px;
@@ -716,7 +757,16 @@ a[aria-disabled="true"],
 .screen__scene[data-scene="1"] svg { filter: hue-rotate(-16deg) saturate(1.08); }
 .screen__scene[data-scene="2"] svg { filter: hue-rotate(22deg); }
 
-.tl-item__detail { animation: fadeUp .4s var(--ease) both; }
+.tl-item__detail {
+  margin-top: var(--s3);
+  padding: var(--s3) var(--s4);
+  border-left: 2px solid rgba(232, 180, 90, .4);
+  background: rgba(232, 180, 90, .05);
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--paper-dim);
+  animation: fadeUp .4s var(--ease) both;
+}
 @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 .master { display: block; width: 100%; }

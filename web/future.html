@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%2316110D'/%3E%3Cpath%20d='M16%204v5'%20stroke='%23E8B45A'%20stroke-width='1.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M10%209h12l-2%2012H12z'%20fill='%23E8B45A'/%3E%3Ccircle%20cx='16'%20cy='15'%20r='2.4'%20fill='%23FFF3DC'/%3E%3C/svg%3E">
 <meta name="description" content="续灯：纹样库、DIY 皮影生成与导出、点一盏自己的灯。灯影 · 中国皮影戏数字展馆。">
 <title>伍 · 续灯 ｜ 灯影</title>
+<link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -204,7 +205,7 @@
           <span class="pattern__name">龟背纹</span>
         </button>
       </div>
-      <p class="tiny muted" style="margin-top:16px">下载的是矢量 SVG，可直接放进设计稿或打印。</p>
+      <p class="tiny muted mt-16">下载的是矢量 SVG，可直接放进设计稿或打印。</p>
     </div>
   </section>
 
@@ -287,19 +288,19 @@
           <div class="diy__group">
             <p class="diy__label">皮色</p>
             <div class="swatches" id="colorChoices">
-              <button class="swatch" type="button" data-color="#E8B45A" aria-pressed="true" aria-label="灯黄" style="color:#E8B45A"></button>
-              <button class="swatch" type="button" data-color="#C97B32" aria-pressed="false" aria-label="赭石" style="color:#C97B32"></button>
-              <button class="swatch" type="button" data-color="#B4352B" aria-pressed="false" aria-label="朱砂" style="color:#B4352B"></button>
-              <button class="swatch" type="button" data-color="#2E6B4F" aria-pressed="false" aria-label="青绿" style="color:#2E6B4F"></button>
-              <button class="swatch" type="button" data-color="#F3EADC" aria-pressed="false" aria-label="纸白" style="color:#F3EADC"></button>
+              <button class="swatch sw--lamp" type="button" data-color="#E8B45A" aria-pressed="true" aria-label="灯黄"></button>
+              <button class="swatch sw--ochre" type="button" data-color="#C97B32" aria-pressed="false" aria-label="赭石"></button>
+              <button class="swatch sw--cinnabar" type="button" data-color="#B4352B" aria-pressed="false" aria-label="朱砂"></button>
+              <button class="swatch sw--jade" type="button" data-color="#2E6B4F" aria-pressed="false" aria-label="青绿"></button>
+              <button class="swatch sw--paper" type="button" data-color="#F3EADC" aria-pressed="false" aria-label="纸白"></button>
             </div>
           </div>
 
-          <div class="controls-row" style="margin-top:8px">
+          <div class="controls-row mt-8">
             <button class="btn btn--solid" type="button" id="exportBtn">导出 PNG</button>
             <button class="btn btn--ghost" type="button" id="resetDiy">还原</button>
           </div>
-          <p class="tiny muted" style="margin-top:12px" id="exportHint">导出为 600 × 760 的 PNG，可直接保存或发朋友圈。</p>
+          <p class="tiny muted mt-12" id="exportHint">导出为 600 × 760 的 PNG，可直接保存或发朋友圈。</p>
         </div>
       </div>
     </div>
@@ -317,7 +318,7 @@
 
       <div class="wishes">
         <form class="wish-form" id="wishForm">
-          <label for="wishInput" class="sr-only" style="position:absolute;left:-9999px">写一句寄语</label>
+          <label for="wishInput" class="sr-only">写一句寄语</label>
           <input class="wish-input" id="wishInput" type="text" maxlength="40" placeholder="比如：希望这盏灯别灭。">
           <button class="btn btn--solid" type="submit">点上</button>
         </form>

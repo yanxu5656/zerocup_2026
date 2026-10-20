@@ -100,7 +100,6 @@
         }
         detail = document.createElement("p");
         detail.className = "tl-item__detail";
-        detail.style.cssText = "margin-top:12px;padding:12px 14px;border-left:2px solid rgba(232,180,90,.4);background:rgba(232,180,90,.05);font-size:13px;line-height:1.95;color:var(--paper-dim)";
         detail.textContent = btn.dataset.more;
         item.appendChild(detail);
         btn.textContent = "收起";

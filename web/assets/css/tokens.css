@@ -1,0 +1,63 @@
+/* =========================================================
+   灯影 · tokens.css
+   全站唯一的设计变量来源。页面层不得再写颜色/时长字面量。
+   ========================================================= */
+
+:root {
+  /* ---------- 颜色 ---------- */
+  --ink: #16110D;          /* 暗场底 */
+  --ink-2: #1D1712;        /* 次暗面 */
+  --curtain: #241C16;      /* 卡片 / 幕布 */
+  --paper: #F3EADC;        /* 亮场底 / 宣纸白 */
+  --paper-dim: #C9BCA9;    /* 次要文字 */
+  --paper-faint: rgba(243, 234, 220, .46);
+
+  --lamp: #E8B45A;         /* 灯光 / 主强调 */
+  --lamp-soft: #F2C879;    /* 高光 */
+  --lamp-hot: #FFD9A0;     /* 灼点，仅用于光晕中心 */
+  --ochre: #C97B32;        /* 赭石，DIY 配色用 */
+  --cinnabar: #B4352B;     /* 印章 / 选中，面积 ≤ 5% */
+  --jade: #2E6B4F;         /* 纹样点缀 */
+
+  /* ---------- 线 ---------- */
+  --line: rgba(232, 180, 90, .16);
+  --line-strong: rgba(232, 180, 90, .38);
+
+  /* ---------- 字体 ---------- */
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", serif;
+  --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB", sans-serif;
+  --num: Georgia, "Times New Roman", serif;
+
+  /* ---------- 节奏 ---------- */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --ease-out: cubic-bezier(.16, .84, .44, 1);
+  --ease-in-out: cubic-bezier(.65, .05, .36, 1);
+
+  --t-fast: 120ms;
+  --t-base: 240ms;
+  --t-slow: 480ms;
+
+  /* ---------- 间距（4px 基准） ---------- */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 72px;
+
+  /* ---------- 圆角 ---------- */
+  --r-sm: 2px;
+  --r-md: 4px;
+
+  /* ---------- 布局 ---------- */
+  --page: clamp(20px, 5vw, 112px);
+  --nav-h: 76px;
+
+  /* ---------- 光：整站唯一的亮度参数 0.15 ~ 1 ---------- */
+  --lamp-level: 1;
+  --ambient: calc(.35 + var(--lamp-level) * .65);
+  --key: calc(.3 + var(--lamp-level) * .7);
+  --rim: calc(.2 + var(--lamp-level) * .8);
+}

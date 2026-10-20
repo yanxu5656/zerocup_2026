@@ -1,39 +1,8 @@
 /* =========================================================
    灯影 · base.css
-   变量、重置、字体层级、导航与页脚
+   重置、排版、焦点、导航与页脚
+   设计变量见 tokens.css —— 本文件与页面层不得自设颜色
    ========================================================= */
-
-:root {
-  /* 颜色 */
-  --ink: #16110D;
-  --ink-2: #1D1712;
-  --curtain: #241C16;
-  --paper: #F3EADC;
-  --paper-dim: #C9BCA9;
-  --paper-faint: rgba(243, 234, 220, .46);
-  --lamp: #E8B45A;
-  --lamp-soft: #F2C879;
-  --cinnabar: #B4352B;
-  --jade: #2E6B4F;
-
-  /* 线 */
-  --line: rgba(232, 180, 90, .16);
-  --line-strong: rgba(232, 180, 90, .38);
-
-  /* 字体 */
-  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", serif;
-  --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB", sans-serif;
-  --num: Georgia, "Times New Roman", serif;
-
-  /* 节奏 */
-  --ease: cubic-bezier(.22, .61, .36, 1);
-  --ease-out: cubic-bezier(.16, .84, .44, 1);
-  --page: clamp(20px, 5vw, 112px);
-  --nav-h: 76px;
-
-  /* 光：整站唯一的亮度参数 0.15 ~ 1 */
-  --lamp-level: 1;
-}
 
 *,
 *::before,
@@ -316,3 +285,11 @@ h3 { font-size: clamp(19px, 1.7vw, 24px); line-height: 1.45; letter-spacing: .08
   .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+/* ---------- 工具类（替代内联 style） ---------- */
+.mt-8 { margin-top: var(--s2); }
+.mt-12 { margin-top: var(--s3); }
+.mt-16 { margin-top: var(--s4); }
+.mt-24 { margin-top: var(--s5); }
+.measure { max-width: 56ch; }
+.sprite-defs { position: absolute; width: 0; height: 0; overflow: hidden; }

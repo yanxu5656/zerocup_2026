@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%2316110D'/%3E%3Cpath%20d='M16%204v5'%20stroke='%23E8B45A'%20stroke-width='1.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M10%209h12l-2%2012H12z'%20fill='%23E8B45A'/%3E%3Ccircle%20cx='16'%20cy='15'%20r='2.4'%20fill='%23FFF3DC'/%3E%3C/svg%3E">
 <meta name="description" content="弄影台：拖动皮影关节，摆出亮相、开弓、跨马；通关后走进影窗剧场。灯影 · 中国皮影戏数字展馆。">
 <title>叁 · 弄影 ｜ 灯影</title>
+<link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/components.css">
@@ -60,7 +61,7 @@
 
   <section class="section section--tight" id="stage" aria-labelledby="stageTitle">
     <div class="wrap">
-      <h2 id="stageTitle" class="sr-only" style="position:absolute;left:-9999px">弄影台</h2>
+      <h2 id="stageTitle" class="sr-only">弄影台</h2>
 
       <div class="play-layout">
         <div class="stage-wrap">
@@ -73,81 +74,78 @@
             <div class="stage__viewport" id="viewport">
               <div class="stage__screen" aria-hidden="true"></div>
 
-              <svg class="stage__puppet" id="puppet" viewBox="0 0 420 560" role="group" aria-label="可拖动的皮影人物">
+              <svg class="stage__puppet" id="puppet" viewBox="0 0 420 560" role="group" aria-label="可拖动的皮影人物：头戴冠、身穿靠子，四个关节可拖动">
                 <defs>
                   <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0" stop-color="#F6D49A"/>
                     <stop offset=".55" stop-color="#E8B45A"/>
                     <stop offset="1" stop-color="#B8722C"/>
                   </linearGradient>
-                  <linearGradient id="leatherDark" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#D9A253"/>
-                    <stop offset="1" stop-color="#8C4C1E"/>
-                  </linearGradient>
                 </defs>
 
-                <!-- 左腿 -->
-                <g class="joint" data-joint="legL" data-pivot="196,344" transform="rotate(0 196 344)" aria-disabled="true" tabindex="-1" role="button" aria-label="左腿关节">
-                  <path d="M184 342 L208 342 L204 462 L190 462 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M188 458 L206 458 L210 484 L180 484 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M186 424 L204 424" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
-                  <circle class="joint__ring" cx="196" cy="478" r="14"/>
-                  <circle class="joint__handle--hit" cx="196" cy="478" r="34"/>
-                  <circle class="joint__handle" cx="196" cy="478" r="7"/>
+                <g class="puppet__sticks" aria-hidden="true">
+                  <line id="stickNeck" x1="210" y1="172" x2="210" y2="542"/>
+                  <line id="stickArmL" x1="163" y1="314" x2="150" y2="542"/>
+                  <line id="stickArmR" x1="257" y1="314" x2="270" y2="542"/>
+                  <circle cx="150" cy="542" r="5"/>
+                  <circle cx="210" cy="542" r="5"/>
+                  <circle cx="270" cy="542" r="5"/>
+                  <path class="puppet__rail" d="M118 542 H302"/>
                 </g>
 
-                <!-- 右腿 -->
-                <g class="joint" data-joint="legR" data-pivot="224,344" transform="rotate(0 224 344)" aria-disabled="true" tabindex="-1" role="button" aria-label="右腿关节">
-                  <path d="M212 342 L236 342 L232 462 L218 462 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M218 458 L236 458 L240 484 L210 484 Z" fill="#160C06" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M216 424 L232 424" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
-                  <circle class="joint__ring" cx="226" cy="478" r="14"/>
-                  <circle class="joint__handle--hit" cx="226" cy="478" r="34"/>
-                  <circle class="joint__handle" cx="226" cy="478" r="7"/>
+                <g class="joint" data-joint="legL" data-pivot="192,352" transform="rotate(0 192 352)" aria-disabled="true" tabindex="-1" role="button" aria-label="左腿关节">
+                  <path class="puppet__limb" d="M186 344 h12 l-2 108 h-8 z"/>
+                  <path class="puppet__limb" d="M181 452 h16 v12 l12 4 v6 h-32 z"/>
+                  <path class="puppet__trim" d="M187 390 h9 M186 418 h10"/>
+                  <circle class="joint__ring" cx="192" cy="470" r="15"/>
+                  <circle class="joint__handle--hit" cx="192" cy="470" r="36"/>
+                  <circle class="joint__handle" cx="192" cy="470" r="7"/>
                 </g>
 
-                <!-- 左臂 -->
+                <g class="joint" data-joint="legR" data-pivot="228,352" transform="rotate(0 228 352)" aria-disabled="true" tabindex="-1" role="button" aria-label="右腿关节">
+                  <path class="puppet__limb" d="M222 344 h12 l-2 108 h-8 z"/>
+                  <path class="puppet__limb" d="M223 452 h16 v12 l12 4 v6 h-32 z"/>
+                  <path class="puppet__trim" d="M224 390 h9 M223 418 h10"/>
+                  <circle class="joint__ring" cx="228" cy="470" r="15"/>
+                  <circle class="joint__handle--hit" cx="228" cy="470" r="36"/>
+                  <circle class="joint__handle" cx="228" cy="470" r="7"/>
+                </g>
+
                 <g class="puppet__torso">
-                  <path d="M210 172c-30 0-52 10-56 28l-8 100c-2 16 2 30 12 40h104c10-10 14-24 12-40l-8-100c-4-18-26-28-56-28z"
-                        fill="#1E1008" stroke="rgba(242,200,121,.34)" stroke-width="1.6" stroke-linejoin="round"/>
-                  <path d="M194 178 L210 212 L226 178" fill="none" stroke="rgba(242,200,121,.34)" stroke-width="1.6"/>
-                  <path d="M152 266 H268" stroke="rgba(242,200,121,.34)" stroke-width="2"/>
-                  <circle cx="210" cy="266" r="6" fill="none" stroke="rgba(64,30,12,.6)" stroke-width="1.4"/>
-                  <path d="M158 338 H262" stroke="rgba(242,200,121,.22)" stroke-width="1.2"/>
-                  <path d="M186 300 v28 M234 300 v28" stroke="rgba(242,200,121,.18)" stroke-width="1.2"/>
+                  <path class="puppet__body" d="M210 168 C232 168 250 176 258 188 C254 206 254 224 252 240 C248 262 242 278 238 292 C242 306 246 318 248 330 L278 354 H142 L172 330 C174 318 178 306 182 292 C178 278 172 262 168 240 C166 224 166 206 162 188 C170 176 188 168 210 168 Z"/>
+                  <path class="puppet__scale" d="M172 262 q10 8 20 0 M172 282 q10 8 20 0 M228 262 q10 8 20 0 M228 282 q10 8 20 0"/>
+                  <circle class="puppet__mirror" cx="210" cy="236" r="18"/>
+                  <path class="puppet__trim" d="M210 224 C217 228 219 236 214 241 C210 244 206 242 206 238"/>
+                  <rect class="puppet__belt" x="186" y="290" width="48" height="10" rx="2"/>
+                  <path class="puppet__trim" d="M144 348 q17 -12 34 0 q17 -12 34 0 q17 -12 34 0 q17 -12 34 0"/>
                 </g>
 
-                <!-- 头 -->
-
-                <g class="joint" data-joint="armL" data-pivot="162,200" transform="rotate(0 162 200)" aria-disabled="true" tabindex="-1" role="button" aria-label="左臂关节">
-                  <path d="M150 196 L172 202 L164 286 L146 282 Z" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M148 272 L166 278" stroke="rgba(242,200,121,.28)" stroke-width="1.4"/>
-                  <circle cx="154" cy="292" r="9" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.4"/>
-                  <circle class="joint__ring" cx="154" cy="292" r="14"/>
-                  <circle class="joint__handle--hit" cx="154" cy="292" r="34"/>
-                  <circle class="joint__handle" cx="154" cy="292" r="7"/>
+                <g class="joint" data-joint="armL" data-pivot="164,192" transform="rotate(0 164 192)" aria-disabled="true" tabindex="-1" role="button" aria-label="左臂关节">
+                  <path class="puppet__limb" d="M158 184 h14 l-4 118 h-8 z"/>
+                  <circle class="puppet__hand" cx="163" cy="310" r="8"/>
+                  <path class="puppet__trim" d="M160 208 h8 M160 246 h8"/>
+                  <circle class="joint__ring" cx="163" cy="314" r="15"/>
+                  <circle class="joint__handle--hit" cx="163" cy="314" r="36"/>
+                  <circle class="joint__handle" cx="163" cy="314" r="7"/>
                 </g>
 
-                <!-- 右臂 -->
-                <g class="joint" data-joint="armR" data-pivot="258,200" transform="rotate(0 258 200)" aria-disabled="true" tabindex="-1" role="button" aria-label="右臂关节">
-                  <path d="M248 202 L270 196 L274 282 L256 286 Z" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="M254 278 L272 272" stroke="rgba(242,200,121,.28)" stroke-width="1.4"/>
-                  <circle cx="266" cy="292" r="9" fill="#1E1008" stroke="rgba(242,200,121,.30)" stroke-width="1.4"/>
-                  <circle class="joint__ring" cx="266" cy="292" r="14"/>
-                  <circle class="joint__handle--hit" cx="266" cy="292" r="34"/>
-                  <circle class="joint__handle" cx="266" cy="292" r="7"/>
+                <g class="joint" data-joint="armR" data-pivot="256,192" transform="rotate(0 256 192)" aria-disabled="true" tabindex="-1" role="button" aria-label="右臂关节">
+                  <path class="puppet__limb" d="M248 184 h14 l-4 118 h-8 z"/>
+                  <circle class="puppet__hand" cx="257" cy="310" r="8"/>
+                  <path class="puppet__trim" d="M252 208 h8 M252 246 h8"/>
+                  <circle class="joint__ring" cx="257" cy="314" r="15"/>
+                  <circle class="joint__handle--hit" cx="257" cy="314" r="36"/>
+                  <circle class="joint__handle" cx="257" cy="314" r="7"/>
                 </g>
-
-                <!-- 身 -->
 
                 <g class="puppet__head">
-                  <path d="M210 56c22 0 40 18 40 40 0 14-6 26-15 33v18c0 10-8 18-18 18h-14c-10 0-18-8-18-18v-18c-9-7-15-19-15-33 0-22 18-40 40-40z"
-                        fill="#1E1008" stroke="rgba(242,200,121,.36)" stroke-width="1.6" stroke-linejoin="round"/>
-                  <path d="M172 82c8-16 22-26 38-26s30 10 38 26" fill="none" stroke="#B4352B" stroke-width="3.2" stroke-linecap="round"/>
-                  <path d="M190 102h14M216 102h14" stroke="#F2C879" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
-                  <path d="M210 106v8" stroke="rgba(242,200,121,.28)" stroke-width="1.4" stroke-linecap="round"/>
-                  <path d="M202 130h16" stroke="rgba(242,200,121,.34)" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M166 132c-6 6-8 14-6 22M254 132c6 6 8 14 6 22" fill="none" stroke="rgba(242,200,121,.22)" stroke-width="1.3"/>
+                  <path class="puppet__neck" d="M202 138 h16 v32 h-16 z"/>
+                  <path class="puppet__face" fill-rule="evenodd" d="M188 60 C188 52 196 46 210 46 C224 46 232 52 232 60 V108 C232 124 222 136 210 142 C198 136 188 124 188 108 Z M198 84 C201 80 208 80 210 84 C208 88 201 88 198 84 Z M210 84 C212 80 219 80 222 84 C219 88 212 88 210 84 Z M203 118 C206 115 214 115 217 118 C214 123 206 123 203 118 Z"/>
+                  <path class="puppet__brow" d="M196 78 C200 73 206 73 210 77 M210 77 C214 73 220 73 224 78"/>
+                  <path class="puppet__nose" d="M210 90 V104"/>
+                  <path class="puppet__ear" d="M186 90 C181 94 181 104 186 108 M234 90 C239 94 239 104 234 108"/>
+                  <path class="puppet__crown" d="M190 64 L194 40 L202 50 L210 34 L218 50 L226 40 L230 64 Z"/>
+                  <circle class="puppet__bead" cx="210" cy="34" r="5"/>
                 </g>
               </svg>
 
@@ -173,7 +171,7 @@
         <aside class="play-side">
           <div>
             <p class="eyebrow">三关</p>
-            <div class="step-list" id="stepList" style="margin-top:16px">
+            <div class="step-list mt-16" id="stepList">
               <div class="step-item" data-step="0">
                 <span class="step-item__no">1</span>
                 <span><span class="step-item__t">亮相</span><span class="step-item__d">把右臂抬到 60°，皮影要“亮个相”。</span></span>
