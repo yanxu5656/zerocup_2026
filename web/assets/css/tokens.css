@@ -1,43 +1,56 @@
 /* =========================================================
-   灯影 · tokens.css
+   灯影 · tokens.css  (v2 · 宋刻暗金)
    全站唯一的设计变量来源。页面层不得再写颜色/时长字面量。
+   气质关键词：宋刻、暗金、大留白、细线、克制
    ========================================================= */
 
 :root {
-  /* ---------- 颜色 ---------- */
-  --ink: #16110D;          /* 暗场底 */
-  --ink-2: #1D1712;        /* 次暗面 */
-  --curtain: #241C16;      /* 卡片 / 幕布 */
-  --paper: #F3EADC;        /* 亮场底 / 宣纸白 */
-  --paper-dim: #C9BCA9;    /* 次要文字 */
-  --paper-faint: rgba(243, 234, 220, .46);
+  /* ---------- 颜色：比 v1 更深、更旧、更哑 ---------- */
+  --ink: #0C0906;          /* 暗场底，接近墨 */
+  --ink-2: #13100B;
+  --curtain: #1A140E;      /* 卡片 / 幕布 */
+  --paper: #F4EDE0;        /* 宣纸白 */
+  --paper-dim: #C3B6A3;
+  --paper-faint: rgba(244, 237, 224, .40);
 
-  --lamp: #E8B45A;         /* 灯光 / 主强调 */
-  --lamp-soft: #F2C879;    /* 高光 */
-  --lamp-hot: #FFD9A0;     /* 灼点，仅用于光晕中心 */
-  --ochre: #C97B32;        /* 赭石，DIY 配色用 */
-  --cinnabar: #B4352B;     /* 印章 / 选中，面积 ≤ 5% */
-  --jade: #2E6B4F;         /* 纹样点缀 */
+  --lamp: #C9A227;         /* 旧金：压住饱和度，避免"塑料黄" */
+  --lamp-soft: #E0C27A;
+  --lamp-hot: #F4E2B2;
+  --ochre: #B06A32;
+  --cinnabar: #A8342A;
+  --jade: #2E5B47;
 
-  /* ---------- 线 ---------- */
-  --line: rgba(232, 180, 90, .16);
-  --line-strong: rgba(232, 180, 90, .38);
+  /* ---------- 线：三种语义 ---------- */
+  --line: rgba(201, 162, 39, .13);
+  --line-strong: rgba(201, 162, 39, .30);
+  --hair: rgba(244, 237, 224, .10);
+  --hair-strong: rgba(244, 237, 224, .22);
 
   /* ---------- 字体 ---------- */
   --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", serif;
   --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB", sans-serif;
   --num: Georgia, "Times New Roman", serif;
 
+  /* ---------- 字阶：7 档，标题 fluid ---------- */
+  --fs-display: clamp(40px, 5.6vw, 78px);
+  --fs-h1: clamp(32px, 4.2vw, 58px);
+  --fs-h2: clamp(24px, 3vw, 40px);
+  --fs-h3: clamp(18px, 1.6vw, 23px);
+  --fs-lead: clamp(15px, 1.15vw, 18px);
+  --fs-body: 15px;
+  --fs-small: 13px;
+  --fs-micro: 11px;
+
   /* ---------- 节奏 ---------- */
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-out: cubic-bezier(.16, .84, .44, 1);
   --ease-in-out: cubic-bezier(.65, .05, .36, 1);
 
-  --t-fast: 120ms;
-  --t-base: 240ms;
-  --t-slow: 480ms;
+  --t-fast: 160ms;
+  --t-base: 320ms;
+  --t-slow: 640ms;
 
-  /* ---------- 间距（4px 基准） ---------- */
+  /* ---------- 间距（4px 基准，补两档大间距） ---------- */
   --s1: 4px;
   --s2: 8px;
   --s3: 12px;
@@ -46,14 +59,17 @@
   --s6: 32px;
   --s7: 48px;
   --s8: 72px;
+  --s9: 104px;
+  --s10: 144px;
 
-  /* ---------- 圆角 ---------- */
-  --r-sm: 2px;
-  --r-md: 4px;
+  /* ---------- 圆角：近乎直角 ---------- */
+  --r-sm: 1px;
+  --r-md: 2px;
 
   /* ---------- 布局 ---------- */
   --page: clamp(20px, 5vw, 112px);
-  --nav-h: 76px;
+  --nav-h: 72px;
+  --measure: 34em;
 
   /* ---------- 光：整站唯一的亮度参数 0.15 ~ 1 ---------- */
   --lamp-level: 1;
