@@ -1,0 +1,13 @@
+# 脚本必须用 LF：CRLF 会让 sh 解析出 $'\r' 而报错
+*.sh text eol=lf
+tools/git-hooks/* text eol=lf
+
+# PowerShell 保留 CRLF，兼容旧版控制台
+*.ps1 text eol=crlf
+
+# 站点与文档统一 LF
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
