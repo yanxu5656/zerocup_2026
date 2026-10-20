@@ -3,6 +3,7 @@
    （无依赖，能力缺失时全部降级为静态可读） */
 (function () {
   "use strict";
+  document.documentElement.classList.add("js");
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -33,12 +34,20 @@
 
   /* ---------- 滚动入场 ---------- */
   var reveals = $$(".reveal");
+  var staggers = $$("[data-stagger]");
+  staggers.forEach(function (box) {
+    Array.prototype.forEach.call(box.children, function (child, i) {
+      child.style.setProperty("--i", String(i));
+    });
+  });
+  var revealTargets = reveals.concat(staggers);
   var isStatic = /[?&]static=1/.test(window.location.search);
-  if (reveals.length && isStatic) {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
-  } else if (reveals.length) {
+  if (isStatic) document.documentElement.classList.add("is-static");
+  if (revealTargets.length && isStatic) {
+    revealTargets.forEach(function (el) { el.classList.add("is-in"); });
+  } else if (revealTargets.length) {
     if (!("IntersectionObserver" in window)) {
-      reveals.forEach(function (el) { el.classList.add("is-in"); });
+      revealTargets.forEach(function (el) { el.classList.add("is-in"); });
     } else {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -48,9 +57,9 @@
           }
         });
       }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
-      reveals.forEach(function (el) { io.observe(el); });
+      revealTargets.forEach(function (el) { io.observe(el); });
       requestAnimationFrame(function () {
-        reveals.forEach(function (el) {
+        revealTargets.forEach(function (el) {
           if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add("is-in");
         });
       });

@@ -278,13 +278,28 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
 }
 .reveal.is-in { opacity: 1; transform: none; }
+
+/* 逐项入场：容器进视口后，子元素按 --i 依次浮起。
+   用 animation 而不是 transition，避免覆盖各组件自己的 hover 过渡；
+   整套只挂在 html.js 下——脚本没跑起来时内容必须照常可见。 */
+@keyframes staggerIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+html.js [data-stagger].is-in > * {
+  animation: staggerIn var(--t-slow) var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 60ms);
+}
+/* 截图/验收走 ?static=1，直接给终态，避免拍到动画中间帧 */
+html.is-static [data-stagger].is-in > * { animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  html.js [data-stagger].is-in > * { animation: none; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 
