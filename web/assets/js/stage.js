@@ -29,6 +29,7 @@
   var finalBox = document.getElementById("stageFinal");
   var finalRank = document.getElementById("finalRank");
   var finalNote = document.getElementById("finalNote");
+  var finalBranch = document.getElementById("finalBranch");
 
   var SNAP = 8;            /* 吸附阈值（度） */
   var CURTAIN_TARGET = 88; /* 第三关：幕布拉开到 88% */
@@ -41,27 +42,33 @@
 
   var LEVELS = [
     {
-      name: "第一关 · 亮相",
-      hint: '第一关 · 把右臂抬到 <b>60°</b>',
+      name: "一折 · 抬",
+      hint: '一折 · <b>抬</b>：把右臂抬到 <b>60°</b>，影子先立住',
       tip: "拖动发光的关节",
       targets: { armR: -150 },
       joints: ["armR"]
     },
     {
-      name: "第二关 · 开弓",
-      hint: '第二关 · 再拉左臂 <b>30°</b>',
+      name: "二折 · 拉",
+      hint: '二折 · <b>拉</b>：左臂向后拉到 <b>30°</b>，右臂别落',
       tip: "两个关节都要到位",
       targets: { armR: -150, armL: 120 },
       joints: ["armR", "armL"]
     },
     {
-      name: "第三关 · 跨马",
-      hint: '第三关 · 抬右腿 <b>40°</b>，把幕拉到 <b>九成</b>',
+      name: "三折 · 跨",
+      hint: '三折 · <b>跨</b>：抬右腿 <b>40°</b>，把大幕拉到 <b>九成</b>',
       tip: "拖关节，再拖两侧的“幕”",
       targets: { armR: -150, armL: 120, legR: -50 },
       joints: ["armR", "armL", "legR"]
     }
   ];
+
+  /* 末折之后的两种收场：不改变成绩，只改变落幕那一刻 */
+  var ENDINGS = {
+    curl: "多亮了一手，台下又叫了一声好。灯再亮三秒，影子才慢慢落回幕里。",
+    bow: "收势，抬手一揖。灯灭，幕合，掌声从幕布后面透过来。"
+  };
 
   /* ---------- 工具 ---------- */
   function pivotOf(el) {
@@ -257,6 +264,9 @@
     if (finalRank && finalNote && finalBox) {
       finalRank.textContent = rank;
       finalNote.textContent = label + " ｜ " + state.score + " 分";
+      var oldEnd = finalBox.querySelector(".stage__final-end");
+      if (oldEnd) oldEnd.remove();
+      if (finalBranch) finalBranch.hidden = false;
       finalBox.hidden = false;
     }
     toTheater.setAttribute("aria-disabled", "false");
@@ -482,6 +492,21 @@
         if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
         startBeat();
       }
+    });
+  }
+
+  /* 末折之后的两条收场：只是选择，不改成绩 */
+  if (finalBranch) {
+    finalBranch.addEventListener("click", function (e) {
+      var btn = e.target.closest("button[data-ending]");
+      if (!btn) return;
+      var key = btn.getAttribute("data-ending");
+      finalBranch.hidden = true;
+      var line = document.createElement("span");
+      line.className = "stage__final-end";
+      line.textContent = ENDINGS[key] || "";
+      if (finalBox) finalBox.appendChild(line);
+      try { localStorage.setItem("playEnding", key); } catch (err) { /* 忽略 */ }
     });
   }
 

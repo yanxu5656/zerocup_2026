@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T13:39:37.831Z",
+  "generatedAt": "2026-10-20T13:52:20.557Z",
   "site": "D:\\cs\\PROJECT\\LingBei\\zerocup_2026\\web",
   "pages": [
     {
@@ -134,7 +134,7 @@
     "steps": [
       {
         "step": "initial",
-        "level": "第一关 · 亮相",
+        "level": "一折 · 抬",
         "armR": "rotate(0.0 256 192)",
         "armL": "rotate(0.0 164 192)",
         "legR": "rotate(0.0 228 352)",
@@ -145,7 +145,7 @@
       },
       {
         "step": "level1-armR--150",
-        "level": "第二关 · 开弓",
+        "level": "二折 · 拉",
         "armR": "rotate(-145.0 256 192)",
         "armL": "rotate(0.0 164 192)",
         "legR": "rotate(0.0 228 352)",
@@ -156,7 +156,7 @@
       },
       {
         "step": "level2-armL-120",
-        "level": "第三关 · 跨马",
+        "level": "三折 · 跨",
         "armR": "rotate(-145.0 256 192)",
         "armL": "rotate(115.0 164 192)",
         "legR": "rotate(0.0 228 352)",
@@ -167,7 +167,7 @@
       },
       {
         "step": "level3-legR--50",
-        "level": "第三关 · 跨马",
+        "level": "三折 · 跨",
         "armR": "rotate(-145.0 256 192)",
         "armL": "rotate(115.0 164 192)",
         "legR": "rotate(-50.0 228 352)",
@@ -178,7 +178,7 @@
       },
       {
         "step": "level3-curtain",
-        "level": "第三关 · 跨马",
+        "level": "三折 · 跨",
         "armR": "rotate(-145.0 256 192)",
         "armL": "rotate(115.0 164 192)",
         "legR": "rotate(-50.0 228 352)",

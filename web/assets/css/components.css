@@ -396,6 +396,19 @@
 .stage__final[hidden] { display: none; }
 .stage__final-rank { font-family: var(--serif); font-size: 58px; line-height: 1; color: var(--cinnabar); }
 .stage__final-note { font-size: 12px; letter-spacing: .2em; color: var(--paper-dim); white-space: nowrap; }
+.stage__final-branch { display: flex; gap: 10px; margin-top: 8px; }
+.stage__final-branch .btn { padding: 8px 16px; font-size: 11px; letter-spacing: .16em; }
+.stage__final-branch[hidden] { display: none; }
+.stage__final-end {
+  display: block;
+  max-width: 26em;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.95;
+  letter-spacing: .04em;
+  color: var(--paper-faint);
+  text-align: center;
+}
 .stage__viewport {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -456,6 +469,13 @@
 .puppet__sticks circle { fill: rgba(201, 162, 39, .5); }
 .puppet__rail { fill: none; stroke: rgba(201, 162, 39, .32); stroke-width: 3; stroke-linecap: round; }
 
+/* 关节铆钉：让旋转的四肢始终"接"在身上，而不是浮在旁边 */
+.puppet__joint-cap {
+  fill: rgba(92, 36, 14, .96);
+  stroke: rgba(224, 194, 122, .5);
+  stroke-width: 1.6;
+}
+
 /* 传承人肖像沿用灯光色 */
 .master__portrait svg { color: var(--lamp); }
 .stage__curtain {
@@ -497,6 +517,10 @@
 
 .joint { cursor: grab; }
 .joint:active { cursor: grabbing; }
+/* SVG 上的焦点框会是整个 group 的外接矩形，很难看；用光环代替 */
+.joint:focus { outline: none; }
+.joint:focus-visible .joint__ring { opacity: .85; transform: scale(1); }
+.joint:focus-visible .joint__handle { stroke-width: 3; }
 .joint__handle {
   fill: rgba(201, 162, 39, .22);
   stroke: var(--lamp);

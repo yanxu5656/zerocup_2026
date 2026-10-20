@@ -98,6 +98,7 @@
                 </g>
 
                 <g class="joint" data-joint="legL" data-pivot="192,352" transform="rotate(0 192 352)" aria-disabled="true" tabindex="-1" role="button" aria-label="左腿关节">
+                  <circle class="puppet__joint-cap" cx="192" cy="352" r="12"/>
                   <path class="puppet__limb" d="M186 344 h12 l-2 108 h-8 z"/>
                   <path class="puppet__limb" d="M181 452 h16 v12 l12 4 v6 h-32 z"/>
                   <path class="puppet__trim" d="M187 390 h9 M186 418 h10"/>
@@ -107,6 +108,7 @@
                 </g>
 
                 <g class="joint" data-joint="legR" data-pivot="228,352" transform="rotate(0 228 352)" aria-disabled="true" tabindex="-1" role="button" aria-label="右腿关节">
+                  <circle class="puppet__joint-cap" cx="228" cy="352" r="12"/>
                   <path class="puppet__limb" d="M222 344 h12 l-2 108 h-8 z"/>
                   <path class="puppet__limb" d="M223 452 h16 v12 l12 4 v6 h-32 z"/>
                   <path class="puppet__trim" d="M224 390 h9 M223 418 h10"/>
@@ -125,6 +127,7 @@
                 </g>
 
                 <g class="joint" data-joint="armL" data-pivot="164,192" transform="rotate(0 164 192)" aria-disabled="true" tabindex="-1" role="button" aria-label="左臂关节">
+                  <circle class="puppet__joint-cap" cx="164" cy="192" r="12"/>
                   <path class="puppet__limb" d="M158 184 h14 l-4 118 h-8 z"/>
                   <circle class="puppet__hand" cx="163" cy="310" r="8"/>
                   <path class="puppet__trim" d="M160 208 h8 M160 246 h8"/>
@@ -134,6 +137,7 @@
                 </g>
 
                 <g class="joint" data-joint="armR" data-pivot="256,192" transform="rotate(0 256 192)" aria-disabled="true" tabindex="-1" role="button" aria-label="右臂关节">
+                  <circle class="puppet__joint-cap" cx="256" cy="192" r="12"/>
                   <path class="puppet__limb" d="M248 184 h14 l-4 118 h-8 z"/>
                   <circle class="puppet__hand" cx="257" cy="310" r="8"/>
                   <path class="puppet__trim" d="M252 208 h8 M252 246 h8"/>
@@ -163,6 +167,10 @@
               <div class="stage__final" id="stageFinal" hidden>
                 <span class="stage__final-rank" id="finalRank">甲</span>
                 <span class="stage__final-note" id="finalNote"></span>
+                <span class="stage__final-branch" id="finalBranch">
+                  <button class="btn btn--ghost" type="button" data-ending="curl">再亮一手</button>
+                  <button class="btn btn--ghost" type="button" data-ending="bow">收势谢幕</button>
+                </span>
               </div>
               <div class="stage__hint" id="stageHint">第一关 · 把右臂抬到 <b>60°</b></div>
             </div>
@@ -179,19 +187,19 @@
 
         <aside class="play-side">
           <div>
-            <p class="eyebrow">三关</p>
+            <p class="eyebrow">三折</p>
             <div class="step-list mt-16" id="stepList">
               <div class="step-item" data-step="0">
-                <span class="step-item__no">1</span>
-                <span><span class="step-item__t">亮相</span><span class="step-item__d">把右臂抬到 60°，皮影要“亮个相”。</span></span>
+                <span class="step-item__no">一</span>
+                <span><span class="step-item__t">抬 · 亮相</span><span class="step-item__d">把右臂抬到 60°，影子先立住。</span></span>
               </div>
               <div class="step-item" data-step="1">
-                <span class="step-item__no">2</span>
-                <span><span class="step-item__t">开弓</span><span class="step-item__d">右臂保持，左臂向后拉开 30°。</span></span>
+                <span class="step-item__no">二</span>
+                <span><span class="step-item__t">拉 · 开弓</span><span class="step-item__d">右臂不落，左臂向后拉开 30°。</span></span>
               </div>
               <div class="step-item" data-step="2">
-                <span class="step-item__no">3</span>
-                <span><span class="step-item__t">跨马</span><span class="step-item__d">抬起右腿，再把幕布拉到九成。</span></span>
+                <span class="step-item__no">三</span>
+                <span><span class="step-item__t">跨 · 出场</span><span class="step-item__d">抬右腿 40°，顺手把大幕拉到九成。</span></span>
               </div>
             </div>
           </div>
