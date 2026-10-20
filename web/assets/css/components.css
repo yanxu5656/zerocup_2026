@@ -323,6 +323,79 @@
   background: rgba(26, 20, 14, .5);
 }
 .stage__bar b { color: var(--lamp); font-weight: 500; }
+.stage__tools { display: flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); }
+
+/* 鼓点指示：四拍一轮，跟着节拍亮 */
+.beat { display: flex; align-items: center; gap: 5px; }
+.beat i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(201, 162, 39, .22);
+  transition: background .1s linear, transform .1s linear, box-shadow .1s linear;
+}
+.beat i.is-on {
+  background: var(--lamp);
+  transform: scale(1.7);
+  box-shadow: 0 0 8px rgba(201, 162, 39, .75);
+}
+.stage__sound {
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--paper-faint);
+  font-size: var(--fs-micro);
+  letter-spacing: .14em;
+  padding: 3px 8px;
+  border-radius: var(--r-sm);
+  transition: color var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.stage__sound[aria-pressed="true"] { color: var(--lamp); border-color: var(--line-strong); }
+
+/* 判定：准 / 良 / 失 */
+.judge {
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9;
+  font-family: var(--serif);
+}
+.judge b { font-size: 44px; font-weight: 500; letter-spacing: .12em; color: var(--lamp); text-shadow: 0 6px 26px rgba(0, 0, 0, .55); }
+.judge span { font-size: 12px; letter-spacing: .22em; color: var(--paper-dim); }
+.judge.is-perfect b { color: var(--lamp-hot); }
+.judge.is-miss b { color: rgba(244, 237, 224, .45); }
+.judge.is-show { animation: judgePop .95s var(--ease-out) forwards; }
+@keyframes judgePop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.82); }
+  22% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  68% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -62%) scale(1); }
+}
+
+/* 结算 */
+.stage__final {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 42px 22px;
+  background: rgba(10, 6, 3, .88);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 30px 70px -40px #000;
+  z-index: 10;
+}
+.stage__final[hidden] { display: none; }
+.stage__final-rank { font-family: var(--serif); font-size: 58px; line-height: 1; color: var(--cinnabar); }
+.stage__final-note { font-size: 12px; letter-spacing: .2em; color: var(--paper-dim); white-space: nowrap; }
 .stage__viewport {
   position: relative;
   aspect-ratio: 4 / 3;

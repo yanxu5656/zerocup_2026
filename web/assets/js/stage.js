@@ -23,11 +23,21 @@
   var joints = Array.prototype.slice.call(svg.querySelectorAll(".joint"));
   var stickArmL = document.getElementById("stickArmL");
   var stickArmR = document.getElementById("stickArmR");
+  var beatPips = document.getElementById("beatPips");
+  var soundBtn = document.getElementById("soundBtn");
+  var judgeEl = document.getElementById("judge");
+  var finalBox = document.getElementById("stageFinal");
+  var finalRank = document.getElementById("finalRank");
+  var finalNote = document.getElementById("finalNote");
 
   var SNAP = 8;            /* 吸附阈值（度） */
   var CURTAIN_TARGET = 88; /* 第三关：幕布拉开到 88% */
   var CURTAIN_START = 64;  /* 初始两侧各留 18% 作为台口 */
-  var state = { level: 0, rot: {}, open: CURTAIN_START, passed: false, busy: false };
+  var BEAT_MS = 667;       /* 90 BPM，一拍 667ms */
+  var state = {
+    level: 0, rot: {}, open: CURTAIN_START, passed: false, busy: false,
+    sound: false, grades: [], combo: 0, score: 0
+  };
 
   var LEVELS = [
     {
@@ -105,6 +115,76 @@
 
   function currentLevel() { return LEVELS[state.level]; }
 
+  /* ---------- 鼓点与判定 ---------- */
+  var beatStart = 0, beatTimer = null, beatCount = 0, audioCtx = null;
+
+  function paintBeat(n) {
+    if (!beatPips) return;
+    var pips = beatPips.children;
+    for (var i = 0; i < pips.length; i++) {
+      pips[i].classList.toggle("is-on", i === (n % 4));
+    }
+  }
+
+  function startBeat() {
+    if (beatStart) return;
+    beatStart = performance.now();
+    paintBeat(0);
+    beatTimer = window.setInterval(function () {
+      beatCount += 1;
+      paintBeat(beatCount);
+      clickTick(beatCount % 4 === 0);
+    }, BEAT_MS);
+  }
+
+  /* 距离最近一拍的时间差（毫秒） */
+  function beatPhase() {
+    if (!beatStart) return 999;
+    var t = (performance.now() - beatStart) % BEAT_MS;
+    return Math.min(t, BEAT_MS - t);
+  }
+
+  function clickTick(strong) {
+    if (!state.sound || !audioCtx) return;
+    var t = audioCtx.currentTime;
+    var osc = audioCtx.createOscillator();
+    var gain = audioCtx.createGain();
+    osc.type = "triangle";
+    osc.frequency.setValueAtTime(strong ? 880 : 640, t);
+    osc.frequency.exponentialRampToValueAtTime(strong ? 520 : 420, t + 0.09);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(strong ? 0.09 : 0.05, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.13);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(t);
+    osc.stop(t + 0.15);
+  }
+
+  function showJudge(grade) {
+    if (!judgeEl) return;
+    judgeEl.className = "judge" + (grade === "准" ? " is-perfect" : grade === "失" ? " is-miss" : "");
+    judgeEl.innerHTML = "<b>" + grade + "</b>" + (state.combo > 1 ? "<span>连 " + state.combo + "</span>" : "");
+    void judgeEl.offsetWidth;
+    judgeEl.classList.add("is-show");
+  }
+
+  /* 每吸附一个关节判定一次：离鼓点越近分越高 */
+  function judgeSnap(name) {
+    startBeat();
+    var d = beatPhase();
+    var grade = d <= 120 ? "准" : d <= 280 ? "良" : "失";
+    state.grades.push({ name: name, grade: grade });
+    if (grade === "失") {
+      state.combo = 0;
+    } else {
+      state.combo += 1;
+    }
+    state.score += grade === "准" ? 100 : grade === "良" ? 60 : 20;
+    if (state.combo > 1) state.score += (state.combo - 1) * 10;
+    showJudge(grade);
+  }
+
   function isTargetMet(name) {
     var lv = currentLevel();
     return typeof lv.targets[name] === "number" && Math.abs(state.rot[name] - lv.targets[name]) <= SNAP;
@@ -138,6 +218,7 @@
     if (!ok) return;
 
     state.busy = true;
+    judgeSnap(lv.name);          /* 每过一关判定一次：是否踩在鼓点上 */
     stamp.classList.remove("is-fire");
     void stamp.offsetWidth;
     stamp.classList.add("is-fire");
@@ -159,10 +240,31 @@
     state.passed = true;
     state.busy = false;
     stepItems.forEach(function (it) { it.classList.add("is-done"); });
-    lockNote.innerHTML = "<b>通关</b>：影窗剧场已解锁。三出戏都可以看了，灯也能自己调。";
+
+    var perfect = 0, good = 0, miss = 0;
+    state.grades.forEach(function (g) {
+      if (g.grade === "准") perfect += 1;
+      else if (g.grade === "良") good += 1;
+      else miss += 1;
+    });
+    var rank = "丙";
+    if (perfect >= 3) rank = "甲";
+    else if (perfect + good >= 2 && miss <= 1) rank = "乙";
+    var label = { "甲": "满堂彩", "乙": "叫好", "丙": "还行" }[rank];
+
+    lockNote.innerHTML = "<b>通关 · " + rank + " 等</b>：" + label + "。" +
+      "准 " + perfect + " · 良 " + good + " · 失 " + miss + "（" + state.score + " 分）。影窗剧场已解锁。";
+    if (finalRank && finalNote && finalBox) {
+      finalRank.textContent = rank;
+      finalNote.textContent = label + " ｜ " + state.score + " 分";
+      finalBox.hidden = false;
+    }
     toTheater.setAttribute("aria-disabled", "false");
     toTheater.textContent = "去剧场 →";
-    try { localStorage.setItem("playPassed", "1"); } catch (e) { /* 忽略 */ }
+    try {
+      localStorage.setItem("playPassed", "1");
+      localStorage.setItem("playResult", JSON.stringify({ rank: rank, score: state.score, perfect: perfect, good: good, miss: miss }));
+    } catch (e) { /* 忽略 */ }
     if (window.LampTheater && window.LampTheater.unlock) window.LampTheater.unlock();
   }
 
@@ -177,6 +279,7 @@
       var p = svgPoint(e);
       if (!p) return;
       e.preventDefault();
+      startBeat();
       el.classList.add("is-active");
       el.setPointerCapture(e.pointerId);
       drag = {
@@ -230,6 +333,7 @@
     /* 键盘：方向键微调，Enter 确认吸附 */
     el.addEventListener("keydown", function (e) {
       if (el.getAttribute("aria-disabled") === "true" || state.busy) return;
+      startBeat();
       var step = e.shiftKey ? 5 : 1;
       var cur = state.rot[name] || 0;
       if (e.key === "ArrowRight" || e.key === "ArrowUp") {
@@ -243,8 +347,10 @@
         var target = currentLevel().targets[name];
         if (typeof target === "number" && Math.abs(cur - target) <= 14) {
           setRot(name, target);
-          el.classList.add("is-snapped");
-          spring(el);
+          if (!el.classList.contains("is-snapped")) {
+            el.classList.add("is-snapped");
+            spring(el);
+          }
         }
       } else {
         return;
@@ -290,6 +396,10 @@
     state.open = CURTAIN_START;
     state.busy = false;
     state.passed = false;
+    state.grades = [];
+    state.combo = 0;
+    state.score = 0;
+    if (finalBox) finalBox.hidden = true;
     ["armL", "armR", "legL", "legR"].forEach(function (n) { setRot(n, 0); });
     joints.forEach(function (el) { el.classList.remove("is-snapped", "is-active", "is-hint"); });
     stage.style.setProperty("--open", CURTAIN_START + "%");
@@ -309,6 +419,21 @@
 
   if (resetBtn) resetBtn.addEventListener("click", reset);
   if (hintBtn) hintBtn.addEventListener("click", hintTargets);
+
+  if (soundBtn) {
+    soundBtn.addEventListener("click", function () {
+      state.sound = !state.sound;
+      soundBtn.setAttribute("aria-pressed", state.sound ? "true" : "false");
+      if (state.sound) {
+        if (!audioCtx) {
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) audioCtx = new AC();
+        }
+        if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+        startBeat();
+      }
+    });
+  }
 
   /* 静止 3 秒后，目标关节呼吸提示 */
   var idleTimer = null;

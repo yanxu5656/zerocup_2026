@@ -68,7 +68,11 @@
           <div class="stage" id="stageEl" data-level="0">
             <div class="stage__bar">
               <span>弄影台 · <b id="levelName">第一关 · 亮相</b></span>
-              <span id="tipText">拖动发光的关节</span>
+              <span class="stage__tools">
+                <span id="tipText">拖动发光的关节</span>
+                <span class="beat" id="beatPips" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <button class="stage__sound" id="soundBtn" type="button" aria-pressed="false" aria-label="开关鼓点音效">鼓</button>
+              </span>
             </div>
 
             <div class="stage__viewport" id="viewport">
@@ -155,6 +159,11 @@
               <button class="stage__grip stage__grip--r" id="gripR" type="button" aria-label="拖动拉开幕布">幕</button>
 
               <div class="stage__stamp" id="stamp" aria-hidden="true">成</div>
+              <div class="judge" id="judge" aria-live="polite"></div>
+              <div class="stage__final" id="stageFinal" hidden>
+                <span class="stage__final-rank" id="finalRank">甲</span>
+                <span class="stage__final-note" id="finalNote"></span>
+              </div>
               <div class="stage__hint" id="stageHint">第一关 · 把右臂抬到 <b>60°</b></div>
             </div>
 
