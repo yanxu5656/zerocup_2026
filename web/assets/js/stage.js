@@ -26,6 +26,7 @@
   var beatPips = document.getElementById("beatPips");
   var soundBtn = document.getElementById("soundBtn");
   var judgeEl = document.getElementById("judge");
+  var crowdEl = document.getElementById("crowd");
   var finalBox = document.getElementById("stageFinal");
   var finalRank = document.getElementById("finalRank");
   var finalNote = document.getElementById("finalNote");
@@ -176,6 +177,52 @@
     judgeEl.classList.add("is-show");
   }
 
+  /* 掌声：白噪声过带通，短促衰减，不用任何音频文件 */
+  function cheerNoise(strong) {
+    if (!state.sound || !audioCtx) return;
+    var sr = audioCtx.sampleRate;
+    var dur = 0.85;
+    var buf = audioCtx.createBuffer(1, Math.floor(sr * dur), sr);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) {
+      var k = 1 - i / d.length;
+      d[i] = (Math.random() * 2 - 1) * k * k;
+    }
+    var src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    var bp = audioCtx.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = strong ? 1400 : 900;
+    bp.Q.value = 0.8;
+    var g = audioCtx.createGain();
+    g.gain.value = strong ? 0.09 : 0.045;
+    src.connect(bp);
+    bp.connect(g);
+    g.connect(audioCtx.destination);
+    src.start();
+  }
+
+  var crowdTimer = 0;
+  function crowdMood(kind) {
+    if (!crowdEl) return;
+    window.clearTimeout(crowdTimer);
+    crowdEl.classList.remove("is-cheer", "is-hush");
+    viewport.classList.remove("is-cheer");
+    void crowdEl.offsetWidth;
+    if (kind === "hush") {
+      crowdEl.classList.add("is-hush");
+      crowdTimer = window.setTimeout(function () { crowdEl.classList.remove("is-hush"); }, 1200);
+    } else {
+      crowdEl.classList.add("is-cheer");
+      viewport.classList.add("is-cheer");
+      crowdTimer = window.setTimeout(function () {
+        crowdEl.classList.remove("is-cheer");
+        viewport.classList.remove("is-cheer");
+      }, 1500);
+      cheerNoise(kind === "cheer");
+    }
+  }
+
   /* 每吸附一个关节判定一次：离鼓点越近分越高 */
   function judgeSnap(name) {
     startBeat();
@@ -190,6 +237,7 @@
     state.score += grade === "准" ? 100 : grade === "良" ? 60 : 20;
     if (state.combo > 1) state.score += (state.combo - 1) * 10;
     showJudge(grade);
+    crowdMood(grade === "失" ? "hush" : grade === "准" ? "cheer" : "applause");
   }
 
   function isTargetMet(name) {

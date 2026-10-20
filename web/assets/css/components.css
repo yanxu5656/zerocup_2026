@@ -355,7 +355,7 @@
 .judge {
   position: absolute;
   left: 50%;
-  top: 32%;
+  top: 24%;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: baseline;
@@ -545,6 +545,66 @@
   100% { opacity: 0; transform: scale(1.9); }
 }
 
+/* 观众席：一排剪影。叫好时抬起来，砸场时缩下去 */
+.crowd {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translateX(-50%);
+  width: min(86%, 680px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(6px, 1.3vw, 20px);
+  pointer-events: none;
+  z-index: 5;
+}
+.crowd i {
+  position: relative;
+  display: block;
+  width: clamp(20px, 2.4vw, 34px);
+  height: clamp(24px, 2.8vw, 40px);
+  border-radius: 46% 46% 0 0;
+  background: radial-gradient(120% 110% at 50% 0%, #2A1507, #0A0603 68%);
+  transform: translateY(44%) scaleY(.92);
+  transform-origin: bottom center;
+  transition: transform .45s var(--ease), opacity .45s var(--ease);
+  opacity: .92;
+}
+/* 肩：比头宽一圈，剪影才像人，而不是一排圆角方块 */
+.crowd i::after {
+  content: "";
+  position: absolute;
+  left: -22%;
+  right: -22%;
+  bottom: 0;
+  height: 42%;
+  border-radius: 44% 44% 0 0;
+  background: inherit;
+}
+.crowd i:nth-child(2n) { height: clamp(28px, 3.2vw, 46px); }
+.crowd i:nth-child(3n) { height: clamp(22px, 2.5vw, 36px); }
+.crowd.is-cheer i { transform: translateY(-6%) scaleY(1); }
+.crowd.is-cheer i:nth-child(2n) { transition-delay: .06s; }
+.crowd.is-cheer i:nth-child(3n) { transition-delay: .12s; }
+.crowd.is-hush i { transform: translateY(66%) scaleY(.84); opacity: .58; }
+
+/* 叫好时影窗亮一下 */
+.stage__viewport.is-cheer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background: radial-gradient(62% 54% at 50% 80%, rgba(255, 240, 205, .42), transparent 72%);
+  animation: cheerFlash .75s var(--ease-out) forwards;
+}
+@keyframes cheerFlash {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .stage__hint {
   position: absolute;
   left: 50%;
@@ -552,7 +612,7 @@
   transform: translateX(-50%);
   padding: 7px 16px;
   border-radius: 999px;
-  background: rgba(13, 9, 6, .78);
+  background: rgba(10, 6, 3, .94);
   border: 1px solid rgba(201, 162, 39, .28);
   font-size: 12px;
   letter-spacing: .1em;
@@ -586,7 +646,7 @@
 .stage__stamp {
   position: absolute;
   left: 50%;
-  top: 46%;
+  top: 54%;
   transform: translate(-50%, -50%) scale(1.6);
   width: 118px;
   height: 118px;
