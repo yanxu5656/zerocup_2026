@@ -31,6 +31,7 @@
   var finalRank = document.getElementById("finalRank");
   var finalNote = document.getElementById("finalNote");
   var finalBranch = document.getElementById("finalBranch");
+  var shareBtn = document.getElementById("shareBtn");
   var board = document.getElementById("board");
   var boardList = document.getElementById("boardList");
   var boardEmpty = document.getElementById("boardEmpty");
@@ -42,7 +43,8 @@
   var BEAT_MS = 667;       /* 90 BPM，一拍 667ms */
   var state = {
     level: 0, rot: {}, open: CURTAIN_START, passed: false, busy: false,
-    sound: false, grades: [], combo: 0, score: 0
+    sound: false, grades: [], combo: 0, score: 0,
+    result: null, endingText: ""
   };
 
   var LEVELS = [
@@ -365,6 +367,7 @@
     if (perfect >= 3) rank = "甲";
     else if (miss === 0) rank = "乙";
     var label = { "甲": "满堂彩", "乙": "叫好", "丙": "还行" }[rank];
+    state.result = { rank: rank, perfect: perfect, good: good, miss: miss };
 
     lockNote.innerHTML = "<b>通关 · " + rank + " 等</b>：" + label + "。" +
       "准 " + perfect + " · 良 " + good + " · 失 " + miss + "（" + state.score + " 分）。影窗剧场已解锁。";
@@ -621,11 +624,27 @@
       if (!btn) return;
       var key = btn.getAttribute("data-ending");
       finalBranch.hidden = true;
+      state.endingText = ENDINGS[key] || "";
       var line = document.createElement("span");
       line.className = "stage__final-end";
       line.textContent = ENDINGS[key] || "";
       if (finalBox) finalBox.appendChild(line);
       try { localStorage.setItem("playEnding", key); } catch (err) { /* 忽略 */ }
+    });
+  }
+
+  /* 分享卡：把这一次的成绩画成一张 1080×1440 的图 */
+  if (shareBtn) {
+    shareBtn.addEventListener("click", function () {
+      if (!window.LampShare || !state.result) return;
+      window.LampShare.save({
+        rank: state.result.rank,
+        score: state.score,
+        perfect: state.result.perfect,
+        good: state.result.good,
+        miss: state.result.miss,
+        quote: state.endingText
+      });
     });
   }
 
