@@ -368,6 +368,10 @@
     else if (miss === 0) rank = "乙";
     var label = { "甲": "满堂彩", "乙": "叫好", "丙": "还行" }[rank];
     state.result = { rank: rank, perfect: perfect, good: good, miss: miss };
+    if (window.LampAch) {
+      window.LampAch.unlock("pass");
+      if (rank === "甲") window.LampAch.unlock("perfect");
+    }
 
     lockNote.innerHTML = "<b>通关 · " + rank + " 等</b>：" + label + "。" +
       "准 " + perfect + " · 良 " + good + " · 失 " + miss + "（" + state.score + " 分）。影窗剧场已解锁。";

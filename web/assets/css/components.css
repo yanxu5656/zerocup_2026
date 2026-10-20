@@ -334,6 +334,55 @@
   .craft:nth-child(-n+2) { border-top: 0; }
 }
 
+/* ---------- 解锁提示 ---------- */
+.toast {
+  position: fixed;
+  left: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vw, 40px);
+  z-index: 90;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(10, 6, 3, .95);
+  border: 1px solid var(--line-strong);
+  border-left: 2px solid var(--lamp);
+  box-shadow: 0 24px 50px -30px #000;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+  pointer-events: none;
+}
+.toast.is-in { opacity: 1; transform: none; }
+.toast b { font-size: var(--fs-micro); letter-spacing: .24em; color: var(--lamp); font-weight: 500; }
+.toast span { font-family: var(--serif); font-size: 15px; letter-spacing: .12em; color: var(--paper); }
+
+/* ---------- 徽章墙 ---------- */
+.ach-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 26px); }
+@media (max-width: 860px) { .ach-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ach {
+  padding: 20px 14px 18px;
+  border: 1px solid var(--hair);
+  text-align: center;
+  opacity: .38;
+  filter: grayscale(1);
+  transition: opacity var(--t-base) var(--ease), filter var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.ach.is-on { opacity: 1; filter: none; border-color: rgba(201, 162, 39, .32); }
+.ach__seal {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 14px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--lamp);
+}
+.ach__name { display: block; font-family: var(--serif); font-size: 15px; letter-spacing: .14em; }
+.ach__desc { display: block; margin-top: 7px; font-size: 11px; line-height: 1.75; color: var(--paper-faint); }
+
 /* ---------- 弄影台 ---------- */
 .stage-wrap { position: relative; }
 .stage {

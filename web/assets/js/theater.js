@@ -96,6 +96,10 @@
       state.line += 1;
       render();
       if (auto) holdAdvance();
+      /* 看到最后一句，这出就算看过了 */
+      if (state.line === p.lines.length - 1 && window.LampAch) {
+        window.LampAch.tick("play", state.play, 3, "plays");
+      }
     } else {
       state.playing = false;
       if (playBtn) playBtn.textContent = "重播";

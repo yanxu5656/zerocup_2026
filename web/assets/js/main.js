@@ -194,6 +194,7 @@
     var openModal = function (i) {
       var c = CRAFTS[i];
       if (!c) return;
+      if (window.LampAch) window.LampAch.tick("craft", i, 7, "crafts");
       lastFocus = document.activeElement;
       mIdx.textContent = "工序 " + "一二三四五六七".charAt(i) + " / 七";
       mTitle.textContent = c.name;

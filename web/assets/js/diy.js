@@ -9,6 +9,10 @@
 
   /* ---------- 通用下载 ---------- */
   function download(blob, filename) {
+    if (window.LampAch) {
+      if (/\.svg$/i.test(filename)) window.LampAch.unlock("pattern");
+      else if (/\.png$/i.test(filename)) window.LampAch.unlock("maker");
+    }
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url;

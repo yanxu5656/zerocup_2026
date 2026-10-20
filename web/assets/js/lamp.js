@@ -22,6 +22,7 @@
     body.dataset.lit = "1";
     try { localStorage.setItem("lampLit", "1"); } catch (e) { /* 忽略隐私模式 */ }
     if (hero) hero.setAttribute("data-lit", "1");
+    if (window.LampAch) window.LampAch.unlock("light");
   }
 
   if (!isLit() && hero) {
