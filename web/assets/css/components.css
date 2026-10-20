@@ -745,15 +745,21 @@
 }
 .screen__scene[data-scene="1"]::after {
   opacity: 1;
-  background: radial-gradient(58% 62% at 54% 46%, rgba(192, 57, 43, .22), transparent 68%);
+  background: radial-gradient(58% 62% at 54% 46%, rgba(192, 57, 43, .16), transparent 68%);
 }
 .screen__scene[data-scene="2"]::after {
   opacity: 1;
-  background: radial-gradient(70% 60% at 50% 84%, rgba(46, 91, 71, .26), transparent 70%);
+  background: radial-gradient(70% 60% at 50% 84%, rgba(46, 91, 71, .14), transparent 70%);
 }
 .scene-accent { display: none; }
 .screen__scene[data-scene="1"] .scene-accent[data-for="1"],
 .screen__scene[data-scene="2"] .scene-accent[data-for="2"] { display: block; }
+
+/* 每出戏用自己的影人：换戏时把默认那组收起来 */
+.screen__scene[data-scene="1"] #scenePuppetA,
+.screen__scene[data-scene="1"] #scenePuppetB,
+.screen__scene[data-scene="2"] #scenePuppetA,
+.screen__scene[data-scene="2"] #scenePuppetB { display: none; }
 .screen__vignette {
   position: absolute;
   inset: 0;
