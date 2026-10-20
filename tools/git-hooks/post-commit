@@ -1,0 +1,20 @@
+#!/bin/sh
+# 灯影 · 提交后自动同步到 GitHub
+# 约定：每完成一轮改动就 commit 并 push，失败不阻塞提交。
+# 关闭方式：删除本文件，或 chmod -x .git/hooks/post-commit
+
+branch=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
+[ -z "$branch" ] && exit 0
+
+log=".git/autopush.log"
+{
+  echo "--- $(date '+%Y-%m-%d %H:%M:%S')  push origin $branch"
+} >> "$log"
+
+if GIT_TERMINAL_PROMPT=0 git push origin "$branch" >> "$log" 2>&1; then
+  echo "[autopush] 已同步到 origin/$branch"
+else
+  echo "[autopush] 推送失败，稍后手动执行 git push（详见 .git/autopush.log）" >&2
+fi
+
+exit 0
