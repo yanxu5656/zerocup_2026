@@ -547,44 +547,56 @@
   touch-action: none;
 }
 
-/* 皮影本体：半透明皮革色 + 金线描边；脸部用 evenodd 挖出眼与口，光从孔里透过去 */
+/* 皮影本体：彩色透光皮 + 墨线勾轮廓。
+   真实皮影上色"纯用不调"，红绿黄各归各位，光从刀口里透过去才开始发亮 */
 .puppet__body,
-.puppet__limb,
-.puppet__face,
-.puppet__neck {
-  fill: rgba(108, 42, 15, .88);
-  stroke: rgba(224, 194, 122, .52);
+.puppet__limb {
+  fill: var(--pi-red);
+  stroke: var(--pi-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.puppet__neck { fill: var(--pi-skin); stroke: var(--pi-ink); stroke-width: 1.6; }
+.puppet__face {
+  fill: var(--pi-skin);
+  stroke: var(--pi-ink);
   stroke-width: 1.8;
   stroke-linejoin: round;
 }
-.puppet__face { fill: rgba(94, 34, 12, .92); stroke: rgba(224, 194, 122, .58); }
-.puppet__crown { fill: url(#leather); stroke: #7E4218; stroke-width: 1.2; stroke-linejoin: round; }
-.puppet__hand { fill: rgba(108, 42, 15, .9); stroke: rgba(224, 194, 122, .6); stroke-width: 1.5; }
-.puppet__bead { fill: var(--lamp); }
-.puppet__tassel { fill: none; stroke: var(--cinnabar); stroke-width: 2.6; stroke-linecap: round; }
-.puppet__brow { fill: none; stroke: var(--cinnabar); stroke-width: 2.8; stroke-linecap: round; }
+.puppet__crown {
+  fill: var(--pi-yellow);
+  stroke: var(--pi-ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.puppet__hand { fill: var(--pi-skin); stroke: var(--pi-ink); stroke-width: 1.5; }
+.puppet__bead { fill: var(--pi-ink); }
+.puppet__tassel { fill: none; stroke: var(--pi-ink); stroke-width: 2.6; stroke-linecap: round; }
+.puppet__brow { fill: none; stroke: var(--pi-ink); stroke-width: 3; stroke-linecap: round; }
 .puppet__nose,
 .puppet__ear,
 .puppet__trim,
 .puppet__scale {
   fill: none;
-  stroke: rgba(224, 194, 122, .44);
+  stroke: var(--pi-ink);
+  stroke-opacity: .72;
   stroke-width: 1.4;
   stroke-linecap: round;
 }
-.puppet__mirror { fill: rgba(168, 52, 42, .55); stroke: rgba(224, 194, 122, .72); stroke-width: 1.8; }
-.puppet__belt { fill: rgba(168, 52, 42, .88); }
+.puppet__mirror { fill: var(--pi-green); stroke: var(--pi-ink); stroke-width: 1.8; }
+.puppet__belt { fill: var(--pi-green); stroke: var(--pi-ink); stroke-width: 1.2; }
 
-/* 三根操纵签：一根颈签固定，两根手签随手走 */
-.puppet__sticks line { stroke: var(--gold-3); stroke-width: 1.4; stroke-linecap: round; }
-.puppet__sticks circle { fill: var(--gold-4); }
-.puppet__rail { fill: none; stroke: var(--gold-3); stroke-width: 3; stroke-linecap: round; }
+/* 三根操纵签：竹签本色，压在影人外面 */
+.puppet__sticks line { stroke: #7A5A32; stroke-width: 1.6; stroke-linecap: round; }
+.puppet__sticks circle { fill: #7A5A32; }
+.puppet__rail { fill: none; stroke: rgba(30, 20, 12, .55); stroke-width: 3; stroke-linecap: round; }
 
 /* 关节铆钉：让旋转的四肢始终"接"在身上，而不是浮在旁边 */
 .puppet__joint-cap {
-  fill: rgba(92, 36, 14, .96);
-  stroke: rgba(224, 194, 122, .5);
-  stroke-width: 1.6;
+  fill: var(--pi-ink);
+  stroke: var(--pi-skin);
+  stroke-opacity: .5;
+  stroke-width: 1.4;
 }
 
 /* 传承人肖像沿用灯光色 */
