@@ -138,8 +138,18 @@ body[data-lit="1"] .hero__scroll { display: none; }
 
 /* ---------- 首页：分隔 ---------- */
 .lede {
+  position: relative;
   padding-block: clamp(56px, 8vw, 112px);
-  border-top: 1px solid var(--gold-1);
+}
+/* 从暗场到正文的过渡：两端淡出的细线，比一条实线更像光 */
+.lede::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-2) 16%, var(--gold-2) 84%, transparent);
 }
 .lede__grid {
   display: grid;
@@ -150,6 +160,7 @@ body[data-lit="1"] .hero__scroll { display: none; }
 @media (max-width: 900px) { .lede__grid { grid-template-columns: 1fr; } }
 .lede__seal {
   justify-self: end;
+  align-self: start;
   width: clamp(120px, 16vw, 190px);
   aspect-ratio: 1;
   border: 1px solid rgba(168, 52, 42, .5);

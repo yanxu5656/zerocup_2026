@@ -72,6 +72,18 @@
 .entry::after { content: none; }
 .entry:hover::before,
 .entry:focus-visible::before { transform: scaleX(1); }
+/* 展签：每个入口一枚线描标记，替代纯文字的目录感 */
+.entry__mark {
+  position: absolute;
+  top: clamp(26px, 2.8vw, 40px);
+  right: clamp(4px, 1vw, 16px);
+  width: 56px;
+  height: 76px;
+  color: var(--gold-4);
+  transition: color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+.entry__mark svg { display: block; width: 100%; height: 100%; }
+.entry:hover .entry__mark { color: var(--lamp); }
 .entry__num {
   display: block;
   font-family: var(--num);
