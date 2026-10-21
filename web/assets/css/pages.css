@@ -191,10 +191,10 @@ body[data-lit="1"] .hero__scroll { display: none; }
 .crafts-block { padding-block: clamp(56px, 8vw, 112px); }
 
 /* ---------- 弄影 ---------- */
-.play-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: clamp(20px, 3vw, 44px); align-items: start; }
+.play-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: clamp(24px, 3vw, 48px); align-items: start; }
 @media (max-width: 1024px) { .play-layout { grid-template-columns: 1fr; } }
-.play-side { display: flex; flex-direction: column; gap: 20px; }
-.step-list { display: grid; gap: 16px; }
+.play-side { display: flex; flex-direction: column; gap: var(--gap-el); }
+.step-list { display: grid; gap: 20px; }
 .step-item { display: flex; gap: 16px; align-items: flex-start; }
 .step-item__no {
   flex: none;
@@ -211,7 +211,7 @@ body[data-lit="1"] .hero__scroll { display: none; }
 .locked-note {
   border: 1px dashed var(--gold-3);
   border-radius: 3px;
-  padding: 16px 20px;
+  padding: 20px 24px;
   font-size: var(--fs-small);
   color: var(--paper-faint);
   line-height: 1.9;
@@ -219,7 +219,7 @@ body[data-lit="1"] .hero__scroll { display: none; }
 .locked-note b { color: var(--lamp); font-weight: 500; }
 
 /* ---------- 榜单 ---------- */
-.board { padding-top: 16px; border-top: 1px solid var(--hair); }
+.board { padding-top: var(--gap-el); border-top: 1px solid var(--hair); }
 .board[hidden] { display: none; }
 .board__head {
   display: flex;
@@ -230,7 +230,7 @@ body[data-lit="1"] .hero__scroll { display: none; }
   color: var(--paper-faint);
 }
 .board__mode { color: var(--lamp); letter-spacing: .16em; }
-.board__list { margin-top: 12px; display: flex; flex-direction: column; }
+.board__list { margin-top: 16px; display: flex; flex-direction: column; }
 .board__row {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr) auto auto;

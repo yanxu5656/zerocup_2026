@@ -23,6 +23,14 @@
 .btn--solid:hover { background: var(--lamp-soft); border-color: var(--lamp-soft); }
 .btn--ghost { border-color: rgba(244, 237, 224, .18); color: var(--paper-dim); }
 .btn[disabled] { opacity: .38; cursor: not-allowed; }
+/* 不可用的主按钮不该是全页最重的色块：退成描边，等解锁再亮 */
+.btn--solid[aria-disabled="true"] {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--paper-faint);
+  filter: none;
+  opacity: 1;
+}
 
 .chip {
   display: inline-flex;
