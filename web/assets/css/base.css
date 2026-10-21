@@ -84,19 +84,27 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   font-size: var(--fs-micro);
-  letter-spacing: .34em;
-  color: var(--lamp);
-  text-transform: uppercase;
+  letter-spacing: .3em;
+  color: var(--cinnabar-lit);
+  text-transform: none;
 }
+/* 章节标记按「图版」处理：朱色小方块 + 细线 + 编号，像图录而不是网页小标题 */
 .eyebrow::before {
   content: "";
-  width: 34px;
-  height: 1px;
-  background: var(--line-strong);
+  width: 7px;
+  height: 7px;
+  background: var(--cinnabar-lit);
+  transform: rotate(45deg);
   flex: none;
 }
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  max-width: 96px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-3), transparent);}
 
 h1, h2, h3, .serif { font-family: var(--serif); font-weight: 500; }
 h1 { font-size: var(--fs-h1); line-height: 1.22; letter-spacing: .12em; }
