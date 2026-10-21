@@ -35,8 +35,8 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(1000px 560px at 50% -6%, rgba(201, 162, 39, .10), rgba(201, 162, 39, 0) 66%),
-    radial-gradient(1300px 860px at 50% 118%, rgba(201, 162, 39, .04), rgba(201, 162, 39, 0) 72%);
+    radial-gradient(1000px 560px at 50% -6%, var(--gold-1), rgba(201, 162, 39, 0) 66%),
+    radial-gradient(1300px 860px at 50% 118%, var(--gold-1), rgba(201, 162, 39, 0) 72%);
   opacity: calc(.35 + var(--lamp-level) * .65);
   transition: opacity .8s var(--ease);
 }
@@ -60,10 +60,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   top: 12px;
   left: 16px;
   z-index: 200;
-  padding: 10px 16px;
+  padding: 12px 16px;
   background: var(--lamp);
   color: var(--ink);
-  font-size: 13px;
+  font-size: var(--fs-small);
   transform: translateY(-160%);
   transition: transform .2s var(--ease);
 }
@@ -142,7 +142,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
   background: var(--cinnabar);
   color: #FBEFDD;
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: var(--fs-h4);
   line-height: 1;
   border-radius: 2px;
   position: relative;
@@ -156,16 +156,16 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
   border: 1px solid rgba(251, 239, 221, .42);
   border-radius: 1px;
 }
-.brand__name { font-family: var(--serif); font-size: 21px; letter-spacing: .22em; line-height: 1.1; }
-.brand__sub { display: block; font-size: 9px; letter-spacing: .3em; color: var(--paper-faint); margin-top: 4px; }
+.brand__name { font-family: var(--serif); font-size: var(--fs-h4); letter-spacing: .22em; line-height: 1.1; }
+.brand__sub { display: block; font-size: var(--fs-micro); letter-spacing: .3em; color: var(--paper-faint); margin-top: 4px; }
 
-.nav__links { display: flex; align-items: center; gap: clamp(20px, 2.8vw, 46px); }
+.nav__links { display: flex; align-items: center; gap: clamp(20px, 2.8vw, 48px); }
 .nav__links a {
   position: relative;
-  font-size: 12.5px;
+  font-size: var(--fs-small);
   letter-spacing: .2em;
   color: var(--paper-dim);
-  padding: 6px 0;
+  padding: 8px 0;
   transition: color .25s var(--ease);
 }
 .nav__links a::after {
@@ -217,7 +217,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-    padding: 18px var(--page) 26px;
+    padding: 20px var(--page) 28px;
     background: rgba(12, 9, 6, .97);
     border-bottom: 1px solid var(--line);
     transform: translateY(-12px);
@@ -226,7 +226,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
     transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
   }
   .nav__links[data-open="true"] { opacity: 1; visibility: visible; transform: translateY(0); }
-  .nav__links a { font-size: 16px; padding: 12px 0; width: 100%; border-bottom: 1px solid rgba(201, 162, 39, .1); }
+  .nav__links a { font-size: var(--fs-body); padding: 12px 0; width: 100%; border-bottom: 1px solid var(--gold-1); }
 }
 
 /* ---------- 页脚 ---------- */
@@ -240,33 +240,33 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 40px;
 }
-.footer__title { font-family: var(--serif); font-size: 18px; letter-spacing: .18em; }
-.footer__line { font-size: 13px; color: var(--paper-faint); line-height: 2; }
+.footer__title { font-family: var(--serif); font-size: var(--fs-h4); letter-spacing: .18em; }
+.footer__line { font-size: var(--fs-small); color: var(--paper-faint); line-height: 2; }
 /* 界面规格声明：比赛要求"作品中须附带说明"，故比其余页脚文字略亮 */
 .footer__spec {
   margin-top: 8px;
-  font-size: 12px;
+  font-size: var(--fs-small);
   letter-spacing: .04em;
   color: rgba(244, 237, 224, .62);
 }
 .footer__col h4 {
-  font-size: 11px;
+  font-size: var(--fs-micro);
   letter-spacing: .24em;
   color: var(--lamp);
   font-weight: 500;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
-.footer__col a { display: block; font-size: 13px; color: var(--paper-dim); padding: 4px 0; }
+.footer__col a { display: block; font-size: var(--fs-small); color: var(--paper-dim); padding: 4px 0; }
 .footer__col a:hover { color: var(--lamp); }
 .footer__bottom {
   margin-top: 44px;
   padding-top: 20px;
-  border-top: 1px solid rgba(201, 162, 39, .1);
+  border-top: 1px solid var(--gold-1);
   display: flex;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  font-size: 11.5px;
+  font-size: var(--fs-micro);
   letter-spacing: .08em;
   color: rgba(244, 237, 224, .3);
 }
