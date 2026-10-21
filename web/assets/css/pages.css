@@ -280,3 +280,31 @@ body[data-lit="1"] .hero__scroll { display: none; }
 .case__body { padding: 20px 20px 24px; }
 .case__title { font-family: var(--serif); font-size: var(--fs-h4); letter-spacing: .1em; }
 .case__text { font-size: var(--fs-small); line-height: 1.9; color: var(--paper-dim); margin-top: 8px; }
+
+/* ---------- 书口：页头侧标做成竖排书脊 ---------- */
+.masthead__glyph {
+  writing-mode: vertical-rl;
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+  letter-spacing: .42em;
+  color: var(--cinnabar-lit);
+  border-right: 1px solid var(--gold-2);
+  padding-right: 18px;
+}
+.masthead__glyph span {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: var(--fs-micro);
+  letter-spacing: .38em;
+  color: var(--paper-faint);
+}
+@media (max-width: 860px) {
+  .masthead__glyph {
+    writing-mode: horizontal-tb;
+    letter-spacing: .18em;
+    border-right: 0;
+    border-bottom: 1px solid var(--gold-2);
+    padding: 0 0 12px;
+  }
+}
