@@ -126,7 +126,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  background: rgba(12, 9, 6, .70);
+  background: rgba(237, 227, 208, .88);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--hair);
@@ -319,3 +319,64 @@ html.is-static [data-stagger].is-in > * { animation: none; }
 .mt-24 { margin-top: var(--s5); }
 .measure { max-width: 56ch; }
 .sprite-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- 导航：纸本版 ---------- */
+.nav { border-bottom: 1px solid var(--hair); }
+.nav__inner { min-height: 76px; }
+
+/* 标志：一根朱条 + 宋体书名，替掉原来的红方块 + 英文 */
+.brand { gap: 14px; }
+.brand__seal {
+  width: 8px;
+  height: 30px;
+  background: var(--cinnabar);
+  color: transparent;
+  font-size: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.brand__seal::after { display: none; }
+.brand__name {
+  font-size: var(--fs-h3);
+  letter-spacing: .3em;
+  color: var(--paper);
+  line-height: 1;
+}
+.brand__sub {
+  margin-top: 6px;
+  font-size: var(--fs-micro);
+  letter-spacing: .32em;
+  color: var(--paper-faint);
+}
+
+/* 菜单项：字重与色阶拉开，当前页给朱色下划线 */
+.nav__links { gap: clamp(22px, 2.6vw, 44px); }
+.nav__links a {
+  font-size: var(--fs-small);
+  letter-spacing: .22em;
+  color: var(--paper);
+  opacity: .68;
+  padding: 10px 0;
+  transition: opacity var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.nav__links a:hover { opacity: 1; }
+.nav__links a::after {
+  height: 2px;
+  background: var(--cinnabar);
+  bottom: 2px;
+}
+.nav__links a[aria-current="page"] {
+  opacity: 1;
+  color: var(--cinnabar);
+}
+.nav__links a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+@media (max-width: 860px) {
+  .nav__links a { opacity: 1; }
+}
+/* 标志去掉英文副行，只留朱条 + 书名 */
+.brand__sub { display: none; }
+.brand__seal { height: 26px; align-self: center; }
+.brand__name { letter-spacing: .34em; }
