@@ -1277,3 +1277,26 @@ a[aria-disabled="true"],
   .entry:nth-child(1) { border-bottom: 0; }
   .entry:nth-child(2) .entry__mark { width: 56px; height: 76px; }
 }
+
+/* ---------- 纸本主题：深色区块要留在自己的暗域里 ---------- */
+.stage,
+.theater,
+.screen__scene,
+.modal__box,
+.diy__preview {
+  --ink: #0C0906;
+  --ink-2: #13100B;
+  --curtain: #1A140E;
+  --paper: #F4EDE0;
+  --paper-dim: #C3B6A3;
+  --paper-faint: rgba(244, 237, 224, .52);
+  --hair: rgba(244, 237, 224, .10);
+  --hair-strong: rgba(244, 237, 224, .22);
+  --lamp: #C9A227;
+  --lamp-soft: #E0C27A;
+  --lamp-hot: #F4E2B2;
+  --gold-1: rgba(201, 162, 39, .13);
+  --gold-2: rgba(201, 162, 39, .20);
+  --gold-3: rgba(201, 162, 39, .32);
+  --gold-4: rgba(201, 162, 39, .65);
+}
