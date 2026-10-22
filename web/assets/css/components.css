@@ -1337,3 +1337,12 @@ a[aria-disabled="true"],
   border-top: 1px solid var(--hair-strong);
 }
 .footer__title { color: var(--paper); }
+
+/* 剧场里的影人：从纯黑改为深赭，和舞台的彩皮同属一个色系；
+   远景小图不追求分部件上色，但至少不能是"另一个世界"的纯黑 */
+.screen__scene [fill="#120A05"],
+.screen__scene [fill="#150C06"],
+.screen__scene #scenePuppetA,
+.screen__scene #scenePuppetB {
+  fill: #43190F;
+}
