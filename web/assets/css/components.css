@@ -1247,3 +1247,33 @@ a[aria-disabled="true"],
   height: max(100%, 44px);
   background: none;
 }
+
+/* ---------- 入口：图版式非对称栅格（1 主 2 副）---------- */
+.entries {
+  grid-template-columns: minmax(0, 1.42fr) minmax(0, .58fr);
+  gap: 0 clamp(24px, 3.4vw, 56px);
+}
+.entry:nth-child(2) { grid-column: 1; grid-row: 1 / span 2; }
+.entry:nth-child(1) { grid-column: 2; grid-row: 1; }
+.entry:nth-child(3) { grid-column: 2; grid-row: 2; }
+
+/* 副图版压扁，让主图版在高度上占优 */
+.entry:nth-child(1),
+.entry:nth-child(3) { min-height: 0; padding-block: clamp(20px, 2.2vw, 30px); }
+.entry:nth-child(1) { border-bottom: 1px solid var(--hair); }
+.entry:nth-child(3) .entry__mark { top: clamp(20px, 2.2vw, 30px); }
+
+/* 主图版的标记放大一号 */
+.entry:nth-child(2) .entry__mark { width: 72px; height: 98px; }
+
+@media (max-width: 860px) {
+  .entries { grid-template-columns: 1fr; }
+  .entry:nth-child(n) {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: clamp(200px, 40vw, 260px);
+    padding-block: clamp(22px, 4vw, 32px);
+  }
+  .entry:nth-child(1) { border-bottom: 0; }
+  .entry:nth-child(2) .entry__mark { width: 56px; height: 76px; }
+}
