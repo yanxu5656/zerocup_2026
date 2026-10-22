@@ -285,7 +285,7 @@
   aspect-ratio: 4 / 3;
   border: 1px solid var(--hair);
   border-radius: var(--r-sm);
-  background: radial-gradient(120% 90% at 50% 0%, var(--gold-1), rgba(26, 20, 14, .9));
+  background: radial-gradient(120% 90% at 50% 0%, var(--gold-1), rgba(237, 227, 208, .94));
   display: grid;
   place-items: center;
   padding: 20px;
@@ -364,7 +364,7 @@
   align-items: baseline;
   gap: 12px;
   padding: 12px 20px;
-  background: rgba(10, 6, 3, .95);
+  background: rgba(246, 239, 225, .97);
   border: 1px solid var(--line-strong);
   border-left: 2px solid var(--lamp);
   box-shadow: 0 24px 50px -30px #000;
@@ -492,7 +492,7 @@
   align-items: center;
   gap: 12px;
   padding: 24px 44px 24px;
-  background: rgba(10, 6, 3, .88);
+  background: rgba(246, 239, 225, .95);
   border: 1px solid var(--line-strong);
   box-shadow: 0 30px 70px -40px #000;
   z-index: 10;
@@ -735,7 +735,7 @@
   transform: translateX(-50%);
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(10, 6, 3, .94);
+  background: rgba(246, 239, 225, .96);
   border: 1px solid var(--gold-3);
   font-size: var(--fs-small);
   letter-spacing: .1em;
@@ -1299,4 +1299,21 @@ a[aria-disabled="true"],
   --gold-2: rgba(201, 162, 39, .20);
   --gold-3: rgba(201, 162, 39, .32);
   --gold-4: rgba(201, 162, 39, .65);
+}
+/* 工序区块：纸面上不再压暗底 */
+.crafts, .crafts-block, .crafts-wrap { background: transparent; }
+/* 工序区本来是为暗底设计的，强制改亮会让标题消失——改为"纸上的暗窗" */
+.crafts-block, .crafts {
+  background: #14100B;
+  --paper: #F4EDE0;
+  --paper-dim: #C3B6A3;
+  --paper-faint: rgba(244, 237, 224, .52);
+  --hair: rgba(244, 237, 224, .10);
+  --hair-strong: rgba(244, 237, 224, .22);
+  --lamp: #C9A227;
+  --gold-1: rgba(201, 162, 39, .13);
+  --gold-2: rgba(201, 162, 39, .20);
+  --gold-3: rgba(201, 162, 39, .32);
+  --gold-4: rgba(201, 162, 39, .65);
+  --cinnabar-lit: #C85C48;
 }

@@ -226,7 +226,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
     align-items: flex-start;
     gap: 4px;
     padding: 20px var(--page) 28px;
-    background: rgba(12, 9, 6, .97);
+    background: rgba(237, 227, 208, .98);
     border-bottom: 1px solid var(--line);
     transform: translateY(-12px);
     opacity: 0;
@@ -241,7 +241,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.5; letter-spacing: .1em; }
 .footer {
   border-top: 1px solid var(--hair);
   padding-block: clamp(56px, 7vw, 88px) clamp(32px, 4vw, 48px);
-  background: linear-gradient(180deg, rgba(26, 20, 14, 0), rgba(26, 20, 14, .55));
+  background: linear-gradient(180deg, rgba(237, 227, 208, 0), rgba(237, 227, 208, .92));
 }
 .footer__grid {
   display: grid;
