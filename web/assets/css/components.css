@@ -1349,3 +1349,6 @@ a[aria-disabled="true"],
 .screen__scene #scenePuppetB {
   fill: #43190F;
 }
+/* 传承人卡是暗窗，卡内文字必须显式用浅色，否则会继承纸底的墨色 */
+.master__face { color: rgba(244, 237, 224, .94); }
+.master__name { color: #F4EDE0; }
