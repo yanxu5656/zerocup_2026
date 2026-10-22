@@ -120,7 +120,7 @@
 body[data-lit="0"] .site { opacity: 0; visibility: hidden; }
 body[data-lit="0"] .hero__title,
 body[data-lit="0"] .hero__sub,
-body[data-lit="0"] .hero__kicker { opacity: 1; transform: none; color: rgba(244, 237, 224, .32); }
+body[data-lit="0"] .hero__kicker { opacity: 1; transform: none; color: rgba(36, 26, 18, .30); }
 body[data-lit="0"] .hero__lamp { opacity: .42; }
 body[data-lit="0"] .nav { background: transparent; border-color: transparent; }
 body[data-lit="0"] .nav__links { opacity: 0; pointer-events: none; }
@@ -308,3 +308,11 @@ body[data-lit="1"] .hero__scroll { display: none; }
     padding: 0 0 12px;
   }
 }
+
+/* 纸上是不会发光的：去掉整片光晕，只让灯自己亮 */
+.hero__glow { display: none; }
+body[data-lit="1"] .hero__lamp {
+  color: var(--cinnabar);
+  filter: drop-shadow(0 0 26px rgba(178, 58, 40, .38));
+}
+body[data-lit="1"] .hero__title em { color: var(--cinnabar); }
