@@ -1317,3 +1317,23 @@ a[aria-disabled="true"],
   --gold-4: rgba(201, 162, 39, .65);
   --cinnabar-lit: #C85C48;
 }
+
+/* ---------- 纸本调校：行宽、暗窗定边、页脚 ---------- */
+/* 墨字在纸上比白字在黑底上"重"，行宽要相应收窄 */
+:root { --measure: 31em; }
+
+/* 暗窗必须有边，否则像漏印的一块 */
+.stage,
+.theater,
+.diy__preview,
+.modal__box,
+.screen__scene {
+  box-shadow: 0 0 0 1px rgba(36, 26, 18, .16), 0 22px 44px -34px rgba(36, 26, 18, .55);
+}
+
+/* 页脚：纸底上靠一条实线立住，去掉任何暗底残留 */
+.footer {
+  background: transparent;
+  border-top: 1px solid var(--hair-strong);
+}
+.footer__title { color: var(--paper); }
