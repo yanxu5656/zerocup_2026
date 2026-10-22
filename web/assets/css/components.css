@@ -326,10 +326,10 @@
   font-size: var(--fs-h2);
   line-height: 1;
   letter-spacing: 0;
-  color: rgba(26, 20, 14, .16);
+  color: rgba(244, 237, 224, .17);
   transition: color var(--t-base) var(--ease);
 }
-.craft:hover .craft__idx { color: rgba(168, 52, 42, .55); }
+.craft:hover .craft__idx { color: rgba(200, 92, 72, .62); }
 .craft__name {
   display: block;
   font-family: var(--serif);
