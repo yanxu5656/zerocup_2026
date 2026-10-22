@@ -1283,7 +1283,9 @@ a[aria-disabled="true"],
 .theater,
 .screen__scene,
 .modal__box,
-.diy__preview {
+.diy__preview,
+.master {
+  --cinnabar-lit: #C85C48;
   --ink: #0C0906;
   --ink-2: #13100B;
   --curtain: #1A140E;
@@ -1327,7 +1329,8 @@ a[aria-disabled="true"],
 .theater,
 .diy__preview,
 .modal__box,
-.screen__scene {
+.screen__scene,
+.master {
   box-shadow: 0 0 0 1px rgba(36, 26, 18, .16), 0 22px 44px -34px rgba(36, 26, 18, .55);
 }
 
