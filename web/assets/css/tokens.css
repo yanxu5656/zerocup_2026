@@ -1,63 +1,66 @@
 /* =========================================================
-   灯影 · tokens.css  (v2 · 宋刻暗金)
-   全站唯一的设计变量来源。页面层不得再写颜色/时长字面量。
-   气质关键词：宋刻、暗金、大留白、细线、克制
+   灯影 · tokens.css  (v3 · 玄室亮幕 × 宋刻宣纸)
+   全站唯一的设计变量来源。
+   美学体系：博物院级宋版乌丝栏装帧 + 暗室透光亮幕皮影戏台
    ========================================================= */
 
 :root {
-  /* ---------- 颜色：比 v1 更深、更旧、更哑 ---------- */
-  --ink: #EDE3D0;          /* 纸底：米白偏暖 */
-  --ink-2: #E4D9C4;
-  --curtain: #F6EFE1;      /* 卡片：比纸略亮 */
-  --paper: #241A12;        /* 墨字 */
-  --paper-dim: #52422F;
-  --paper-faint: rgba(36, 26, 18, .62);   /* 纸底上的弱化字 */
+  /* ---------- 宋刻宣纸域（默认画卷底） ---------- */
+  --ink: #F2EAE0;          /* 澄心堂暖宣底 */
+  --ink-2: #E7DCCB;        /* 次级宣纸底 / 格眼底 */
+  --curtain: #FAF6EF;      /* 高白册页底（卡片/展签） */
+  --paper: #1C140E;        /* 徽墨主字（对比度 13.8:1） */
+  --paper-dim: #4A392A;    /* 老茶次字（对比度 8.1:1） */
+  --paper-faint: #6E5844;  /* 檀灰弱字（对比度 5.2:1，彻底杜绝隐形字） */
 
-  --lamp: #8A5410;         /* 纸底上的赭色，替代金 */
-  --lamp-soft: #E0C27A;
-  --lamp-hot: #F4E2B2;
-  --ochre: #B06A32;
-  --cinnabar: #A8342A;
-  --cinnabar-lit: #9E3222; /* 纸底上的朱（5.6:1）；暗窗内另设为 #C85C48 */
-  --jade: #2E5B47;
+  /* ---------- 金石与丹青强调色 ---------- */
+  --lamp: #8A5212;         /* 泥金 / 老铜 */
+  --lamp-soft: #C89238;    /* 鎏金亮色 */
+  --lamp-hot: #F6E2B3;     /* 灯芯高光 */
+  --ochre: #A65C22;        /* 赭石 */
+  --cinnabar: #9E2A20;     /* 银朱 / 印泥红 */
+  --cinnabar-lit: #9E2A20; /* 宣纸上的朱砂（5.9:1） */
+  --jade: #2B5E44;         /* 石绿 */
+  --indigo: #284657;       /* 靛青 */
 
-  /* ---------- 皮影色：胭脂红 / 石绿 / 藤黄 / 锅黑 ----------
-     传统上色"纯用不调"，颜色靠透光发亮，所以饱和度必须给足 */
-  --pi-ink: #1E140C;
-  --pi-red: #B23A28;
-  --pi-green: #3E6B4B;
-  --pi-yellow: #D9A02B;
-  --pi-skin: #F3E3C4;
+  /* ---------- 皮影本体敷彩色：纯用不调，靠透光发亮 ---------- */
+  --pi-ink: #1A1008;       /* 锅黑刀线 */
+  --pi-red: #BC3426;       /* 胭脂大红 */
+  --pi-green: #2E6848;     /* 矿物石绿 */
+  --pi-yellow: #DF9E26;    /* 明透藤黄 */
+  --pi-skin: #F7E8CA;      /* 刮薄黄牛皮本色 */
 
-  /* ---------- 金：4 档，同屏只允许出现 2 档 ---------- */
-  --gold-1: rgba(140, 96, 40, .18);
-  --gold-2: rgba(140, 96, 40, .28);
-  --gold-3: rgba(140, 96, 40, .45);
-  --gold-4: rgba(140, 96, 40, .78);
+  /* ---------- 泥金阶梯：4 档 ---------- */
+  --gold-1: rgba(138, 82, 18, .12);
+  --gold-2: rgba(138, 82, 18, .24);
+  --gold-3: rgba(138, 82, 18, .44);
+  --gold-4: rgba(138, 82, 18, .76);
 
-  /* ---------- 线：语义别名，指向金的档位 ---------- */
-  --line: var(--gold-1);
-  --line-strong: var(--gold-3);
-  --hair: rgba(36, 26, 18, .14);
-  --hair-strong: rgba(36, 26, 18, .28);
+  /* ---------- 宋版乌丝栏与界线 ---------- */
+  --line: rgba(120, 86, 44, .22);
+  --line-strong: rgba(120, 86, 44, .48);
+  --hair: rgba(36, 24, 14, .15);
+  --hair-strong: rgba(36, 24, 14, .32);
+  --frame-outer: rgba(112, 82, 48, .38);
+  --frame-inner: rgba(112, 82, 48, .16);
 
-  /* ---------- 字体 ---------- */
-  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", serif;
-  --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB", sans-serif;
+  /* ---------- 字体系统 ---------- */
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", "FZShuSong-Z01S", "SimSun", serif;
+  --sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
   --num: Georgia, "Times New Roman", serif;
 
-  /* ---------- 字阶：8 档，标题 fluid ---------- */
-  --fs-display: clamp(42px, 7vw, 96px);
-  --fs-h1: clamp(32px, 4.2vw, 58px);
-  --fs-h2: clamp(26px, 2.4vw, 36px);
-  --fs-h3: clamp(18px, 1.6vw, 23px);
-  --fs-h4: clamp(18px, 1.4vw, 21px);
-  --fs-lead: clamp(15px, 1.15vw, 18px);
+  /* ---------- 字阶：9 档 ---------- */
+  --fs-display: clamp(44px, 6.6vw, 88px);
+  --fs-h1: clamp(32px, 4.2vw, 56px);
+  --fs-h2: clamp(24px, 2.5vw, 36px);
+  --fs-h3: clamp(19px, 1.6vw, 24px);
+  --fs-h4: clamp(17px, 1.35vw, 20px);
+  --fs-lead: clamp(15.5px, 1.15vw, 18px);
   --fs-body: 15px;
-  --fs-small: 13px;
-  --fs-micro: 11.5px;
+  --fs-small: 13.5px;
+  --fs-micro: 12px;
 
-  /* ---------- 节奏 ---------- */
+  /* ---------- 缓动与时长 ---------- */
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-out: cubic-bezier(.16, .84, .44, 1);
   --ease-in-out: cubic-bezier(.65, .05, .36, 1);
@@ -66,7 +69,7 @@
   --t-base: 320ms;
   --t-slow: 640ms;
 
-  /* ---------- 间距（4px 基准，补两档大间距） ---------- */
+  /* ---------- 间距（4px 基准网格） ---------- */
   --s1: 4px;
   --s2: 8px;
   --s3: 12px;
@@ -78,20 +81,20 @@
   --s9: 104px;
   --s10: 144px;
 
-  /* ---------- 节奏：区块内部用这两档 ---------- */
-  --gap-el: 24px;      /* 同组元素之间 */
-  --gap-block: 48px;   /* 组与组之间 */
+  /* ---------- 节奏 ---------- */
+  --gap-el: 24px;
+  --gap-block: 48px;
 
-  /* ---------- 圆角：近乎直角 ---------- */
-  --r-sm: 1px;
-  --r-md: 2px;
+  /* ---------- 圆角：宋刻古籍近直角 ---------- */
+  --r-sm: 2px;
+  --r-md: 3px;
 
   /* ---------- 布局 ---------- */
-  --page: clamp(20px, 5vw, 112px);
-  --nav-h: 72px;
-  --measure: 34em;
+  --page: clamp(20px, 5vw, 96px);
+  --nav-h: 76px;
+  --measure: 36em;
 
-  /* ---------- 光：整站唯一的亮度参数 0.15 ~ 1 ---------- */
+  /* ---------- 光：整站亮度参数 ---------- */
   --lamp-level: 1;
   --ambient: calc(.35 + var(--lamp-level) * .65);
   --key: calc(.3 + var(--lamp-level) * .7);
