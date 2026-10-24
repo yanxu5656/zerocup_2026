@@ -48,7 +48,6 @@
 <main class="main">
   <section class="hero" id="hero">
     <span class="hero__cord" aria-hidden="true"></span>
-    <span class="hero__glow" aria-hidden="true"></span>
 
     <span class="hero__lamp" aria-hidden="true">
       <svg viewBox="0 0 80 112" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,6 +60,22 @@
         <path d="M40 82v10" opacity=".5"/>
       </svg>
     </span>
+
+    <!-- 实体影窗：亮幕是这方窗，不是满屏光晕 -->
+    <div class="hero__screen" aria-hidden="true">
+      <span class="hero__screen-curtain hero__screen-curtain--l"></span>
+      <span class="hero__screen-curtain hero__screen-curtain--r"></span>
+      <span class="hero__puppet">
+        <svg viewBox="0 0 44 60" fill="currentColor">
+          <path d="M13.75 7.6l2.5-4 2.5 3.5 3-3.5 3 3.5 3-3.5 2.5 4z"/>
+          <circle cx="22" cy="13" r="5.6"/>
+          <path d="M16.4 20h11.2l3.2 17-1 8.5H14.2l-1-8.5z"/>
+          <path d="M15.6 21L9.4 11l2.6-1.6 6.2 10z"/>
+          <path d="M28.4 21l6.2-10-2.6-1.6-6.2 10z"/>
+          <path d="M17 45.5h3.4L20 56h-2.6zM23.6 45.5H27L26.6 56h-2.6z"/>
+        </svg>
+      </span>
+    </div>
 
     <div class="hero__content">
       <p class="hero__kicker">零杯 2026 · 非遗 · 中国皮影戏</p>
@@ -120,7 +135,7 @@
 
           <a class="entry" href="play.html" id="entryPlay">
             <span class="entry__mark" aria-hidden="true"><svg viewBox="0 0 44 60" fill="currentColor">
-              <path d="M22 5l2.5-4 2.5 3.5L30 1l3 3.5L36 1l2.5 4z"/>
+              <path d="M13.75 7.6l2.5-4 2.5 3.5 3-3.5 3 3.5 3-3.5 2.5 4z"/>
               <circle cx="22" cy="13" r="5.6"/>
               <path d="M16.4 20h11.2l3.2 17-1 8.5H14.2l-1-8.5z"/>
               <path d="M15.6 21L9.4 11l2.6-1.6 6.2 10z"/>

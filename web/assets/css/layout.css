@@ -1,11 +1,11 @@
 /* =========================================================
-   灯影 · layout.css  (v3 · 宋版乌丝栏与卷首装帧)
-   页面骨架：卷首题记、分栏、区块界栏、下一幕推进器、暗厅展柜
+   灯影 · layout.css  (v4 · 暗厅装帧)
+   页面骨架：卷首题记、分栏、区块界栏、下一幕推进器、工序暗带
    ========================================================= */
 
 .main { position: relative; z-index: 1; padding-top: var(--nav-h); }
 
-/* ---------- 内页卷首题记（宋刻书叶装帧） ---------- */
+/* ---------- 内页卷首题记（戏台水牌装帧） ---------- */
 .masthead {
   position: relative;
   padding-block: clamp(36px, 4.5vw, 64px) clamp(16px, 2vw, 28px);
@@ -17,12 +17,13 @@
   gap: clamp(24px, 3.6vw, 52px);
   align-items: stretch;
   padding: clamp(28px, 3.8vw, 48px) clamp(24px, 3.6vw, 48px);
-  background: linear-gradient(135deg, rgba(250, 246, 239, .92), rgba(238, 228, 212, .68));
-  border: 2px solid var(--frame-outer);
+  background:
+    radial-gradient(640px 280px at 18% 0%, rgba(217, 164, 65, .10), transparent 70%),
+    linear-gradient(135deg, rgba(35, 27, 18, .92), rgba(24, 18, 12, .92));
+  border: 1px solid var(--frame-outer);
   box-shadow:
-    inset 0 0 0 4px var(--ink),
-    inset 0 0 0 5px var(--frame-inner),
-    0 20px 44px -28px rgba(28, 20, 14, .18);
+    inset 0 0 0 1px var(--frame-inner),
+    0 26px 52px -34px rgba(0, 0, 0, .9);
   position: relative;
 }
 /* 卷首四角铜扣装饰线 */
@@ -54,11 +55,11 @@
   font-size: clamp(28px, 2.6vw, 36px);
   font-weight: 600;
   letter-spacing: .38em;
-  color: var(--cinnabar);
+  color: var(--cinnabar-lit);
   line-height: 1.15;
   padding-right: 24px;
-  border-right: 2px solid var(--line-strong);
-  box-shadow: 3px 0 0 var(--ink), 4px 0 0 var(--line);
+  border-right: 1px solid var(--line-strong);
+  box-shadow: 3px 0 0 var(--ink), 4px 0 0 var(--gold-2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,13 +99,13 @@
 }
 .masthead__meta span::before {
   content: "▪";
-  color: var(--cinnabar);
+  color: var(--cinnabar-lit);
   font-size: 10px;
 }
 .masthead__meta b {
   font-family: var(--num);
   font-size: 1.15em;
-  color: var(--cinnabar);
+  color: var(--lamp-soft);
   font-weight: 600;
 }
 
@@ -119,8 +120,8 @@
     font-size: var(--fs-h3);
     letter-spacing: .24em;
     border-right: 0;
-    border-bottom: 2px solid var(--line-strong);
-    box-shadow: 0 3px 0 var(--ink), 0 4px 0 var(--line);
+    border-bottom: 1px solid var(--line-strong);
+    box-shadow: 0 3px 0 var(--ink), 0 4px 0 var(--gold-2);
     padding: 0 0 14px;
     flex-direction: row;
   }
@@ -142,15 +143,15 @@
   .split, .split--wide, .split--narrow { grid-template-columns: 1fr; }
 }
 
-/* ---------- 区块标题（乌丝双栏界线 + 格眼批注） ---------- */
+/* ---------- 区块标题（金线界栏 + 批注） ---------- */
 .block-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 32px;
   padding-top: 28px;
-  border-top: 2px solid var(--hair-strong);
-  box-shadow: inset 0 3px 0 var(--ink), inset 0 4px 0 var(--hair);
+  border-top: 1px solid var(--line-strong);
+  box-shadow: inset 0 3px 0 rgba(217, 164, 65, .07);
   margin-bottom: clamp(32px, 4.2vw, 56px);
 }
 .block-head__text h2 { margin-top: 12px; }
@@ -169,22 +170,22 @@
   .block-head__note { max-width: none; }
 }
 
-/* ---------- 下一幕推进器（展馆过厅匾额式） ---------- */
+/* ---------- 下一幕推进器（过厅匾额式） ---------- */
 .next-scene {
   display: block;
   position: relative;
-  border-top: 2px solid var(--hair-strong);
-  border-bottom: 2px solid var(--hair-strong);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   background:
-    radial-gradient(700px 240px at 50% 50%, rgba(200, 146, 56, .16), transparent 70%),
-    linear-gradient(90deg, var(--ink-2), var(--curtain) 50%, var(--ink-2));
+    radial-gradient(700px 240px at 50% 50%, rgba(217, 164, 65, .12), transparent 70%),
+    linear-gradient(90deg, var(--ink-2), #251C12 50%, var(--ink-2));
   transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
 }
 .next-scene:hover {
-  border-color: var(--cinnabar);
+  border-color: rgba(200, 68, 42, .5);
   background:
-    radial-gradient(800px 280px at 50% 50%, rgba(158, 42, 32, .12), transparent 72%),
-    linear-gradient(90deg, var(--ink-2), #FFFDF9 50%, var(--ink-2));
+    radial-gradient(800px 280px at 50% 50%, rgba(200, 68, 42, .14), transparent 72%),
+    linear-gradient(90deg, var(--ink-2), #2B1E12 50%, var(--ink-2));
 }
 .next-scene__inner {
   display: flex;
@@ -220,7 +221,7 @@
 .next-scene__arrow {
   font-family: var(--num);
   font-size: .72em;
-  color: var(--cinnabar);
+  color: var(--cinnabar-lit);
   transition: transform .3s var(--ease);
 }
 .next-scene:hover .next-scene__arrow { transform: translateX(12px); }
@@ -254,35 +255,18 @@
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
 }
 
-/* ---------- 玄室暗厅展柜（用于工序长卷等沉浸深色通栏） ---------- */
+/* ---------- 工序暗带（沉浸深色通栏，比页面底再沉一档） ---------- */
 .paper-block {
-  --ink: #140E0A;
-  --paper: #F5EDE0;
-  --paper-dim: #D4C5B0;
-  --paper-faint: #A89680;
-  --hair: rgba(245, 237, 224, .14);
-  --hair-strong: rgba(245, 237, 224, .30);
-  --lamp: #DF9E26;
-  --cinnabar-lit: #D9533F;
   background:
-    radial-gradient(960px 420px at 50% 0%, rgba(223, 158, 38, .14), transparent 70%),
-    linear-gradient(180deg, #16100B, #0E0A07);
-  color: var(--paper);
+    radial-gradient(960px 420px at 50% 0%, rgba(217, 164, 65, .10), transparent 70%),
+    linear-gradient(180deg, #100C08, #0C0906);
   position: relative;
   isolation: isolate;
-  border-top: 2px solid #8A5212;
-  border-bottom: 2px solid #8A5212;
+  border-top: 1px solid var(--gold-3);
+  border-bottom: 1px solid var(--gold-3);
 }
 .paper-block .block-head {
-  border-top-color: rgba(223, 158, 38, .35);
-  box-shadow: inset 0 3px 0 #140E0A, inset 0 4px 0 rgba(223, 158, 38, .18);
+  border-top-color: rgba(217, 164, 65, .35);
+  box-shadow: inset 0 3px 0 rgba(217, 164, 65, .06);
 }
-.paper-block .block-head__text h2 { color: #F5EDE0; }
-.paper-block .eyebrow { color: #E5A93B; }
-.paper-block .eyebrow::before { background: #D9533F; box-shadow: 0 0 0 2px #140E0A, 0 0 0 3px #D9533F; }
-.paper-block .muted,
-.paper-block .block-head__note {
-  color: #D4C5B0;
-  border-left-color: #DF9E26;
-  background: linear-gradient(90deg, rgba(223, 158, 38, .12), transparent);
-}
+.paper-block .block-head__note { border-left-color: var(--lamp); }
